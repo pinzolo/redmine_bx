@@ -1,0 +1,2 @@
+module BxMenuHelper
+end
