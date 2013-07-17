@@ -3,6 +3,7 @@ class BxMenuController < ApplicationController
   unloadable
 
   before_filter :find_project, :authorize
+  menu_item :bx
 
   def index
   end
