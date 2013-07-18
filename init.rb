@@ -1,8 +1,15 @@
+# coding: utf-8
 Redmine::Plugin.register :redmine_bx do
-  name 'Redmine Bx plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  name 'redmine_bx'
+  author 'pinzolo'
+  description 'redmine_bx is a plugin for Redmine. This will reduce excel files in your projects.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/pinzolo/redmine_bx'
+  author_url 'https://github.com/pinzolo'
+
+  project_module :bx do
+    permission :view_menu, :bx_menu => :index
+  end
+
+  menu :project_menu, :bx, { :controller => :bx_menu, :action => :index }, :param => :project_id
 end
