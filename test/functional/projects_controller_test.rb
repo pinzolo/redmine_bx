@@ -2,8 +2,8 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class ProjectsControllerTest < ActionController::TestCase
-  fixtures :projects, :members, :users, :member_roles, :roles
-  # Replace this with your real tests.
+  fixtures :projects, :users
+
   test "show bx tab on enabled project and logged in" do
     @request.session[:user_id] = 1
     prj = Project.all.first
