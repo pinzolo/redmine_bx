@@ -4,7 +4,11 @@
 
 Rails.application.routes.draw do
   resources :projects do
-    # menu
     get :bx, :controller => :bx_menu, :action => :index
+    resources :resources, :controller => :bx_resources do
+      member do
+        get :children
+      end
+    end
   end
 end

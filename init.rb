@@ -8,9 +8,9 @@ Redmine::Plugin.register :redmine_bx do
   author_url 'https://github.com/pinzolo'
 
   project_module :bx do
-    permission :view_menu, :bx_menu => :index
-    permission :view_resources, :bx_resources => [:index, :show]
-    permission :manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy], :require => :member
+    permission :bx_view_menu, :bx_menu => :index
+    permission :bx_view_resources, :bx_resources => [:index, :show]
+    permission :bx_manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy], :require => :member
   end
 
   menu :project_menu, :bx, { :controller => :bx_menu, :action => :index }, :param => :project_id

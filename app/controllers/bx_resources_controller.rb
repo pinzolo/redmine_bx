@@ -1,6 +1,7 @@
+# coding: utf-8
 class BxResourcesController < ApplicationController
+  include BxController
   unloadable
-
 
   def index
   end
