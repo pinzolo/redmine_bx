@@ -1,4 +1,4 @@
 # coding: utf-8
-module BxMenuHelper
+module BxResourcesHelper
   include BxHelper
 end
