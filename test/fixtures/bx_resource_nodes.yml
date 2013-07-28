@@ -1,0 +1,36 @@
+---
+bx_resource_node_001:
+  id: 1
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  parent_id: 0
+  project_id: 1
+  root_node_id: 1
+  code: locals
+  summary: locale settings
+bx_resource_node_002:
+  id: 2
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  parent_id: 0
+  project_id: 1
+  root_node_id: 2
+  code: db
+  summary: databse settings
+bx_resource_node_003:
+  id: 3
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  parent_id: 1
+  project_id: 1
+  root_node_id: 1
+  code: label
+bx_resource_node_004:
+  id: 4
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  parent_id: 0
+  project_id: 2
+  root_node_id: 4
+  code: locals
+  summary: locale settings

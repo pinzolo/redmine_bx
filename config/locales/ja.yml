@@ -1,0 +1,12 @@
+ja:
+  bx:
+    tab: "Bx"
+    label:
+      bx: "Bx"
+      resources: "リソース"
+      new_resource: "新しいリソース"
+    menu:
+      resources: "リソース"
+    title:
+      bx: "Bx"
+      resources: "リソース"

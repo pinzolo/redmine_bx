@@ -2,8 +2,8 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class BxMenuControllerTest < ActionController::TestCase
-  fixtures :projects, :members, :users, :member_roles, :roles
-  # Replace this with your real tests.
+  fixtures :projects, :users
+
   test "#index" do
     @request.session[:user_id] = 1
     prj = Project.all.first
