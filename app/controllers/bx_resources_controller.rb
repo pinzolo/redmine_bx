@@ -3,6 +3,8 @@ class BxResourcesController < ApplicationController
   include BxController
   unloadable
 
+  bx_tab :bx_resources
+
   def index
   end
 
@@ -22,5 +24,17 @@ class BxResourcesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def new_root
+    @form = BxRootResourceForm.new
+  end
+
+  def create_root
+    @form = BxRootResourceForm.new(params[:form])
+    if @form.valid?
+      service = BxResourceService.new
+      service.create_root(@form)
+    end
   end
 end

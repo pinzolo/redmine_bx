@@ -1,0 +1,12 @@
+<%# coding: utf-8 %>
+<div class="error_erea">
+  <%= error_messages_for @form %>
+</div>
+<%= labelled_form_for :form, @form, :url => create_root_project_resources_path(@project), :remote => true do |f| %>
+<div class="box tabular">
+    <p><%= f.text_field :resource_code, :label => bx_form_label(@form, :resource_code), :required => true %></p>
+    <p><%= f.text_field :resource_summary, :label => bx_form_label(@form, :resource_summary), :required => true, :size => 100 %></p>
+</div>
+  <%= f.submit l(:button_create) %>
+  <%= link_to l(:button_cancel), project_resources_path(@project), :remote => true %>
+<% end %>
