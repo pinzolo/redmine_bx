@@ -7,6 +7,9 @@ ja:
       new_resource: "新しいリソース"
     menu:
       resources: "リソース"
-    title:
-      bx: "Bx"
-      resources: "リソース"
+  activemodel:
+    attributes:
+      bx_root_resource_form:
+        resource_summary: "概要"
+        resource_code: "コード"
+
