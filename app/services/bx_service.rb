@@ -2,67 +2,33 @@
 module BxService
   extend ActiveSupport::Concern
 
-  class Result
-    def initialize(reason, data)
-      @reason = reason
-      @data = data
-    end
-
-    def success?
-      @reason.nil?
-    end
-
-    def failure?
-      !@reason.nil?
-    end
-
-    def form_invalid?
-      @reason == :form_invalid
-    end
-
-    def conflict?
-      @reason == :conflict
-    end
-
-    def error?
-      @reason == :error
-    end
-
-    def data
-      @data
-    end
-  end
-
-  included do
-    ms = public_instance_methods - Object.public_instance_methods
-    puts ms.inspect
-    ms.each do |m|
-      dm = instance_method(m)
-      undef_method(m)
-      define_method m do |form|
-        transaction(form, dm)
+  module ClassMethods
+    def method_added(name)
+      unless name.match(/!\Z/)
+        define_method("#{name}!") do |*args|
+          self.call_with_transaction(name, form, *args)
+        end
       end
     end
   end
 
   private
-  def transaction(form, method)
-    reason = nil
-    data = nil
-    if form.valid?
+  def call_with_transaction(name, *args)
+    form = args.first unless args.empty?
+
+    if form.nil? || form.valid?
       begin
         ActiveRecord::Base.transaction do
-          data = method.bind(self).call(form)
+          data = self.__send__(name, *args)
         end
-      rescue ActiveRecord::StaleObjectError
-        reason = :conflict
-      rescue
-        reason = :error
+      rescue => ex
+        Rails.logger.error(ex)
+        reason = ex.is_a?(ActiveRecord::StaleObjectError) ? :conflict : :error
       end
     else
       reason = :form_invalid
     end
 
-    ::Result.new(reason, data)
+    BxServiceResult.new(reason, data)
   end
 end

@@ -32,9 +32,6 @@ class BxResourcesController < ApplicationController
 
   def create_root
     @form = BxRootResourceForm.new(params[:form].merge(:project => @project))
-    if @form.valid?
-      service = BxResourceService.new
-      service.create_root(@form)
-    end
+    @result = BxResourceService.new.create_root(@form)
   end
 end
