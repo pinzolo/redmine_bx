@@ -13,8 +13,8 @@ class BxServiceResult
     !self.success?
   end
 
-  def form_invalid?
-    @reason == :form_invalid
+  def invalid_input?
+    @reason == :invalid_input
   end
 
   def conflict?

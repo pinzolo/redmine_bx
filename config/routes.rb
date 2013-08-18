@@ -10,12 +10,9 @@ Rails.application.routes.draw do
       member do
         get :children
       end
-      collection do
-        get :new_root
-        post :create_root
-        get :edit_root
-        put :update_root
-      end
+    end
+    namespace :resources, :module => nil do
+      resources :roots, :controller => :bx_root_resources, :only => [:new, :create, :edit, :update]
     end
   end
 end

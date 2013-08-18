@@ -1,6 +1,6 @@
 <%# coding: utf-8 %>
 <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
-  <p><%= link_to l("bx.label.new_resource"), new_root_project_resources_path(@project), :class => 'icon icon-add', :remote => true %></p>
+  <p><%= link_to l("bx.label.new_resource"), new_project_resources_root_path(@project), :class => 'icon icon-add' %></p>
 <% end %>
 <% roots = BxResourceNode.roots(@project) %>
 <% if roots.empty? %>
@@ -8,11 +8,11 @@
 <% else %>
 <ul>
   <% roots.each do |root| %>
-  <li><%= root.name %></li>
+  <li><%= root.summary %></li>
   <% end %>
 </ul>
 <% end %>
 <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
-  <p><%= link_to l("bx.label.new_resource"), new_root_project_resources_path(@project), :class => 'icon icon-add', :remote => true %></p>
+  <p><%= link_to l("bx.label.new_resource"), new_project_resources_root_path(@project), :class => 'icon icon-add' %></p>
 <% end %>
 

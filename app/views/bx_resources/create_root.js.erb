@@ -1,6 +1,0 @@
-<%# coding: utf-8 %>
-<% if @form.valid? %>
-$("#tab-content-bx_resources").html("<%= j(render("show_root")) %>");
-<% else %>
-$("#tab-content-bx_resources").html("<%= j(render("new_root")) %>");
-<% end %>
