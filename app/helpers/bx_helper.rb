@@ -1,18 +1,18 @@
 # coding: utf-8
 module BxHelper
-  def bx_tabs(name = "bx_resources", action = :bx_view_resources, partial = "index")
-    puts "name: #{name}, action: #{action}, partial: #{partial}"
-    tabs = [
-      {:name => "bx_resources", :action => :bx_view_resources, :partial => "bx_resources/index", :label => "bx.menu.resources"}
-      #,{:name => 'bx_table_defs', :action => :view_table_defs, :partial => 'bx_table_defs/index', :label => :label_bx_menu_table_defs}
-    ]
-    tabs.each do |tab|
-      if tab[:name].to_s == name.to_s
-        tab[:action] = action
-        tab[:partial] = "#{name}/#{partial}"
+  def bx_tabs(tab = nil)
+    Rails.logger.debug("tab: #{tab}")
+    content_tag(:div, :class => "tabs") do
+      ul = content_tag(:ul) do
+        if User.current.allowed_to?(:bx_view_resources, @project)
+          link_opts = {}
+          link_opts = link_opts.merge(:class => "selected") if tab.to_s == "bx_resources" || tab.nil?
+          link = link_to(l("bx.menu.resources"), project_resources_path(@project), link_opts)
+          concat content_tag(:li, link, :id => "tab-bx_resources")
+        end
       end
+      concat(ul)
     end
-    tabs.select {|tab| User.current.allowed_to?(tab[:action], @project)}
   end
 
   def bx_title

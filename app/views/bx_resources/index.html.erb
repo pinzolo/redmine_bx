@@ -1,4 +1,8 @@
 <%# coding: utf-8 %>
 <%= bx_title %>
 
-<%= render_tabs bx_tabs %>
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= render "index" %>
+</div>

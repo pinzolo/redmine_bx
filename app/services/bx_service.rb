@@ -1,34 +1,44 @@
 # coding: utf-8
 module BxService
-  extend ActiveSupport::Concern
-
-  module ClassMethods
-    def method_added(name)
-      unless name.match(/!\Z/)
-        define_method("#{name}!") do |*args|
-          self.call_with_transaction(name, form, *args)
-        end
-      end
-    end
+  def initialize(input = nil)
+    @input = input
   end
 
-  private
   def call_with_transaction(name, *args)
-    form = args.first unless args.empty?
-
-    if form.nil? || form.valid?
+    reason = nil
+    data = nil
+    if @input.nil? || @input.valid?
       begin
         ActiveRecord::Base.transaction do
           data = self.__send__(name, *args)
         end
       rescue => ex
         Rails.logger.error(ex)
+        data = ex
         reason = ex.is_a?(ActiveRecord::StaleObjectError) ? :conflict : :error
       end
     else
-      reason = :form_invalid
+      reason = :invalid_input
     end
 
     BxServiceResult.new(reason, data)
+  end
+
+  def method_missing(name, *args)
+    base_method = name.to_s.chop
+    if name.to_s.match(/!\Z/) && self.respond_to?(base_method)
+      self.class.class_eval do
+        define_method(name) do |*params|
+          self.call_with_transaction(base_method, *params)
+        end
+      end
+      self.__send__(name, *args)
+    else
+      super(name, *args)
+    end
+  end
+
+  def respond_to_missing?(symbol, include_private)
+    symbol.to_s.match(/!\Z/) && self.respond_to?(symbol.to_s.chop)
   end
 end

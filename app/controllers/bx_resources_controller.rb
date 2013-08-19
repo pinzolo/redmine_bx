@@ -25,13 +25,4 @@ class BxResourcesController < ApplicationController
 
   def destroy
   end
-
-  def new_root
-    @form = BxRootResourceForm.new
-  end
-
-  def create_root
-    @form = BxRootResourceForm.new(params[:form].merge(:project => @project))
-    @result = BxResourceService.new.create_root(@form)
-  end
 end

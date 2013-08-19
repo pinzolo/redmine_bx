@@ -5,8 +5,10 @@ ja:
       bx: "Bx"
       resources: "リソース"
       new_resource: "新しいリソース"
+      relational_issues: "関連するチケット"
     menu:
       resources: "リソース"
+
   activemodel:
     attributes:
       bx_root_resource_form:
@@ -19,7 +21,6 @@ ja:
           one:   "%{model} にエラーが発生しました。"
           other: "%{model} に %{count} つのエラーが発生しました。"
         body: "次の項目を確認してください。"
-
       messages:
         inclusion: "は一覧にありません。"
         exclusion: "は予約されています。"
@@ -41,8 +42,4 @@ ja:
         less_than_or_equal_to: "は%{count}以下の値にしてください。"
         odd: "は奇数にしてください。"
         even: "は偶数にしてください。"
-        greater_than_start_date: "を開始日より後にしてください"
-        not_same_project: "同じプロジェクトに属していません"
-        circular_dependency: "この関係では、循環依存になります"
-        cant_link_an_issue_with_a_descendant: "指定したチケットとは親子関係になっているため関連づけられません"
 
