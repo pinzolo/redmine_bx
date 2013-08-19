@@ -25,4 +25,18 @@ class BxIssuesRelationTest < ActiveSupport::TestCase
     assert_equal 11, ids[2]
     assert_equal 13, ids[3]
   end
+
+  def test_relational_issue_ids_is_nil
+    @rel.relational_issues = nil
+    ids = @rel.relational_issue_ids
+    assert ids
+    assert_equal 0, ids.length
+  end
+
+  def test_relational_issue_ids_is_blank
+    @rel.relational_issues = ""
+    ids = @rel.relational_issue_ids
+    assert ids
+    assert_equal 0, ids.length
+  end
 end
