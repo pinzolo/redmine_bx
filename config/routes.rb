@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       end
     end
     namespace :resources, :module => nil do
-      resources :roots, :controller => :bx_root_resources, :only => [:new, :create, :edit, :update]
+      resources :roots, :controller => :bx_root_resources, :only => [:new, :create, :edit, :update, :show]
     end
   end
 end

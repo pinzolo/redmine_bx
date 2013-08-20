@@ -15,20 +15,24 @@ class BxHistoryService
   end
 
   def register_history(operation_type, source, issue_ids, old_values)
-    history = BxHistory.new(:target => @@target, :operation_type => operation_type, :source_id => source.id)
-    history.save!
-    if issue_ids.present?
-
-    end
+    history = BxHistory.create!(:target => @@target,
+                                :operation_type => operation_type,
+                                :source_id => source.id,
+                                :changed_by => User.current.id,
+                                :changed_at => Time.now)
+    self.register_history_issues(history, issue_ids) if issue_ids.present?
+    self.register_history_details(history, source, old_values) if old_values.present?
   end
 
   def register_history_details(history, source, old_values)
-    # TODO: implements when update feature is implemented.
+    # TODO: implements when update feature will be implemented.
   end
 
   def register_history_issues(history, issue_ids)
+    BxHistoryIssue.delete_all(:history_id => history.id)
     valid_issue_ids = Issue.where(:id => issue_ids).pluck(:id)
     valid_issue_ids.each do |issue_id|
-      HistoryIssue.create!(:history_id => history.id, :issue_id => issue_id)
+      BxHistoryIssue.create!(:history_id => history.id, :issue_id => issue_id)
+    end
   end
 end
