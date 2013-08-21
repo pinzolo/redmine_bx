@@ -3,6 +3,8 @@ class BxResourcesController < ApplicationController
   include BxController
   unloadable
 
+  bx_tab :bx_resources
+
   def index
   end
 
