@@ -1,2 +1,13 @@
 <%# coding: utf-8 %>
-<h2>BxRootResourcesController#show</h2>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<dl>
+  <dt><%= @resource.summary %></dt>
+  <dd><%= @resource.path(":") %></dd>
+</dl>
+
+<ul>
+  <li></li>
+</ul>

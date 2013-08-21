@@ -5,6 +5,7 @@ en:
     label:
       resources: "Resources"
       new_resource: "New resource"
+      relational_issues: "Relational issues"
     menu:
       resources: "Resources"
 

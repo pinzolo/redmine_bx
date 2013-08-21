@@ -23,4 +23,25 @@ class BxResourceNode < ActiveRecord::Base
   def leaf?
     !self.values.empty?
   end
+
+  def depth
+    @depth ||= self.root? ? 0 : self.parent.depth + 1
+  end
+
+  def ancestry(include_self = true)
+    @ancestry ||= begin
+      list = []
+      node = include_self ? self : self.parent
+      while node.present?
+        list.unshift(node)
+        node = node.parent
+      end
+      list
+    end
+  end
+
+  def path(delimiter, include_root = false)
+    list = include_root ? self.ancestry : self.ancestry.slice(1, self.ancestry.length - 1)
+    list.map { |node| node.code }.join(delimiter)
+  end
 end
