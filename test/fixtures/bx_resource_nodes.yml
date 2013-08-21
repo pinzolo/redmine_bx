@@ -6,7 +6,7 @@ bx_resource_node_001:
   parent_id: 0
   project_id: 1
   root_node_id: 1
-  code: locals
+  code: locales
   summary: locale settings
 bx_resource_node_002:
   id: 2
@@ -32,5 +32,5 @@ bx_resource_node_004:
   parent_id: 0
   project_id: 2
   root_node_id: 4
-  code: locals
+  code: locales
   summary: locale settings
