@@ -3,11 +3,49 @@
 
 <%= bx_tabs params[:tab] %>
 
-<dl>
-  <dt><%= @resource.summary %></dt>
-  <dd><%= @resource.path(":") %></dd>
-</dl>
+<div class="bx_category_box">
+  <%= bx_category_title("bx.label.resource_base_info") %>
+  <dl id="bx_resource_base_info">
+    <dt><%= l("bx.label.resource_summary") %> :</dt>
+    <dd><%= @resource.summary %></dd>
+    <dt><%= l("bx.label.resource_path") %> :</dt>
+    <dd><%= @resource.path(":", true) %></dd>
+  </dl>
+</div>
 
-<ul>
-  <li></li>
-</ul>
+<div class="bx_category_box">
+  <%= bx_category_title("bx.label.branches") %>
+<% if @resource.branches.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= l("bx.label.branche_code") %></th>
+        <th><%= l("bx.label.branche_name") %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @resource.branches.each do |branche| %>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% end %>
+</div>
+
+<div class="bx_category_box">
+  <%= bx_category_title("bx.label.histories") %>
+<% if @resource.histories.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <% @resource.histories.each do |history| %>
+    <%= history.operation_type %>
+  <% end %>
+<% end %>
+</div>

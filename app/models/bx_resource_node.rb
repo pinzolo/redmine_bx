@@ -44,4 +44,8 @@ class BxResourceNode < ActiveRecord::Base
     list = include_root ? self.ancestry : self.ancestry.slice(1, self.ancestry.length - 1)
     list.map { |node| node.code }.join(delimiter)
   end
+
+  def histories
+    BxHistory.where(:target => "resource", :source_id => self.id)
+  end
 end

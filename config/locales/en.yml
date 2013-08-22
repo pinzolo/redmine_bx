@@ -6,6 +6,15 @@ en:
       resources: "Resources"
       new_resource: "New resource"
       relational_issues: "Relational issues"
+      resource_summary: "Summary"
+      resource_path: "Path"
+      resource_base_info: "Basic information"
+      branches: "Branch list"
+      branch_code: "Code"
+      branch_name: "Name"
+      histories: "History"
+      history_create: "create"
+      history_update: "update"
     menu:
       resources: "Resources"
 

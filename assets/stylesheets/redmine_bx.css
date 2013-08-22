@@ -1,0 +1,25 @@
+.bx_category_box {
+  padding-bottom: 20px;
+}
+
+.bx_category_title {
+  width: 100%;
+  padding: 1px 0;
+  border-bottom: 1px dashed #888;
+}
+
+#bx_resource_base_info {
+  margin-left: 10px;
+}
+
+#bx_resource_base_info dt {
+  width: 80px;
+  font-weight: bold;
+  float: left;
+  clear: both;
+  padding: 3px;
+}
+
+#bx_resource_base_info dd {
+  padding: 3px;
+}
