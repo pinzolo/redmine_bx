@@ -1,4 +1,6 @@
 # coding: utf-8
+require "bx_hooks"
+
 Redmine::Plugin.register :redmine_bx do
   name 'redmine_bx'
   author 'pinzolo'
