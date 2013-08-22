@@ -7,8 +7,6 @@ class BxHooks < Redmine::Hook::ViewListener
   end
 
   def view_layouts_base_body_bottom(context = {})
-    Rails.logger.debug(context[:controller])
-    Rails.logger.debug(context[:controller].class.included_modules.inspect)
     if context[:controller].class.included_modules.include?(BxController)
       javascript_include_tag("redmine_bx", :plugin => "redmine_bx")
     end
