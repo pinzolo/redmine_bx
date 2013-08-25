@@ -6,8 +6,7 @@ class CreateBxHistoryDetails < ActiveRecord::Migration
       t.timestamps
 
       t.integer :history_id, :null => false, :default => 0
-      t.string :target, :null => false, :default => ""
-      t.string :attribute, :null => false, :default => ""
+      t.string :property, :null => false, :default => ""
       t.text :old_value, :null => false, :default => ""
       t.text :new_value, :null => false, :default => ""
     end

@@ -5,7 +5,7 @@ bx_resource_branch_001:
   updated_at: 2013-07-21 00:00:00
   lock_version: 0
   root_node_id: 1
-  name: 日本語
+  name: Japanese
   code: ja
 bx_resource_branch_002:
   id: 2
@@ -13,6 +13,6 @@ bx_resource_branch_002:
   updated_at: 2013-07-21 00:00:00
   lock_version: 0
   root_node_id: 1
-  name: 英語
+  name: English
   code: en
 

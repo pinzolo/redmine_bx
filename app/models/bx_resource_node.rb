@@ -1,8 +1,11 @@
 # coding: utf-8
 class BxResourceNode < ActiveRecord::Base
+  include BxEvacuatable
   unloadable
 
   PARENT_ID_OF_ROOT = 0
+
+  evacuatable :code, :summary
 
   belongs_to :project
   belongs_to :parent, :class_name => "BxResourceNode", :foreign_key => :parent_id
