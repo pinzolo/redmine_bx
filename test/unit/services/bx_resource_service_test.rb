@@ -17,6 +17,12 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     end
   end
 
+  def test_create_root_returns_created_root
+    form = BxRootResourceForm.new(:resource_code => "test", :resource_summary => "summary", :project => @project)
+    result = BxResourceService.new(form).create_root!
+    assert result.data.is_a?(BxResourceNode)
+  end
+
   def test_create_root_saving_root_node
     form = BxRootResourceForm.new(:resource_code => "test", :resource_summary => "summary", :project => @project)
     result = BxResourceService.new(form).create_root!
