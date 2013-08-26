@@ -13,7 +13,7 @@
 <% else %>
   <ul>
     <% roots.each do |root| %>
-    <li><%= root.summary %></li>
+    <li><%= link_to root.summary, project_bx_root_resource_path(@project, root) %></li>
     <% end %>
   </ul>
 <% end %>
