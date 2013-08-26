@@ -47,6 +47,8 @@ class BxResourceServiceTest < ActiveSupport::TestCase
   end
 
   def test_history_values_on_create_root
+    now = Time.local(2013, 2, 4)
+    Time.stubs(:now).returns(now)
     form = BxRootResourceForm.new(:resource_code => "test", :resource_summary => "summary", :project => @project)
     result = BxResourceService.new(form).create_root!
     history = BxHistory.where(:target => "resource", :source_id => result.data.id).first
@@ -54,6 +56,7 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     assert_equal "create_root", history.operation
     assert_equal result.data.id, history.source_id
     assert_equal 1, history.changed_by
+    assert_equal now, history.changed_at
   end
 
   def test_history_detail_values_on_create_root
