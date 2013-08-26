@@ -5,7 +5,7 @@ require "formup/attr_def"
 module Formup
   class Source
 
-    attr_accessor :key, :attribute_defs, :excludes
+    attr_accessor :key, :attribute_defs
 
     def initialize(key, attribute_defs = {}, excludes = nil)
       raise "Formup::Source require key param." if key.nil?
@@ -13,8 +13,6 @@ module Formup
       @key = key.to_s
       @attribute_defs = attribute_defs.map { |k, v| Formup::AttrDef.new(k, v) } if attribute_defs
       @attribute_defs ||= []
-
-      @excludes = excludes ? [excludes].flatten : [:id]
     end
 
     def base?(base)
