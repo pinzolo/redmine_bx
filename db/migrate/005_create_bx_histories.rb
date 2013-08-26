@@ -8,6 +8,7 @@ class CreateBxHistories < ActiveRecord::Migration
       t.string :target, :null => false, :default => ""
       t.string :operation_type, :null => false, :default => ""
       t.string :operation, :null => false, :default => ""
+      t.string :key, :null => false, :default => ""
       t.integer :source_id, :null => false, :default => 0
       t.integer :changed_by, :null => false, :default => 0
       t.datetime :changed_at, :null => false

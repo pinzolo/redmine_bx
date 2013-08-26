@@ -54,6 +54,7 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     history = BxHistory.where(:target => "resource", :source_id => result.data.id).first
     assert_equal "create", history.operation_type
     assert_equal "create_root", history.operation
+    assert_equal "test", history.key
     assert_equal 1, history.changed_by
     assert_equal now, history.changed_at
   end
@@ -123,6 +124,7 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     history = BxHistory.where(:target => "resource", :source_id => resource.id).last
     assert_equal "create", history.operation_type
     assert_equal "create_branch", history.operation
+    assert_equal "branch_test", history.key
     assert_equal 1, history.changed_by
     assert_equal now, history.changed_at
   end

@@ -6,10 +6,11 @@ class BxHistoryService
     @@target = t.to_s
   end
 
-  def register_history(operation, source_id, changesets, issue_ids)
+  def register_history(operation, key, source_id, changesets, issue_ids)
     history = BxHistory.create!(:target => @@target,
                                 :operation_type => operation.split("_").first,
                                 :operation => operation,
+                                :key => key,
                                 :source_id => source_id,
                                 :changed_by => User.current.id,
                                 :changed_at => Time.now)
