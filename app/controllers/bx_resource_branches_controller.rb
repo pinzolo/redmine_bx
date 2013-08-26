@@ -1,8 +1,10 @@
+# coding: utf-8
 class BxResourceBranchesController < ApplicationController
+  include BxController
   unloadable
 
-
   def new
+    @form = BxResourceBranchForm.new
   end
 
   def create
