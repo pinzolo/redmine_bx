@@ -47,7 +47,7 @@ class BxResourceServiceTest < ActiveSupport::TestCase
   end
 
   def test_history_values_on_create_root
-    now = Time.local(2013, 2, 4)
+    now = Time.now
     Time.stubs(:now).returns(now)
     form = BxRootResourceForm.new(:resource_code => "test", :resource_summary => "summary", :project => @project)
     result = BxResourceService.new(form).create_root!
