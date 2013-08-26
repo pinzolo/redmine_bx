@@ -1,4 +1,6 @@
 # coding: utf-8
+require "bx_hooks"
+
 Redmine::Plugin.register :redmine_bx do
   name 'redmine_bx'
   author 'pinzolo'
@@ -9,8 +11,12 @@ Redmine::Plugin.register :redmine_bx do
 
   project_module :bx do
     permission :bx_view_menu, :bx_menu => :index
-    permission :bx_view_resources, :bx_resources => [:index, :show]
-    permission :bx_manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy], :bx_root_resources => [:new, :edit, :create, :update, :show], :require => :member
+    permission :bx_view_resources, :bx_resources => [:index, :show],
+                                   :bx_root_resources => [:show]
+    permission :bx_manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy],
+                                     :bx_root_resources => [:new, :edit, :create, :update, :show],
+                                     :bx_resource_branches => [:new, :edit, :create, :update, :destroy],
+                                     :require => :member
   end
 
   menu :project_menu, :bx, { :controller => :bx_menu, :action => :index }, :param => :project_id

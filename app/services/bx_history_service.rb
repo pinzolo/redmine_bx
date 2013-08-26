@@ -6,26 +6,24 @@ class BxHistoryService
     @@target = t.to_s
   end
 
-  def register_create_history(source, issue_ids)
-    self.register_history("create", source, issue_ids, nil)
-  end
-
-  def register_update_history(source, issue_ids, old_values)
-    self.regsiter_history("update", source, issue_ids, old_values)
-  end
-
-  def register_history(operation_type, source, issue_ids, old_values)
+  def register_history(operation, source_id, changesets, issue_ids)
     history = BxHistory.create!(:target => @@target,
-                                :operation_type => operation_type,
-                                :source_id => source.id,
+                                :operation_type => operation.split("_").first,
+                                :operation => operation,
+                                :source_id => source_id,
                                 :changed_by => User.current.id,
                                 :changed_at => Time.now)
+    self.register_history_details(history, changesets)
     self.register_history_issues(history, issue_ids) if issue_ids.present?
-    self.register_history_details(history, source, old_values) if old_values.present?
   end
 
-  def register_history_details(history, source, old_values)
-    # TODO: implements when update feature will be implemented.
+  def register_history_details(history, changesets)
+    changesets.each do |attr, changeset|
+      BxHistoryDetail.create!(:history_id => history.id,
+                              :property => attr,
+                              :old_value => changeset.first,
+                              :new_value => changeset.last)
+    end
   end
 
   def register_history_issues(history, issue_ids)

@@ -6,6 +6,15 @@ ja:
       resources: "リソース"
       new_resource: "新しいリソース"
       relational_issues: "関連するチケット"
+      resource_summary: "概要"
+      resource_path: "パス"
+      resource_base_info: "基本情報"
+      branches: "ブランチ一覧"
+      branch_code: "コード"
+      branch_name: "ブランチ名"
+      histories: "履歴"
+      history_create: "新規作成"
+      history_update: "更新"
     menu:
       resources: "リソース"
 
