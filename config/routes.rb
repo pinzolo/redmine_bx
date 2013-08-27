@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   resources :projects do
     get :bx, :controller => :bx_menu, :action => :index
 
-    resources :resources, :controller => :bx_resources do
-      member do
-        get :children
+    namespace :bx, :module => nil do
+      resources :resources, :controller => :bx_resources do
+        member do
+          get :children
+        end
+        resources :branches, :controller => :bx_resource_branches, :except => [:index, :show]
       end
-    end
-    namespace :resources, :module => nil do
-      resources :roots, :controller => :bx_root_resources, :only => [:new, :create, :edit, :update, :show]
+      resources :root_resources, :controller => :bx_root_resources, :except => [:index]
     end
   end
 end

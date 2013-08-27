@@ -10,4 +10,16 @@ class BxResourceService
     root.save!
     root
   end
+
+  def add_branch
+    branch = BxResourceBranch.create!(@input.params_for(:branch, :lock_version))
+    BxResourceHistoryService.new.register_add_branch_history(branch, @input.relational_issue_ids)
+    branch
+  end
+
+  def update_branch(branch)
+    branch.update_attributes!(@input.params_for(:branch))
+    BxResourceHistoryService.new.register_update_branch_history(branch, @input.relational_issue_ids)
+    branch
+  end
 end

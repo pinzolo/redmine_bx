@@ -15,6 +15,7 @@ en:
       histories: "History"
       history_create: "create"
       history_update: "update"
+      new_branch: "New branch"
     menu:
       resources: "Resources"
 
@@ -23,6 +24,9 @@ en:
       bx_root_resource_form:
         resource_summary: "Summary"
         resource_code: "Code"
+      bx_resource_branch_form:
+        code: "Code"
+        name: "Branch name"
 
     errors:
       template:

@@ -15,6 +15,7 @@ ja:
       histories: "履歴"
       history_create: "新規作成"
       history_update: "更新"
+      new_branch: "新しいブランチ"
     menu:
       resources: "リソース"
 
@@ -23,6 +24,9 @@ ja:
       bx_root_resource_form:
         resource_summary: "概要"
         resource_code: "コード"
+      bx_resource_branch_form:
+        code: "コード"
+        name: "ブランチ名"
 
     errors:
       template:

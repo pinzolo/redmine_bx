@@ -21,21 +21,31 @@
   <table class="list">
     <thead>
       <tr>
-        <th><%= l("bx.label.branche_code") %></th>
-        <th><%= l("bx.label.branche_name") %></th>
+        <th><%= l("bx.label.branch_code") %></th>
+        <th><%= l("bx.label.branch_name") %></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-  <% @resource.branches.each do |branche| %>
+  <% @resource.branches.each do |branch| %>
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
+        <td><%= branch.code %></td>
+        <td><%= branch.name %></td>
+        <td>
+          <div class="contextual">
+    <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+          <%= link_to l(:button_edit), edit_project_bx_resource_branch_path(@project, @resource, branch), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+          <%= delete_link project_bx_resource_branch_path(@project, @resource, branch) %>
+    <% end %>
+          </div>
+        </td>
       </tr>
   <% end %>
     </tbody>
   </table>
+<% end %>
+<% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+  <p><%= link_to l("bx.label.new_branch"), new_project_bx_resource_branch_path(@project, @resource), :class => 'icon icon-add' %></p>
 <% end %>
 </div>
 
@@ -45,7 +55,7 @@
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
   <% @resource.histories.each do |history| %>
-    <%= history.operation_type %>
+    <%= history.operation %>
   <% end %>
 <% end %>
 </div>

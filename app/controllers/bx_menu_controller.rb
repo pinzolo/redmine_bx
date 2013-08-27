@@ -4,5 +4,6 @@ class BxMenuController < ApplicationController
   unloadable
 
   def index
+    render "bx_resources/index"
   end
 end

@@ -1,1 +1,14 @@
-<h2>BxResourceBranchesController#edit</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => project_bx_resource_branch_path(@project, @form.root_node_id, @branch), :method => :put do |f| %>
+    <%= f.hidden_field :lock_version %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
+    <%= f.submit l(:button_update) %>
+    <%= link_to l(:button_cancel), project_bx_root_resource_path(@project, @form.root_node_id) %>
+  <% end %>
+</div>

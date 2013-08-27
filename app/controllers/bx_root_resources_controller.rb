@@ -18,7 +18,7 @@ class BxRootResourcesController < ApplicationController
     @result = BxResourceService.new(@form).create_root!
     if @result.success?
       flash[:notice] = l(:notice_successful_create)
-      redirect_to project_resources_root_path(@project, @result.data)
+      redirect_to project_bx_root_resource_path(@project, @result.data)
     elsif @result.invalid_input?
       render :action => :new
     elsif @result.error?
