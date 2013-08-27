@@ -56,5 +56,9 @@ class BxResourceBranchesController < ApplicationController
   end
 
   def destroy
+    @branch = BxResourceBranch.find(params[:id])
+    BxResourceService.new.delete_branch!(@branch)
+    flash[:notice] = l(:notice_successful_delete)
+    redirect_to project_bx_root_resource_path(@project, @branch.root_node_id)
   end
 end

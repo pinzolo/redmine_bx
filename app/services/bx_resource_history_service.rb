@@ -16,4 +16,8 @@ class BxResourceHistoryService < BxHistoryService
     changesets = branch.previous_changes.slice("code", "name")
     self.register_history("update_branch", branch.code, branch.root_node_id, changesets, issue_ids)
   end
+
+  def register_delete_branch_history(branch)
+    self.register_history("delete_branch", branch.code, branch.root_node_id, nil, nil)
+  end
 end

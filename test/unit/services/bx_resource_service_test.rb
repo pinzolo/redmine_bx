@@ -2,7 +2,7 @@
 require File.expand_path('../../../test_helper', __FILE__)
 
 class BxResourceServiceTest < ActiveSupport::TestCase
-  fixtures :projects, :issues, :users, :bx_resource_nodes, :bx_resource_branches
+  fixtures :projects, :issues, :users, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values
 
   def setup
     User.current = User.find(1)
@@ -281,6 +281,47 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     form.code = "de"
     form.name = "German"
     form
+  end
+
+  def test_delete_branch
+    assert_difference("BxResourceBranch.count", -1) do
+      branch = BxResourceBranch.find(1)
+      BxResourceService.new.delete_branch!(branch)
+    end
+  end
+
+  def test_value_deletion_on_delete_branch
+    assert_difference("BxResourceValue.where(:branch_id => 1).count", -5) do
+      branch = BxResourceBranch.find(1)
+      BxResourceService.new.delete_branch!(branch)
+    end
+  end
+
+  def test_history_registration_on_delete_branch
+    assert_difference("BxHistory.count") do
+      branch = BxResourceBranch.find(1)
+      BxResourceService.new.delete_branch!(branch)
+    end
+  end
+
+  def test_history_detail_registration_on_update_branch
+    assert_no_difference("BxHistoryDetail.count") do
+      branch = BxResourceBranch.find(1)
+      BxResourceService.new.delete_branch!(branch)
+    end
+  end
+
+  def test_history_values_on_delete_branch
+    now = Time.now
+    Time.stubs(:now).returns(now)
+    branch = BxResourceBranch.find(1)
+    BxResourceService.new.delete_branch!(branch)
+    history = BxHistory.where(:target => "resource", :source_id => branch.root_node_id).last
+    assert_equal "delete", history.operation_type
+    assert_equal "delete_branch", history.operation
+    assert_equal "ja", history.key
+    assert_equal 1, history.changed_by
+    assert_equal now, history.changed_at
   end
 end
 

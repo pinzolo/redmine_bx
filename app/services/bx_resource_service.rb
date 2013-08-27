@@ -22,4 +22,10 @@ class BxResourceService
     BxResourceHistoryService.new.register_update_branch_history(branch, @input.relational_issue_ids)
     branch
   end
+
+  def delete_branch(branch)
+    BxResourceValue.delete_all(:branch_id => branch.id)
+    branch.destroy
+    BxResourceHistoryService.new.register_delete_branch_history(branch)
+  end
 end
