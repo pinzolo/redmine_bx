@@ -1,4 +1,6 @@
 <%# coding: utf-8 %>
+<%= f.hidden_field :root_node_id %>
+<%= f.hidden_field :lock_version %>
 <div class="box tabular">
   <p><%= f.text_field :code, :label => bx_form_label(form, :code), :required => true %></p>
   <p><%= f.text_field :name, :label => bx_form_label(form, :name), :required => true, :size => 100 %></p>

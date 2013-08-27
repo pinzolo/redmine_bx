@@ -11,9 +11,10 @@ Rails.application.routes.draw do
         member do
           get :children
         end
-        resources :branches, :controller => :bx_resource_branches, :except => [:index, :show]
+        resources :branches, :controller => :bx_resource_branches, :only => [:new, :create]
       end
       resources :root_resources, :controller => :bx_root_resources, :except => [:index]
+      resources :branches, :controller => :bx_resource_branches, :only => [:edit, :update, :destroy]
     end
   end
 end

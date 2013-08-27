@@ -33,35 +33,25 @@ class BxResourceBranchesController < ApplicationController
   end
 
   def edit
-    @resource = BxResourceNode.find(params[:resource_id])
-    if @resource.root?
-      @branch = BxResourceBranch.find(params[:id])
-      @form = BxResourceBranchForm.new
-      @form.load(:branch => @branch)
-    else
-      render_404
-    end
+    @branch = BxResourceBranch.find(params[:id])
+    @form = BxResourceBranchForm.new
+    @form.load(:branch => @branch)
   end
 
   def update
-    @resource = BxResourceNode.find(params[:resource_id])
-    if @resource.root?
-      @form = BxResourceBranchForm.new(params[:form])
-      @branch = BxResourceBranch.find(params[:id])
-      @result = BxResourceService.new(@form).update_branch!(@branch)
-      if @result.success?
-        flash[:notice] = l(:notice_successful_update)
-        redirect_to project_bx_root_resource_path(@project, @resource)
-      elsif @result.invalid_input?
-        render :action => :edit
-      elsif @result.conflict?
-        flash.now[:error] = l(:notice_locking_conflict)
-        render :action => :edit
-      elsif @result.error?
-        render_error(:message => @result.data.message)
-      end
-    else
-      render_404
+    @form = BxResourceBranchForm.new(params[:form])
+    @branch = BxResourceBranch.find(params[:id])
+    @result = BxResourceService.new(@form).update_branch!(@branch)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_update)
+      redirect_to project_bx_root_resource_path(@project, @branch.root_node_id)
+    elsif @result.invalid_input?
+      render :action => :edit
+    elsif @result.conflict?
+      flash.now[:error] = l(:notice_locking_conflict)
+      render :action => :edit
+    elsif @result.error?
+      render_error(:message => @result.data.message)
     end
   end
 

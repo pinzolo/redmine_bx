@@ -34,8 +34,8 @@
         <td>
           <div class="contextual">
     <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
-          <%= link_to l(:button_edit), edit_project_bx_resource_branch_path(@project, @resource, branch), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
-          <%= delete_link project_bx_resource_branch_path(@project, @resource, branch) %>
+          <%= link_to l(:button_edit), edit_project_bx_branch_path(@project, branch), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+          <%= delete_link project_bx_branch_path(@project, branch) %>
     <% end %>
           </div>
         </td>
