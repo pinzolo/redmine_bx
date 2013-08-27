@@ -17,6 +17,15 @@ ja:
         name: "ブランチ名"
       history:
         list: "履歴"
+        operation: "処理"
+        details: "詳細"
+        changed_by: "更新者"
+        changed_at: "更新日時"
+        operations:
+          create_category: "カテゴリ [%{key}] を新規作成"
+          create_branch: "ブランチ [%{key}] を作成"
+          update_branch: "ブランチ [%{key}] を更新"
+          delete_branch: "ブランチ [%{key}] を削除"
     menu:
       resources: "リソース"
 

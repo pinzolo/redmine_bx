@@ -8,18 +8,18 @@
   border-bottom: 1px dashed #888;
 }
 
-#bx_resource_base_info {
+.bx_infomations {
   margin-left: 10px;
 }
 
-#bx_resource_base_info dt {
+.bx_infomations dt {
   width: 80px;
   font-weight: bold;
   float: left;
   clear: both;
-  padding: 3px;
+  height: 23px;
 }
 
-#bx_resource_base_info dd {
-  padding: 3px;
+.bx_infomations dd {
+  height: 23px;
 }

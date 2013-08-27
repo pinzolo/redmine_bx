@@ -5,7 +5,7 @@
 
 <div class="bx_category_box">
   <%= bx_category_title("bx.label.category.information") %>
-  <dl id="bx_resource_base_info">
+  <dl class="bx_infomations">
     <dt><%= l("bx.label.category.name") %> :</dt>
     <dd><%= @category.name %></dd>
     <dt><%= l("bx.label.category.description") %> :</dt>
@@ -55,7 +55,21 @@
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
   <% @category.histories.each do |history| %>
-    <%= history.operation %>
+  <div class="bx_history">
+    <dl class="bx_infomations">
+      <dt><%= l("bx.label.history.changed_by") %> :</dt>
+      <dd><%= link_to_user(history.changed_user) %></dd>
+      <dt><%= l("bx.label.history.changed_at") %> :</dt>
+      <dd><%= format_time(history.changed_at) %></dd>
+      <dt><%= l("bx.label.history.operation") %> :</dt>
+      <dd><%= l("bx.label.history.operations.#{history.operation}", :key => history.key) %><%= bx_history_details_link(history) %></dd>
+    </dl>
+    <div class="bx_history_details">
+      TODO:
+    </div>
+  </div>
+  </dl>
   <% end %>
+  </table>
 <% end %>
 </div>
