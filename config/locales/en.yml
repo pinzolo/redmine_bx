@@ -4,29 +4,30 @@ en:
     tab: "Bx"
     label:
       resources: "Resources"
-      new_resource: "New resource"
       relational_issues: "Relational issues"
-      resource_summary: "Summary"
-      resource_path: "Path"
-      resource_base_info: "Basic information"
-      branches: "Branch list"
-      branch_code: "Code"
-      branch_name: "Name"
-      histories: "History"
-      history_create: "create"
-      history_update: "update"
-      new_branch: "New branch"
+      category:
+        information: "Information"
+        new: "New category"
+        name: "Name"
+        description: "Description"
+      branch:
+        list: "Branches"
+        new: "New branch"
+        code: "Code"
+        name: "Name"
+      history:
+        list: "Histories"
     menu:
       resources: "Resources"
 
   activemodel:
     attributes:
-      bx_root_resource_form:
-        resource_summary: "Summary"
-        resource_code: "Code"
+      bx_resource_category_form:
+        name: "Name"
+        description: "Description"
       bx_resource_branch_form:
         code: "Code"
-        name: "Branch name"
+        name: "Name"
 
     errors:
       template:

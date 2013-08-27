@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_bx do
     permission :bx_view_resources, :bx_resources => [:index, :show],
                                    :bx_root_resources => [:show]
     permission :bx_manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy],
-                                     :bx_root_resources => [:new, :edit, :create, :update, :show],
+                                     :bx_resource_categories => [:new, :edit, :create, :update, :show, :destroy],
                                      :bx_resource_branches => [:new, :edit, :create, :update, :destroy],
                                      :require => :member
   end

@@ -5,10 +5,10 @@
 
 <div class="tab-content">
   <%= error_messages_for @form %>
-  <%= labelled_form_for :form, @form, :url => project_bx_root_resources_path(@project) do |f| %>
+  <%= labelled_form_for :form, @form, :url => project_bx_categories_path(@project) do |f| %>
     <div class="box tabular">
-      <p><%= f.text_field :resource_code, :label => bx_form_label(@form, :resource_code), :required => true %></p>
-      <p><%= f.text_field :resource_summary, :label => bx_form_label(@form, :resource_summary), :required => true, :size => 100 %></p>
+      <p><%= f.text_field :name, :label => bx_form_label(@form, "name"), :required => true %></p>
+      <p><%= f.text_area :description, :label => bx_form_label(@form, "description") %></p>
       <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
     </div>
     <%= f.submit l(:button_create) %>

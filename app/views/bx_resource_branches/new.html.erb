@@ -5,9 +5,9 @@
 
 <div class="tab-content">
   <%= error_messages_for @form %>
-  <%= labelled_form_for :form, @form, :url => project_bx_resource_branches_path(@project, @resource) do |f| %>
+  <%= labelled_form_for :form, @form, :url => project_bx_category_branches_path(@project, @category) do |f| %>
     <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
     <%= f.submit l(:button_create) %>
-    <%= link_to l(:button_cancel), project_bx_root_resource_path(@project, @resource) %>
+    <%= link_to l(:button_cancel), project_bx_category_path(@project, @category) %>
   <% end %>
 </div>

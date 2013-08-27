@@ -3,11 +3,11 @@
 #   5:     resources: "リソース"
 #   6:     new_resource: "新しいリソース"
 #   7:     relational_issues: "関連するチケット"
-#   8:   activemodel:
-#   9:     attributes:
-#  10:       bx_root_resource_form:
-#  11:         resource_summary: "概要"
-#  12:         resource_code: "コード"
+#   8: activemodel:
+#   9:   attributes:
+#  10:     bx_root_resource_form:
+#  11:       resource_summary: "概要"
+#  12:       resource_code: "コード"
 
 ---
 bx_resource_node_001:
@@ -17,7 +17,7 @@ bx_resource_node_001:
   lock_version: 0
   parent_id: 0
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: locales
   summary: locale settings
 bx_resource_node_002:
@@ -27,7 +27,7 @@ bx_resource_node_002:
   lock_version: 0
   parent_id: 0
   project_id: 1
-  root_node_id: 2
+  category_id: 2
   code: db
   summary: databse settings
 bx_resource_node_003:
@@ -37,7 +37,7 @@ bx_resource_node_003:
   lock_version: 0
   parent_id: 1
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: label
 bx_resource_node_004:
   id: 4
@@ -46,7 +46,7 @@ bx_resource_node_004:
   lock_version: 0
   parent_id: 0
   project_id: 2
-  root_node_id: 4
+  category_id: 3
   code: locales
   summary: locale settings
 bx_resource_node_005:
@@ -56,7 +56,7 @@ bx_resource_node_005:
   lock_version: 0
   parent_id: 3
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: resources
   summary: リソースラベル
 bx_resource_node_006:
@@ -66,7 +66,7 @@ bx_resource_node_006:
   lock_version: 0
   parent_id: 3
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: new_resource
   summary: リソース新規作成ラベル
 bx_resource_node_007:
@@ -76,7 +76,7 @@ bx_resource_node_007:
   lock_version: 0
   parent_id: 3
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: relational_issues
   summary: 関連チケットラベル
 bx_resource_node_008:
@@ -84,9 +84,9 @@ bx_resource_node_008:
   created_at: 2013-07-21 00:00:00
   updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 1
+  parent_id: 0
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: activemodel
 bx_resource_node_009:
   id: 9
@@ -95,7 +95,7 @@ bx_resource_node_009:
   lock_version: 0
   parent_id: 8
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: attributes
 bx_resource_node_010:
   id: 10
@@ -104,7 +104,7 @@ bx_resource_node_010:
   lock_version: 0
   parent_id: 9
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: bx_root_resource_form
 bx_resource_node_011:
   id: 11
@@ -113,7 +113,7 @@ bx_resource_node_011:
   lock_version: 0
   parent_id: 10
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: resource_summary
   summary: ルートリソースフォーム：サマリ
 bx_resource_node_012:
@@ -123,7 +123,7 @@ bx_resource_node_012:
   lock_version: 0
   parent_id: 10
   project_id: 1
-  root_node_id: 1
+  category_id: 1
   code: resource_code
   summary: ルートリソースフォーム：コード
 

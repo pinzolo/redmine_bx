@@ -4,30 +4,30 @@
 <%= bx_tabs params[:tab] %>
 
 <div class="bx_category_box">
-  <%= bx_category_title("bx.label.resource_base_info") %>
+  <%= bx_category_title("bx.label.category.information") %>
   <dl id="bx_resource_base_info">
-    <dt><%= l("bx.label.resource_summary") %> :</dt>
-    <dd><%= @resource.summary %></dd>
-    <dt><%= l("bx.label.resource_path") %> :</dt>
-    <dd><%= @resource.path(":", true) %></dd>
+    <dt><%= l("bx.label.category.name") %> :</dt>
+    <dd><%= @category.name %></dd>
+    <dt><%= l("bx.label.category.description") %> :</dt>
+    <dd><%= hbr(@category.description) %></dd>
   </dl>
 </div>
 
 <div class="bx_category_box">
-  <%= bx_category_title("bx.label.branches") %>
-<% if @resource.branches.empty? %>
+  <%= bx_category_title("bx.label.branch.list") %>
+<% if @category.branches.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
   <table class="list">
     <thead>
       <tr>
-        <th><%= l("bx.label.branch_code") %></th>
-        <th><%= l("bx.label.branch_name") %></th>
+        <th><%= l("bx.label.branch.code") %></th>
+        <th><%= l("bx.label.branch.name") %></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-  <% @resource.branches.each do |branch| %>
+  <% @category.branches.each do |branch| %>
       <tr>
         <td><%= branch.code %></td>
         <td><%= branch.name %></td>
@@ -45,16 +45,16 @@
   </table>
 <% end %>
 <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
-  <p><%= link_to l("bx.label.new_branch"), new_project_bx_resource_branch_path(@project, @resource), :class => 'icon icon-add' %></p>
+  <p><%= link_to l("bx.label.branch.new"), new_project_bx_category_branch_path(@project, @category), :class => 'icon icon-add' %></p>
 <% end %>
 </div>
 
 <div class="bx_category_box">
-  <%= bx_category_title("bx.label.histories") %>
-<% if @resource.histories.empty? %>
+  <%= bx_category_title("bx.label.history.list") %>
+<% if @category.histories.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
-  <% @resource.histories.each do |history| %>
+  <% @category.histories.each do |history| %>
     <%= history.operation %>
   <% end %>
 <% end %>

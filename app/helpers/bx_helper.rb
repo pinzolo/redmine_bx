@@ -26,4 +26,9 @@ module BxHelper
   def bx_form_label(form, attribute)
     l("activemodel.attributes.#{form.class.name.underscore}.#{attribute}")
   end
+
+  def hbr(text)
+    safe_text = h(text)
+    text.gsub(/\r\n/, "\n").gsub(/\n/, "<br />").html_safe
+  end
 end

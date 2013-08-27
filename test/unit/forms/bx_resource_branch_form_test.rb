@@ -5,7 +5,7 @@ class BxResourceBranchFormTest < ActiveSupport::TestCase
   fixtures :issues, :bx_resource_branches
 
   def setup
-    @form = BxResourceBranchForm.new(:root_node_id => 1, :code => "code", :name => "name", :relational_issues => "1,2,3")
+    @form = BxResourceBranchForm.new(:category_id => 1, :code => "code", :name => "name", :relational_issues => "1,2,3")
   end
 
   def test_handle_relational_issues

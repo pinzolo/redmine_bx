@@ -2,13 +2,10 @@
 class BxResourceService
   include BxService
 
-  def create_root
-    params = @input.params_for(:resource).merge(:project_id => @input.project.id, :parent_id => BxResourceNode::PARENT_ID_OF_ROOT)
-    root = BxResourceNode.create!(params)
-    BxResourceHistoryService.new.register_create_root_history(root, @input.relational_issue_ids)
-    root.root_node_id = root.id
-    root.save!
-    root
+  def create_category
+    category = BxResourceCategory.create!(@input.params_for(:category, :lock_version))
+    BxResourceHistoryService.new.register_create_category_history(category, @input.relational_issue_ids)
+    category
   end
 
   def add_branch
@@ -18,7 +15,7 @@ class BxResourceService
   end
 
   def update_branch(branch)
-    branch.update_attributes!(@input.params_for(:branch, :root_node_id))
+    branch.update_attributes!(@input.params_for(:branch, :category_id))
     BxResourceHistoryService.new.register_update_branch_history(branch, @input.relational_issue_ids)
     branch
   end

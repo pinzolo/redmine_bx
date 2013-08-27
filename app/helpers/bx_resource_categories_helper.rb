@@ -1,4 +1,4 @@
 # coding: utf-8
-module BxRootResourcesHelper
+module BxResourceCategoriesHelper
   include BxHelper
 end

@@ -2,12 +2,8 @@
 class BxHistoryService
   include BxService
 
-  def self.target(t)
-    @@target = t.to_s
-  end
-
-  def register_history(operation, key, source_id, changesets, issue_ids)
-    history = BxHistory.create!(:target => @@target,
+  def register_history(target, operation, key, source_id, changesets, issue_ids)
+    history = BxHistory.create!(:target => target,
                                 :operation_type => operation.split("_").first,
                                 :operation => operation,
                                 :key => key,

@@ -4,26 +4,27 @@ ja:
     label:
       bx: "Bx"
       resources: "リソース"
-      new_resource: "新しいリソース"
       relational_issues: "関連するチケット"
-      resource_summary: "概要"
-      resource_path: "パス"
-      resource_base_info: "基本情報"
-      branches: "ブランチ一覧"
-      branch_code: "コード"
-      branch_name: "ブランチ名"
-      histories: "履歴"
-      history_create: "新規作成"
-      history_update: "更新"
-      new_branch: "新しいブランチ"
+      category:
+        information: "カテゴリ情報"
+        new: "新しいカテゴリ"
+        name: "カテゴリ名"
+        description: "説明"
+      branch:
+        list: "ブランチ一覧"
+        new: "新しいブランチ"
+        code: "コード"
+        name: "ブランチ名"
+      history:
+        list: "履歴"
     menu:
       resources: "リソース"
 
   activemodel:
     attributes:
-      bx_root_resource_form:
-        resource_summary: "概要"
-        resource_code: "コード"
+      bx_resource_category_form:
+        name: "カテゴリ名"
+        description: "説明"
       bx_resource_branch_form:
         code: "コード"
         name: "ブランチ名"

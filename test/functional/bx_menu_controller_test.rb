@@ -10,7 +10,6 @@ class BxMenuControllerTest < ActionController::TestCase
     prj.enable_module! :bx
     get :index, :project_id => prj
     assert_response :success
-    assert_template :index
     # bx tab is shown and selected
     assert_select "div#main-menu a[class~=bx][class~=selected]"
   end

@@ -8,6 +8,6 @@
   <%= labelled_form_for :form, @form, :url => project_bx_branch_path(@project, @branch), :method => :put do |f| %>
     <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
     <%= f.submit l(:button_update) %>
-    <%= link_to l(:button_cancel), project_bx_root_resource_path(@project, @form.root_node_id) %>
+    <%= link_to l(:button_cancel), project_bx_category_path(@project, @form.category_id) %>
   <% end %>
 </div>
