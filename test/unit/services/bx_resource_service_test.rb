@@ -115,6 +115,22 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     assert_equal "branch_name", branch.name
   end
 
+  def test_history_registration_on_add_branch
+    assert_difference("BxHistory.count") do
+      resource = BxResourceNode.find(1)
+      form = BxResourceBranchForm.new(:code => "branch_test", :name => "branch_name", :root_node_id => resource.id)
+      BxResourceService.new(form).add_branch!
+    end
+  end
+
+  def test_history_detail_registration_on_add_branch
+    assert_difference("BxHistoryDetail.count", 2) do
+      resource = BxResourceNode.find(1)
+      form = BxResourceBranchForm.new(:code => "branch_test", :name => "branch_name", :root_node_id => resource.id)
+      BxResourceService.new(form).add_branch!
+    end
+  end
+
   def test_history_values_on_add_branch
     now = Time.now
     Time.stubs(:now).returns(now)
@@ -159,6 +175,112 @@ class BxResourceServiceTest < ActiveSupport::TestCase
     history = BxHistory.where(:target => "resource", :source_id => resource.id).first
     assert history.issues.any? { |issue| issue.id == 1 }
     assert history.issues.any? { |issue| issue.id == 3 }
+  end
+
+  def test_update_branch
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    result = BxResourceService.new(form).update_branch!(branch)
+    assert result.success?
+    target_branch = BxResourceBranch.find(1)
+    assert_equal "de", target_branch.code
+    assert_equal "German", target_branch.name
+  end
+
+  def test_not_update_on_update_branch_by_invalid_form
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    form.code = ""
+    result = BxResourceService.new(form).update_branch!(branch)
+    assert result.failure?
+    assert result.invalid_input?
+    target_branch = BxResourceBranch.find(1)
+    assert_equal "ja", target_branch.code
+    assert_equal "Japanese", target_branch.name
+  end
+
+  def test_not_update_on_update_branch_by_conflict
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    branch.update_attributes!(:code => "fr", :name => "French")
+    result = BxResourceService.new(form).update_branch!(branch)
+    assert result.failure?
+    assert result.conflict?
+    target_branch = BxResourceBranch.find(1)
+    assert_equal "fr", target_branch.code
+    assert_equal "French", target_branch.name
+  end
+
+  def test_history_registration_on_update_branch
+    assert_difference("BxHistory.count") do
+      branch = BxResourceBranch.find(1)
+      form = self.form_for_update(branch)
+      BxResourceService.new(form).update_branch!(branch)
+    end
+  end
+
+  def test_history_detail_registration_on_update_branch
+    assert_difference("BxHistoryDetail.count", 2) do
+      branch = BxResourceBranch.find(1)
+      form = self.form_for_update(branch)
+      BxResourceService.new(form).update_branch!(branch)
+    end
+  end
+
+  def test_history_values_on_update_branch
+    now = Time.now
+    Time.stubs(:now).returns(now)
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    BxResourceService.new(form).update_branch!(branch)
+    history = BxHistory.where(:target => "resource", :source_id => branch.root_node_id).last
+    assert_equal "update", history.operation_type
+    assert_equal "update_branch", history.operation
+    assert_equal "de", history.key
+    assert_equal 1, history.changed_by
+    assert_equal now, history.changed_at
+  end
+
+  def test_history_detail_values_on_update_branch
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    BxResourceService.new(form).update_branch!(branch)
+    history = BxHistory.where(:target => "resource", :source_id => branch.root_node_id).last
+    code_detail = history.details.detect { |detail| detail.property == "code" }
+    assert_not_nil code_detail
+    assert_equal "ja", code_detail.old_value
+    assert_equal "de", code_detail.new_value
+    name_detail = history.details.detect { |detail| detail.property == "name" }
+    assert_not_nil name_detail
+    assert_equal "Japanese", name_detail.old_value
+    assert_equal "German", name_detail.new_value
+  end
+
+  def test_relational_issue_registration_on_update_branch
+    assert_difference("BxHistoryIssue.count", 2) do
+      branch = BxResourceBranch.find(1)
+      form = self.form_for_update(branch)
+      form.relational_issues = "1,3"
+      BxResourceService.new(form).update_branch!(branch)
+    end
+  end
+
+  def test_relational_issue_id_on_update_branch
+    branch = BxResourceBranch.find(1)
+    form = self.form_for_update(branch)
+    form.relational_issues = "1,3"
+    BxResourceService.new(form).update_branch!(branch)
+    history = BxHistory.where(:target => "resource", :source_id => branch.root_node_id).first
+    assert history.issues.any? { |issue| issue.id == 1 }
+    assert history.issues.any? { |issue| issue.id == 3 }
+  end
+
+  def form_for_update(branch)
+    form = BxResourceBranchForm.new
+    form.load(:branch => branch)
+    form.code = "de"
+    form.name = "German"
+    form
   end
 end
 

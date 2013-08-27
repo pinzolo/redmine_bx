@@ -18,7 +18,7 @@ class BxResourceService
   end
 
   def update_branch(branch)
-    branch.update_attributes!(@input.params_for(:branch))
+    branch.update_attributes!(@input.params_for(:branch, :root_node_id))
     BxResourceHistoryService.new.register_update_branch_history(branch, @input.relational_issue_ids)
     branch
   end
