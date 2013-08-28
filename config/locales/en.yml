@@ -17,14 +17,19 @@ en:
         name: "Name"
       history:
         list: "Histories"
-        details: "Details"
+        operation: "Operation"
         changed_by: "Changed user"
         changed_at: "Changed at"
-        operations:
-          create_category: "Category [%{key}] was created."
-          create_branch: "Branch [%{key}] was created."
-          update_branch: "Branch [%{key}] was updated."
-          delete_branch: "Branch [%{key}] was deleted."
+        details: "Details"
+    text:
+      history_operations:
+        create_category: "Category [%{key}] was created."
+        create_branch: "Branch [%{key}] was created."
+        update_branch: "Branch [%{key}] was updated."
+        delete_branch: "Branch [%{key}] was deleted."
+      history_detail_notes:
+        create: "<strong>%{property}</strong> set to <em>%{new_value}</em>"
+        update: "<strong>%{property}</strong> changed from <em>%{old_value}</em> to <em>%{new_value}</em>"
     menu:
       resources: "Resources"
 

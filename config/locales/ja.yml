@@ -4,7 +4,7 @@ ja:
     label:
       bx: "Bx"
       resources: "リソース"
-      relational_issues: "関連するチケット"
+      relational_issues: "関連チケット"
       category:
         information: "カテゴリ情報"
         new: "新しいカテゴリ"
@@ -18,14 +18,30 @@ ja:
       history:
         list: "履歴"
         operation: "処理"
-        details: "詳細"
         changed_by: "更新者"
         changed_at: "更新日時"
-        operations:
-          create_category: "カテゴリ [%{key}] を新規作成"
-          create_branch: "ブランチ [%{key}] を作成"
-          update_branch: "ブランチ [%{key}] を更新"
-          delete_branch: "ブランチ [%{key}] を削除"
+        details: "詳細"
+      history_detail:
+        properties:
+          create_category:
+            name: "カテゴリ名"
+            description: "説明"
+          create_branch:
+            name: "ブランチ名"
+            code: "コード"
+          update_branch:
+            name: "ブランチ名"
+            code: "コード"
+          delete_branch:
+    text:
+      history_operations:
+        create_category: "カテゴリ [%{key}] を新規作成"
+        create_branch: "ブランチ [%{key}] を作成"
+        update_branch: "ブランチ [%{key}] を更新"
+        delete_branch: "ブランチ [%{key}] を削除"
+      history_detail_notes:
+        create: "<strong>%{property}</strong> を <em>%{new_value}</em> にセット"
+        update: "<strong>%{property}</strong> を <em>%{old_value}</em> から <em>%{new_value}</em> に変更"
     menu:
       resources: "リソース"
 
