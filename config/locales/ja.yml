@@ -5,6 +5,8 @@ ja:
       bx: "Bx"
       resources: "リソース"
       relational_issues: "関連チケット"
+      resource:
+        add: "リソース追加"
       category:
         information: "カテゴリ情報"
         new: "新しいカテゴリ"

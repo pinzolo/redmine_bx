@@ -33,3 +33,20 @@
 .bx_informations ul li {
   padding: 1px 0;
 }
+
+.bx_resources {
+  list-style: none;
+}
+
+.bx_resources li {
+  padding: 4px;
+}
+
+.bx_hover {
+  background-color: aliceblue;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}

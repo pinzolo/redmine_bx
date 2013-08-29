@@ -5,6 +5,8 @@ en:
     label:
       resources: "Resources"
       relational_issues: "Relational issues"
+      resource:
+        add: "リソース追加"
       category:
         information: "Information"
         new: "New category"
