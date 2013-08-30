@@ -34,15 +34,8 @@
   padding: 1px 0;
 }
 
-.bx-resources {
-  list-style: none;
-}
-
-.bx-resources li {
-  padding: 4px;
-}
-
-.bx-hover {
+.bx-category {
+  padding: 5px;
   background-color: aliceblue;
   border-radius: 4px;
   -webkit-border-radius: 4px;

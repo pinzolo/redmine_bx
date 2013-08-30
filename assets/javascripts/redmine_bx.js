@@ -1,4 +1,7 @@
-$(".bx_resources li").hover(
-    function() { $(this).addClass("bx_hover"); },
-    function() { $(this).removeClass("bx_hover"); }
-);
+if ($.jstree) {
+  $(".bx-resources").each(function() {
+    $(this).jstree({
+      "plugins" : ["html_data", "cookies", "themes"]
+    });
+  });
+}

@@ -1,0 +1,11 @@
+<%# coding: utf-8 %>
+<% if resources.present? %>
+<div class="bx-resources">
+  <ul>
+  <% resources.each do |resource| %>
+    <li><%= link_to(resource.code, project_bx_resource_path(@project, resource)) %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+

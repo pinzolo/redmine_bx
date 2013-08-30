@@ -8,7 +8,8 @@ class BxHooks < Redmine::Hook::ViewListener
 
   def view_layouts_base_body_bottom(context = {})
     if bx_rendering?(context[:controller])
-      javascript_include_tag("redmine_bx", :plugin => "redmine_bx")
+      html = javascript_include_tag("jstree/jstree.min.js", :plugin => "redmine_bx") + "\n"
+      html << javascript_include_tag("redmine_bx", :plugin => "redmine_bx")
     end
   end
 
