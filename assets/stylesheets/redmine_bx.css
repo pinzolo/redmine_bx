@@ -1,18 +1,18 @@
-.bx_category_box {
+.bx-category-box {
   padding-bottom: 20px;
 }
 
-.bx_category_title {
+.bx-category-title {
   width: 100%;
   padding: 1px 0;
   border-bottom: 1px dashed #888;
 }
 
-.bx_informations {
+.bx-informations {
   margin-left: 10px;
 }
 
-.bx_informations dt {
+.bx-informations dt {
   width: 120px;
   font-weight: bold;
   float: left;
@@ -20,29 +20,29 @@
   padding: 3px 0;
 }
 
-.bx_informations dd {
+.bx-informations dd {
   margin-left: 120px;
   padding: 3px 0;
 }
 
-.bx_informations ul {
+.bx-informations ul {
   margin :0;
   padding: 0;
 }
 
-.bx_informations ul li {
+.bx-informations ul li {
   padding: 1px 0;
 }
 
-.bx_resources {
+.bx-resources {
   list-style: none;
 }
 
-.bx_resources li {
+.bx-resources li {
   padding: 4px;
 }
 
-.bx_hover {
+.bx-hover {
   background-color: aliceblue;
   border-radius: 4px;
   -webkit-border-radius: 4px;

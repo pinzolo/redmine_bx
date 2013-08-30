@@ -11,14 +11,14 @@
 <% if categories.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
-  <ul class="bx_resources">
+  <ul class="bx-resources">
   <% categories.each do |category| %>
     <li>
       <%= image_tag("arrow_collapsed.png") %>
       <%= link_to category.name, project_bx_category_path(@project, category) %>
     <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
       <div class="contextual">
-        <%= link_to l("bx.label.resource.add"), new_project_bx_category_resource_path(@project, category), :class => 'icon icon-duplicate' %>
+        <%= link_to l("bx.label.resource.add"), new_project_bx_resource_path(@project, category), :class => 'icon icon-duplicate' %>
         <%= link_to l(:button_edit), edit_project_bx_category_path(@project, category), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
         <%= delete_link project_bx_category_path(@project, category) %>
       </div>

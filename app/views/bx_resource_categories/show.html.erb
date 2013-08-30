@@ -3,9 +3,9 @@
 
 <%= bx_tabs params[:tab] %>
 
-<div class="bx_category_box">
+<div class="bx-category-box">
   <%= bx_category_title("bx.label.category.information") %>
-  <dl class="bx_informations">
+  <dl class="bx-informations">
     <dt><%= l("bx.label.category.name") %> :</dt>
     <dd><%= @category.name %></dd>
     <dt><%= l("bx.label.category.description") %> :</dt>
@@ -13,7 +13,7 @@
   </dl>
 </div>
 
-<div class="bx_category_box">
+<div class="bx-category-box">
   <%= bx_category_title("bx.label.branch.list") %>
 <% if @category.branches.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
@@ -49,14 +49,14 @@
 <% end %>
 </div>
 
-<div class="bx_category_box">
+<div class="bx-category-box">
   <%= bx_category_title("bx.label.history.list") %>
 <% if @category.histories.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
   <% @category.histories.each do |history| %>
-  <div class="bx_history">
-    <dl class="bx_informations">
+  <div class="bx-history">
+    <dl class="bx-informations">
       <dt><%= l("bx.label.history.changed_by") %> :</dt>
       <dd><%= link_to_user(history.changed_user) %></dd>
       <dt><%= l("bx.label.history.changed_at") %> :</dt>
