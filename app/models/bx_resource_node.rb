@@ -16,10 +16,10 @@ class BxResourceNode < ActiveRecord::Base
     @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1
   end
 
-  def ancestry(include_self = true)
+  def ancestry
     @ancestry ||= begin
       list = []
-      node = include_self ? self : self.parent
+      node = self
       while node.present?
         list.unshift(node)
         node = node.parent

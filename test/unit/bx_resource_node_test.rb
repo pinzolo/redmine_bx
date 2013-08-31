@@ -25,11 +25,6 @@ class BxResourceNodeTest < ActiveSupport::TestCase
     assert_equal node, node.ancestry.first
   end
 
-  def test_ancestry_of_root_node_on_not_include_self
-    node = BxResourceNode.find(1)
-    assert_equal 0, node.ancestry(false).length
-  end
-
   def test_ancestry_of_not_root_node_on_include_self
     node = BxResourceNode.find(5)
     ancestry = node.ancestry
@@ -37,14 +32,6 @@ class BxResourceNodeTest < ActiveSupport::TestCase
     assert_equal node.parent.parent, ancestry[0]
     assert_equal node.parent, ancestry[1]
     assert_equal node, ancestry[2]
-  end
-
-  def test_ancestry_of_root_node_on_not_include_self
-    node = BxResourceNode.find(5)
-    ancestry = node.ancestry(false)
-    assert_equal 2, ancestry.length
-    assert_equal node.parent.parent, ancestry[0]
-    assert_equal node.parent, ancestry[1]
   end
 
   def test_depth_of_root
