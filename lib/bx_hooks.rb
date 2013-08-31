@@ -12,8 +12,8 @@ class BxHooks < Redmine::Hook::ViewListener
     return nil unless bx_rendering?(context[:controller])
 
     html = ""
-    html << javascript_include_tag("jstree/jstree.min.js", :plugin => "redmine_bx") if Bx.rendering_tree
-    html << "\n" + javascript_include_tag("redmine_bx", :plugin => "redmine_bx")
+    html << javascript_include_tag("jstree/jstree.min.js", :plugin => "redmine_bx") + "\n" if Bx.rendering_tree
+    html << javascript_include_tag("redmine_bx", :plugin => "redmine_bx")
     html.html_safe
   end
 
