@@ -6,7 +6,7 @@ en:
       resources: "Resources"
       relational_issues: "Relational issues"
       resource:
-        add: "リソース追加"
+        add: "Add resource"
       category:
         information: "Information"
         new: "New category"
@@ -37,6 +37,10 @@ en:
 
   activemodel:
     attributes:
+      bx_resource_form:
+        code: "Code"
+        summary: "Summary"
+        leaf: "Registration of values"
       bx_resource_category_form:
         name: "Name"
         description: "Description"
@@ -70,3 +74,6 @@ en:
         less_than_or_equal_to: "must be less than or equal to %{count}"
         odd: "must be odd"
         even: "must be even"
+        category_not_in_project: "Category(id: %{id}) not exist in this project."
+        parent_not_in_project: "Parent resource(id: %{id}) not exist in this project."
+

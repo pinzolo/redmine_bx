@@ -16,10 +16,13 @@ class BxHistoryService
 
   def register_history_details(history, changesets)
     changesets.each do |attr, changeset|
-      BxHistoryDetail.create!(:history_id => history.id,
-                              :property => attr,
-                              :old_value => changeset.first,
-                              :new_value => changeset.last)
+      changeset_list = changeset.first.is_a?(Array) ? changeset : [changeset]
+      changeset_list.each do |cs|
+        BxHistoryDetail.create!(:history_id => history.id,
+                                :property => attr,
+                                :old_value => cs.first.to_s,
+                                :new_value => cs.last.to_s)
+      end
     end
   end
 

@@ -5,3 +5,10 @@ if ($.jstree) {
     });
   });
 }
+
+$("#form_leaf").on("click", function() {
+  var checked = $(this).prop("checked");
+  $(".bx-branch-value").each(function() {
+    $(this).prop("disabled", !checked);
+  });
+});
