@@ -14,6 +14,14 @@ class BxResourceService
     category
   end
 
+  def delete_category(category)
+    category.branches.each do |branch|
+      self.delete_branch(branch, false)
+    end
+    BxResourceNode.delete_all(:category_id => category.id)
+    category.destroy
+  end
+
   def add_branch
     branch = BxResourceBranch.create!(@input.params_for(:branch, :lock_version))
     BxResourceHistoryService.new.register_add_branch_history(branch, @input.relational_issue_ids)
@@ -26,10 +34,10 @@ class BxResourceService
     branch
   end
 
-  def delete_branch(branch)
+  def delete_branch(branch, history_registration = true)
     BxResourceValue.delete_all(:branch_id => branch.id)
     branch.destroy
-    BxResourceHistoryService.new.register_delete_branch_history(branch)
+    BxResourceHistoryService.new.register_delete_branch_history(branch) if history_registration
   end
 
   def create_resource
