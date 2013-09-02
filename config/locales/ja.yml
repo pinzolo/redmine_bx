@@ -89,4 +89,5 @@ ja:
         even: "は偶数にしてください。"
         category_not_in_project: "カテゴリ(id: %{id})はこのプロジェクトに存在していません。"
         parent_not_in_project: "親リソース(id: %{id})はこのプロジェクトに存在していません。"
+        contains_unusable_chars: "に不正な文字 %{chars} が含まれています。"
 

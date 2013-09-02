@@ -76,4 +76,5 @@ en:
         even: "must be even"
         category_not_in_project: "Category(id: %{id}) not exist in this project."
         parent_not_in_project: "Parent resource(id: %{id}) not exist in this project."
+        contains_unusable_chars: "contains invalid chars. %{chars}"
 

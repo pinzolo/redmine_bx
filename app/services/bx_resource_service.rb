@@ -27,20 +27,7 @@ class BxResourceService
   end
 
   def create_resource
-    codes = @input.code.split(":")
-    parent_id = @input.parent_id
-    resource = nil
-    history_service = BxResourceHistoryService.new
-    codes.each do |code|
-      summary = codes.last == code ? @input.summary : ""
-      resource = BxResourceNode.create!(:project_id => @input.project_id,
-                                        :parent_id => parent_id,
-                                        :category_id => @input.category_id,
-                                        :code => code,
-                                        :summary => summary)
-      parent_id = resource.id
-      history_service.register_create_resource_history(resource, @input.relational_issue_ids)
-    end
+    resource = BxResourceNode.create!(@input.params_for(:resource, :lock_version))
     create_resource_values(resource)
     BxResourceHistoryService.new.register_create_resource_history(resource, @input.relational_issue_ids)
     resource
