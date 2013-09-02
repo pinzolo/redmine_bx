@@ -4,6 +4,13 @@
 <%= bx_tabs params[:tab] %>
 
 <div class="bx-category-box">
+  <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+    <div class="contextual">
+      <%= link_to l("bx.label.resource.add"), new_project_bx_resource_path(@project, :category_id => @category), :class => 'icon icon-duplicate' %>
+      <%= link_to l(:button_edit), edit_project_bx_category_path(@project, @category), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+      <%= delete_link project_bx_category_path(@project, @category) %>
+    </div>
+  <% end %>
   <%= bx_category_title("bx.label.category.information") %>
   <dl class="bx-informations">
     <dt><%= l("bx.label.category.name") %> :</dt>

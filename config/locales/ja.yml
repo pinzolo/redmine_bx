@@ -28,16 +28,19 @@ ja:
           create_category:
             name: "カテゴリ名"
             description: "説明"
+          update_category:
+            name: "カテゴリ名"
+            description: "説明"
           create_branch:
             name: "ブランチ名"
             code: "コード"
           update_branch:
             name: "ブランチ名"
             code: "コード"
-          delete_branch:
     text:
       history_operations:
-        create_category: "カテゴリ [%{key}] を新規作成"
+        create_category: "カテゴリ [%{key}] を作成"
+        update_category: "カテゴリ [%{key}] を更新"
         create_branch: "ブランチ [%{key}] を作成"
         update_branch: "ブランチ [%{key}] を更新"
         delete_branch: "ブランチ [%{key}] を削除"

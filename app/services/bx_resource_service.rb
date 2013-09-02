@@ -8,6 +8,12 @@ class BxResourceService
     category
   end
 
+  def update_category(category)
+    category.update_attributes!(@input.params_for(:category))
+    BxResourceHistoryService.new.register_update_category_history(category, @input.relational_issue_ids)
+    category
+  end
+
   def add_branch
     branch = BxResourceBranch.create!(@input.params_for(:branch, :lock_version))
     BxResourceHistoryService.new.register_add_branch_history(branch, @input.relational_issue_ids)

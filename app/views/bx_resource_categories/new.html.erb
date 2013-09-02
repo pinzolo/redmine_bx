@@ -6,11 +6,7 @@
 <div class="tab-content">
   <%= error_messages_for @form %>
   <%= labelled_form_for :form, @form, :url => project_bx_categories_path(@project) do |f| %>
-    <div class="box tabular">
-      <p><%= f.text_field :name, :label => bx_form_label(@form, "name"), :required => true %></p>
-      <p><%= f.text_area :description, :label => bx_form_label(@form, "description") %></p>
-      <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
-    </div>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
     <%= f.submit l(:button_create) %>
     <%= link_to l(:button_cancel), project_bx_resources_path(@project) %>
   <% end %>

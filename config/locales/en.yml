@@ -23,9 +23,24 @@ en:
         changed_by: "Changed user"
         changed_at: "Changed at"
         details: "Details"
+      history_detail:
+        properties:
+          create_category:
+            name: "Category mame"
+            description: "Description"
+          update_category:
+            name: "Category name"
+            description: "Description"
+          create_branch:
+            name: "Branch name"
+            code: "Code"
+          update_branch:
+            name: "Branch name"
+            code: "Code"
     text:
       history_operations:
         create_category: "Category [%{key}] was created."
+        update_category: "Category [%{key}] was updated."
         create_branch: "Branch [%{key}] was created."
         update_branch: "Branch [%{key}] was updated."
         delete_branch: "Branch [%{key}] was deleted."

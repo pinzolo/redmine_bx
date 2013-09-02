@@ -27,9 +27,26 @@ class BxResourceCategoriesController < ApplicationController
   end
 
   def edit
+    @category = BxResourceCategory.find(params[:id])
+    @form = BxResourceCategoryForm.new
+    @form.load(:category => @category)
   end
 
   def update
+    @form = BxResourceCategoryForm.new(params[:form].merge(:project_id => @project.id))
+    @category = BxResourceCategory.find(params[:id])
+    @result = BxResourceService.new(@form).update_category!(@category)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_update)
+      redirect_to project_bx_category_path(@project, @category)
+    elsif @result.invalid_input?
+      render :action => :edit
+    elsif @result.conflict?
+      flash.now[:error] = l(:notice_locking_conflict)
+      render :action => :edit
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
   end
 
   def destroy
