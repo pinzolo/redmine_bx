@@ -12,6 +12,8 @@ ja:
         path: "パス"
         summary: "概要"
         values: "値情報"
+        category: "カテゴリ"
+        children: "子リソース"
       category:
         information: "カテゴリ情報"
         new: "新しいカテゴリ"

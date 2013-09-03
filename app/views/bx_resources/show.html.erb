@@ -13,6 +13,8 @@
   <% end %>
   <%= bx_category_title("bx.label.resource.information") %>
   <dl class="bx-informations">
+    <dt><%= l("bx.label.resource.category") %> :</dt>
+    <dd><%= @resource.category.name %></dd>
     <dt><%= l("bx.label.resource.code") %> :</dt>
     <dd><%= @resource.code %></dd>
     <dt><%= l("bx.label.resource.path") %> :</dt>
@@ -30,6 +32,13 @@
     <dd><%= @resource.values.detect { |value| value.branch_id == branch.id }.try(:value) || "&nbsp;".html_safe %></dd>
   <% end %>
   </dl>
+</div>
+
+<div class="bx-content-box">
+  <%= bx_category_title("bx.label.resource.children") %>
+  <div class="bx-resources">
+    <%= render :partial => "bx_resources/tree", :locals => { :resources => @resource.children } %>
+  </div>
 </div>
 
 <%= render :partial => "bx_histories/list", :locals => { :histories => @resource.histories } %>

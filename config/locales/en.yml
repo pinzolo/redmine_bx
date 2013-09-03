@@ -12,6 +12,8 @@ en:
         path: "Path"
         summary: "Summary"
         values: "Values"
+        category: "Category"
+        children: "Children resources"
       category:
         information: "Information"
         new: "New category"
