@@ -19,7 +19,7 @@ class BxResourceForm
   def initialize(params = {})
     self.branch_values = {}
     super(params)
-    if self.parent_id.blank?
+    if self.parent_id.to_i.zero?
       self.parent_id = 0
     else
       self.category_id = BxResourceNode.find(self.parent_id).category_id

@@ -44,7 +44,7 @@ class BxResourceService
     resource = BxResourceNode.create!(@input.params_for(:resource, :lock_version))
     history_service = BxResourceHistoryService.new
     history = history_service.register_create_resource_history(resource, @input.relational_issue_ids)
-    resource.category.branches.each do |branch|
+    resource.branches.each do |branch|
       if @input.branch_values[branch.id].present?
         value = BxResourceValue.create!(:node_id => resource.id, :branch_id => branch.id, :value => @input.branch_values[branch.id])
         history_service.register_create_resoure_value_history_details(value, history)
