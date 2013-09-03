@@ -5,12 +5,8 @@ class BxResourceNode < ActiveRecord::Base
   belongs_to :project
   belongs_to :parent, :class_name => "BxResourceNode", :foreign_key => :parent_id
   belongs_to :category, :class_name => "BxResourceCategory", :foreign_key => :category_id
-  has_many :children, :class_name => "BxResourceNode", :foreign_key => :parent_id
+  has_many :children, :class_name => "BxResourceNode", :foreign_key => :parent_id, :order => :code
   has_many :values, :class_name => "BxResourceValue", :foreign_key => :node_id
-
-  def leaf?
-    !self.values.empty?
-  end
 
   def depth
     @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1

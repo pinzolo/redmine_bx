@@ -15,7 +15,9 @@
     <div class="bx-category">
       <%= link_to category.name, project_bx_category_path(@project, category) %>
     </div>
-    <%= render :partial => "bx_resources/tree", :locals => { :resources => category.resources } %>
+    <div class="bx-resources">
+      <%= render :partial => "bx_resources/tree", :locals => { :resources => category.resources } %>
+    </div>
   <% end %>
 <% end %>
 <% if User.current.allowed_to?(:bx_manage_resources, @project) %>

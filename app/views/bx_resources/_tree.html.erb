@@ -1,12 +1,13 @@
 <%# coding: utf-8 %>
 <% if resources.present? %>
-<div class="bx-resources">
-  <ul>
+<ul>
   <% resources.each do |resource| %>
-    <li><%= link_to(resource.code, project_bx_resource_path(@project, resource)) %></li>
+  <li>
+    <%= link_to(resource.code, project_bx_resource_path(@project, resource)) %>
+    <%= render :partial => "bx_resources/tree", :locals => { :resources => resource.children } %>
+  </li>
   <% end %>
-  </ul>
-</div>
+</ul>
   <% Bx.rendering_tree = true %>
 <% end %>
 

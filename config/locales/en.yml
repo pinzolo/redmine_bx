@@ -67,7 +67,6 @@ en:
       bx_resource_form:
         code: "Code"
         summary: "Summary"
-        leaf: "Registration of values"
       bx_resource_category_form:
         name: "Name"
         description: "Description"

@@ -9,7 +9,7 @@ class BxResourceForm
                                   :code => :code,
                                   :summary => :summary,
                                   :lock_version => :lock_version }
-  attr_accessor :leaf, :branch_values, :branches
+  attr_accessor :branch_values, :branches
 
   validates :category_id, :presence => true, :bx_resource_category_presence => true
   validates :parent_id, :presence => true, :bx_resource_parent_presence_or_zero => true
@@ -19,12 +19,12 @@ class BxResourceForm
   def initialize(params = {})
     self.branch_values = {}
     super(params)
-    self.parent_id = 0 if self.parent_id.blank?
-    self.branches = if self.category_id.to_i.zero?
-                      BxResourceNode.find(params[:parent_id]).category.branches
-                    elsif self.parent_id.to_i.zero?
-                      BxResourceCategory.find(params[:category_id]).branches
-                    end
+    if self.parent_id.blank?
+      self.parent_id = 0
+    else
+      self.category_id = BxResourceNode.find(self.parent_id).category_id
+    end
+    self.branches = BxResourceCategory.find(self.category_id).branches
   end
 
   def handle_extra_params(params)

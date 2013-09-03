@@ -22,7 +22,6 @@
   </dl>
 </div>
 
-<% if @resource.leaf? %>
 <div class="bx-category-box">
   <%= bx_category_title("bx.label.resource.values") %>
   <dl class="bx-informations">
@@ -32,6 +31,5 @@
   <% end %>
   </dl>
 </div>
-<% end %>
 
 <%= render :partial => "bx_histories/list", :locals => { :histories => @resource.histories } %>

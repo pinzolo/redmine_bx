@@ -4,21 +4,6 @@ require File.expand_path('../../test_helper', __FILE__)
 class BxResourceNodeTest < ActiveSupport::TestCase
   fixtures :projects, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values
 
-  def test_root_node_is_not_leaf
-    node = BxResourceNode.find(1)
-    assert_equal false, node.leaf?
-  end
-
-  def test_node_not_having_values_is_not_leaf
-    node = BxResourceNode.find(9)
-    assert_equal false, node.leaf?
-  end
-
-  def test_node_having_values_is_leaf
-    node = BxResourceNode.find(11)
-    assert node.leaf?
-  end
-
   def test_ancestry_of_root_node_on_include_self
     node = BxResourceNode.find(1)
     assert_equal 1, node.ancestry.length

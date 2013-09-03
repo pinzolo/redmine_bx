@@ -6,11 +6,10 @@
   <p><%= f.text_field :code, :label => bx_form_label(form, :code), :required => true, :size => 100 %></p>
   <p><%= f.text_field :summary, :label => bx_form_label(form, :summary), :size => 120 %></p>
   <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
-  <p><%= f.check_box :leaf, :label => bx_form_label(form, :leaf) %></p>
 <% form.branches.each do |branch| %>
   <p>
     <%= label_tag "form_branch_value_#{branch.id}", branch.name %>
-    <%= text_field_tag "form[branch_value_#{branch.id}]", form.branch_values[branch.id], :class => "bx-branch-value", :size => 120, :disabled => !form.leaf %>
+    <%= text_field_tag "form[branch_value_#{branch.id}]", form.branch_values[branch.id], :class => "bx-branch-value", :size => 120 %>
   </p>
 <% end %>
 </div>

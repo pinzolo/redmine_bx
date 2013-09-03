@@ -9,6 +9,6 @@ class BxResourceCategory < ActiveRecord::Base
   end
 
   def resources
-    @resources ||= BxResourceNode.where(:category_id => self.id, :parent_id => 0)
+    @resources ||= BxResourceNode.where(:category_id => self.id, :parent_id => 0).order(:code)
   end
 end
