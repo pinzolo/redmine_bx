@@ -36,6 +36,10 @@ ja:
             code: "コード"
             summary: "概要"
             value: "値"
+          update_resource:
+            code: "コード"
+            summary: "概要"
+            value: "値"
           create_category:
             name: "カテゴリ名"
             description: "説明"
@@ -59,8 +63,8 @@ ja:
         update_branch: "ブランチ [%{key}] を更新"
         delete_branch: "ブランチ [%{key}] を削除"
       history_detail_notes:
-        create: "<strong>%{property}</strong> を <em>%{new_value}</em> にセット"
-        update: "<strong>%{property}</strong> を <em>%{old_value}</em> から <em>%{new_value}</em> に変更"
+        create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
+        update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
     menu:
       resources: "リソース"
 

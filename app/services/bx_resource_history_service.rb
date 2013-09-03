@@ -29,7 +29,12 @@ class BxResourceHistoryService < BxHistoryService
     self.register_history("resource", "create_resource", resource.code, resource.id, changesets, issue_ids)
   end
 
-  def register_create_resoure_value_history_details(value, history)
+  def register_update_resource_history(resource, issue_ids)
+    changesets = resource.previous_changes.slice("code", "summary")
+    self.register_history("resource", "update_resource", resource.code, resource.id, changesets, issue_ids)
+  end
+
+  def register_resource_value_history_details(value, history)
     changesets = value.previous_changes.slice("value")
     self.register_history_details(history, changesets)
   end

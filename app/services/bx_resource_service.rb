@@ -9,7 +9,7 @@ class BxResourceService
   end
 
   def update_category(category)
-    category.update_attributes!(@input.params_for(:category))
+    category.update_attributes!(@input.params_for(:category, :project_id))
     BxResourceHistoryService.new.register_update_category_history(category, @input.relational_issue_ids)
     category
   end
@@ -47,8 +47,24 @@ class BxResourceService
     resource.branches.each do |branch|
       if @input.branch_values[branch.id].present?
         value = BxResourceValue.create!(:node_id => resource.id, :branch_id => branch.id, :value => @input.branch_values[branch.id])
-        history_service.register_create_resoure_value_history_details(value, history)
+        history_service.register_resource_value_history_details(value, history)
       end
+    end
+    resource
+  end
+
+  def update_resource(resource)
+    resource.update_attributes!(@input.params_for(:resource, :project_id, :category_id, :parent_id))
+    history_service = BxResourceHistoryService.new
+    history = history_service.register_update_resource_history(resource, @input.relational_issue_ids)
+    resource.branches.each do |branch|
+      value = resource.values.detect { |v| v.branch_id == branch.id }
+      if value
+        value.update_attributes!(:value => @input.branch_values[branch.id])
+      else
+        value = BxResourceValue.create!(:node_id => resource.id, :branch_id => branch.id, :value => @input.branch_values[branch.id])
+      end
+      history_service.register_resource_value_history_details(value, history)
     end
     resource
   end

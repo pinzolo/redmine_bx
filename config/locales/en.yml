@@ -36,6 +36,9 @@ en:
             code: "Code"
             summary: "Summary"
             value: "Value"
+          update_resource:
+            code: "Code"
+            summary: "Summary"
           create_category:
             name: "Category mame"
             description: "Description"
@@ -59,8 +62,8 @@ en:
         update_branch: "Branch [%{key}] was updated."
         delete_branch: "Branch [%{key}] was deleted."
       history_detail_notes:
-        create: "<strong>%{property}</strong> set to <em>%{new_value}</em>"
-        update: "<strong>%{property}</strong> changed from <em>%{old_value}</em> to <em>%{new_value}</em>"
+        create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
+        update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"
     menu:
       resources: "Resources"
 

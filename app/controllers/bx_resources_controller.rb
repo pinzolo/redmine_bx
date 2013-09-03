@@ -30,9 +30,29 @@ class BxResourcesController < ApplicationController
   end
 
   def edit
+    @resource = BxResourceNode.find(params[:id])
+    @form = BxResourceForm.new(:category_id => @resource.category_id)
+    @resource.values.each do |value|
+      @form.branch_values[value.branch_id] = value.value
+    end
+    @form.load(:resource => @resource)
   end
 
   def update
+    @resource = BxResourceNode.find(params[:id])
+    @form = BxResourceForm.new(params[:form].merge(:project_id => @project.id, :base_resource => @resource))
+    @result = BxResourceService.new(@form).update_resource!(@resource)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_update)
+      redirect_to project_bx_resource_path(@project, @resource)
+    elsif @result.invalid_input?
+      render :action => :edit
+    elsif @result.conflict?
+      flash.now[:error] = l(:notice_locking_conflict)
+      render :action => :edit
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
   end
 
   def destroy

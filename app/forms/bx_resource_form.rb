@@ -9,7 +9,7 @@ class BxResourceForm
                                   :code => :code,
                                   :summary => :summary,
                                   :lock_version => :lock_version }
-  attr_accessor :branch_values, :branches
+  attr_accessor :branch_values, :branches, :base_resource
 
   validates :category_id, :presence => true, :bx_resource_category_presence => true
   validates :parent_id, :presence => true, :bx_resource_parent_presence_or_zero => true
@@ -29,6 +29,7 @@ class BxResourceForm
 
   def handle_extra_params(params)
     self.relational_issues = params[:relational_issues]
+    self.base_resource = params[:base_resource]
     params.each do |key, value|
       if /branch_value_(?<branch_id>\d+)\Z/ =~ key.to_s
         self.branch_values[branch_id.to_i] = value
