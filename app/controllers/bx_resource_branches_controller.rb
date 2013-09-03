@@ -31,8 +31,8 @@ class BxResourceBranchesController < ApplicationController
   end
 
   def update
-    @form = BxResourceBranchForm.new(params[:form])
     @branch = BxResourceBranch.find(params[:id])
+    @form = BxResourceBranchForm.new(params[:form].merge(:base_branch => @branch))
     @result = BxResourceService.new(@form).update_branch!(@branch)
     if @result.success?
       flash[:notice] = l(:notice_successful_update)
