@@ -7,7 +7,7 @@ class CreateBxResourceValues < ActiveRecord::Migration
 
       t.integer :node_id, :null => false, :default => 0
       t.integer :branch_id, :null => false, :default => 0
-      t.string :value, :null => false, :default => ""
+      t.text :value, :null => false, :default => ""
     end
 
     add_index :bx_resource_values, :node_id
