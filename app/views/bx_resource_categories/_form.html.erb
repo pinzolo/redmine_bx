@@ -2,7 +2,7 @@
 <%= f.hidden_field :lock_version %>
 <div class="box tabular">
   <p><%= f.text_field :name, :label => bx_form_label(form, "name"), :required => true %></p>
-  <p><%= f.text_area :description, :label => bx_form_label(form, "description") %></p>
+  <p><%= f.text_area :description, :label => bx_form_label(form, "description"), :size => "80x5" %></p>
   <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
 </div>
 
