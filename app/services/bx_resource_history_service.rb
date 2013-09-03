@@ -38,4 +38,8 @@ class BxResourceHistoryService < BxHistoryService
     changesets = value.previous_changes.slice("value")
     self.register_history_details(history, changesets)
   end
+
+  def register_delete_resource_history(resource)
+    self.register_history("resource", "delete_resource", resource.code, resource.parent_id, nil, nil)
+  end
 end

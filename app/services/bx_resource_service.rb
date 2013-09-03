@@ -68,4 +68,13 @@ class BxResourceService
     end
     resource
   end
+
+  def delete_resource(resource, history_registration = true)
+    BxResourceValue.delete_all(:node_id => resource.id)
+    resource.children.each do |child|
+      self.delete_resource(child, false)
+    end
+    resource.destroy
+    BxResourceHistoryService.new.register_delete_resource_history(resource) if history_registration
+  end
 end

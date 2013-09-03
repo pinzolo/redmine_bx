@@ -56,5 +56,9 @@ class BxResourcesController < ApplicationController
   end
 
   def destroy
+    @resource = BxResourceNode.find(params[:id])
+    BxResourceService.new.delete_resource!(@resource)
+    flash[:notice] = l(:notice_successful_delete)
+    redirect_to project_bx_resources_path(@project)
   end
 end
