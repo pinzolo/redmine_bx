@@ -27,9 +27,9 @@
 <div class="bx-content-box">
   <%= bx_category_title("bx.label.resource.values") %>
   <dl class="bx-informations">
-  <% @resource.category.branches.each do |branch| %>
+  <% @resource.branches.each do |branch| %>
     <dt><%= "#{branch.name} [#{branch.code}]" %> :</dt>
-    <dd><%= @resource.values.detect { |value| value.branch_id == branch.id }.try(:value) || "&nbsp;".html_safe %></dd>
+    <dd><%= @resource.value(branch) || "&nbsp;".html_safe %></dd>
   <% end %>
   </dl>
 </div>

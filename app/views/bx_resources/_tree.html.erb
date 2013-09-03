@@ -3,7 +3,8 @@
 <ul>
   <% resources.each do |resource| %>
   <li>
-    <%= link_to(resource.code, project_bx_resource_path(@project, resource)) %>
+    <%= bx_resource_mark(resource) %>
+    <%= link_to(resource.code, project_bx_resource_path(@project, resource), :style => "vertical-align: middle;") %>
     <%= render :partial => "bx_resources/tree", :locals => { :resources => resource.children } %>
   </li>
   <% end %>

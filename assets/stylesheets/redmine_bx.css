@@ -36,10 +36,40 @@
 
 .bx-category {
   padding: 5px;
-  background-color: aliceblue;
+  background-color: #f0f8ff;
+  border: 1px solid #b0c4de;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
+}
+
+.bx-resources {
+  margin-bottom: 10px;
+}
+
+.bx-resource-mark {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2px;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.bx-resource-values-empty {
+  border: 1px solid #dcdcdc;
+}
+
+.bx-resource-values-full {
+  background-color: #468847;
+}
+
+.bx-resource-values-partiality {
+  background-color: #b94a48;
 }

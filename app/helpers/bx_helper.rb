@@ -36,4 +36,15 @@ module BxHelper
     prop = l("bx.label.history_detail.properties.#{history.operation}.#{detail.property}")
     l("bx.text.history_detail_notes.#{history.operation_type}", :property => prop, :new_value => detail.new_value, :old_value => detail.old_value).html_safe
   end
+
+  def bx_resource_mark(resource)
+    color_class = if resource.values.empty?
+                    "bx-resource-values-empty"
+                  elsif resource.values.length == resource.branches.length
+                    "bx-resource-values-full"
+                  else
+                    "bx-resource-values-partiality"
+                  end
+    content_tag(:span, "", :class => ["bx-resource-mark", color_class])
+  end
 end

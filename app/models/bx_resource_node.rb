@@ -7,6 +7,7 @@ class BxResourceNode < ActiveRecord::Base
   belongs_to :category, :class_name => "BxResourceCategory", :foreign_key => :category_id
   has_many :children, :class_name => "BxResourceNode", :foreign_key => :parent_id, :order => :code
   has_many :values, :class_name => "BxResourceValue", :foreign_key => :node_id
+  delegate :branches, :to => :category
 
   def depth
     @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1
@@ -30,5 +31,9 @@ class BxResourceNode < ActiveRecord::Base
 
   def histories
     @histories ||= BxHistory.where(:target => "resource", :source_id => self.id)
+  end
+
+  def value(branch)
+    self.values.detect { |value| value.branch_id == branch.id }.try(:value)
   end
 end
