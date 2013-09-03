@@ -12,6 +12,7 @@ class BxHistoryService
                                 :changed_at => Time.now)
     self.register_history_details(history, changesets) if changesets.present?
     self.register_history_issues(history, issue_ids) if issue_ids.present?
+    history
   end
 
   def register_history_details(history, changesets)
