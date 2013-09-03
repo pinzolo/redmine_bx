@@ -1,0 +1,45 @@
+<%# coding: utf-8 %>
+<div class="bx-category-box">
+  <%= bx_category_title("bx.label.history.list") %>
+<% if histories.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <% histories.each do |history| %>
+  <div class="bx-history">
+    <dl class="bx-informations">
+      <dt><%= l("bx.label.history.changed_by") %> :</dt>
+      <dd><%= link_to_user(history.changed_user) %></dd>
+      <dt><%= l("bx.label.history.changed_at") %> :</dt>
+      <dd><%= format_time(history.changed_at) %></dd>
+      <dt><%= l("bx.label.history.operation") %> :</dt>
+      <dd><%= l("bx.text.history_operations.#{history.operation}", :key => history.key) %></dd>
+    <% if history.operation_type != "delete" %>
+      <dt><%= l("bx.label.history.details") %> :</dt>
+      <dd>
+        <ul>
+      <% history.details.each do |detail| %>
+          <li><%= bx_history_details_note(history, detail) %></li>
+      <% end %>
+        </ul>
+      </dd>
+    <% end %>
+    <% if history.issues.present? %>
+      <dt><%= l("bx.label.relational_issues") %> :</dt>
+      <dd>
+        <ul>
+      <% history.issues.each do |issue| %>
+          <li><%= link_to_issue(issue) %></li>
+      <% end %>
+        </ul>
+      </dd>
+    <% end %>
+    </dl>
+  </div>
+    <% if histories.last != history %>
+  <hr/>
+    <% end %>
+  <% end %>
+  </table>
+<% end %>
+</div>
+
