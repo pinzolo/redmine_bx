@@ -3,7 +3,7 @@
 
 <%= bx_tabs params[:tab] %>
 
-<div class="bx-category-box">
+<div class="bx-content-box">
   <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
     <div class="contextual">
       <%= link_to l("bx.label.resource.add"), new_project_bx_resource_path(@project, :parent_id => @resource), :class => 'icon icon-duplicate' %>
@@ -22,7 +22,7 @@
   </dl>
 </div>
 
-<div class="bx-category-box">
+<div class="bx-content-box">
   <%= bx_category_title("bx.label.resource.values") %>
   <dl class="bx-informations">
   <% @resource.category.branches.each do |branch| %>
