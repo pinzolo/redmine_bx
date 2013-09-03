@@ -7,6 +7,11 @@ ja:
       relational_issues: "関連チケット"
       resource:
         add: "リソース追加"
+        information: "リソース情報"
+        code: "コード"
+        path: "パス"
+        summary: "概要"
+        values: "値情報"
       category:
         information: "カテゴリ情報"
         new: "新しいカテゴリ"
@@ -25,6 +30,10 @@ ja:
         details: "詳細"
       history_detail:
         properties:
+          create_resource:
+            code: "コード"
+            summary: "概要"
+            value: "値"
           create_category:
             name: "カテゴリ名"
             description: "説明"
@@ -39,6 +48,9 @@ ja:
             code: "コード"
     text:
       history_operations:
+        create_resource: "リソース [%{key}] を作成"
+        update_resource: "リソース [%{key}] を更新"
+        delete_resource: "リソース [%{key}] を子リソースから削除"
         create_category: "カテゴリ [%{key}] を作成"
         update_category: "カテゴリ [%{key}] を更新"
         create_branch: "ブランチ [%{key}] を作成"

@@ -7,6 +7,11 @@ en:
       relational_issues: "Relational issues"
       resource:
         add: "Add resource"
+        information: "Information"
+        code: "Code"
+        path: "Path"
+        summary: "Summary"
+        values: "Values"
       category:
         information: "Information"
         new: "New category"
@@ -25,6 +30,10 @@ en:
         details: "Details"
       history_detail:
         properties:
+          create_resource:
+            code: "Code"
+            summary: "Summary"
+            value: "Value"
           create_category:
             name: "Category mame"
             description: "Description"
@@ -39,6 +48,9 @@ en:
             code: "Code"
     text:
       history_operations:
+        create_resource: "Resource [%{key}] was created."
+        update_resource: "Resource [%{key}] was updated."
+        delete_resource: "Resource [%{key}] was deleted from children."
         create_category: "Category [%{key}] was created."
         update_category: "Category [%{key}] was updated."
         create_branch: "Branch [%{key}] was created."

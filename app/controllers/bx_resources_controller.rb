@@ -9,6 +9,7 @@ class BxResourcesController < ApplicationController
   end
 
   def show
+    @resource = BxResourceNode.find(params[:id])
   end
 
   def new

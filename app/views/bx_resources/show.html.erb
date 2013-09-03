@@ -1,1 +1,37 @@
-<h2>BxResourcesController#show</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="bx-category-box">
+  <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+    <div class="contextual">
+      <%= link_to l("bx.label.resource.add"), new_project_bx_resource_path(@project, :parent_id => @resource), :class => 'icon icon-duplicate' %>
+      <%= link_to l(:button_edit), edit_project_bx_resource_path(@project, @resource), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
+      <%= delete_link project_bx_resource_path(@project, @resource) %>
+    </div>
+  <% end %>
+  <%= bx_category_title("bx.label.resource.information") %>
+  <dl class="bx-informations">
+    <dt><%= l("bx.label.resource.code") %> :</dt>
+    <dd><%= @resource.code %></dd>
+    <dt><%= l("bx.label.resource.path") %> :</dt>
+    <dd><%= @resource.path(":") %></dd>
+    <dt><%= l("bx.label.resource.summary") %> :</dt>
+    <dd><%= @resource.summary %></dd>
+  </dl>
+</div>
+
+<% if @resource.leaf? %>
+<div class="bx-category-box">
+  <%= bx_category_title("bx.label.resource.values") %>
+  <dl class="bx-informations">
+  <% @resource.category.branches.each do |branch| %>
+    <dt><%= "#{branch.name} [#{branch.code}]" %> :</dt>
+    <dd><%= @resource.values.detect { |value| value.branch_id == branch.id }.try(:value) %></dd>
+  <% end %>
+  </dl>
+</div>
+<% end %>
+
+<%= render :partial => "bx_histories/list", :locals => { :histories => @resource.histories } %>
