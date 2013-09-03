@@ -37,7 +37,11 @@
 <div class="bx-content-box">
   <%= bx_category_title("bx.label.resource.children") %>
   <div class="bx-resources">
+<% if @resource.children.empty? %>
+    <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
     <%= render :partial => "bx_resources/tree", :locals => { :resources => @resource.children } %>
+<% end %>
   </div>
 </div>
 

@@ -13,7 +13,7 @@
 <% else %>
   <% categories.each do |category| %>
   <div class="bx-category">
-      <%= link_to category.name, project_bx_category_path(@project, category) %>
+    <%= link_to category.name, project_bx_category_path(@project, category) %>
   </div>
   <div class="bx-resources">
     <%= render :partial => "bx_resources/tree", :locals => { :resources => category.resources } %>
