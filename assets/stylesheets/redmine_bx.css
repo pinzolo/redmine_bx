@@ -63,7 +63,7 @@
 }
 
 .bx-resource-values-empty {
-  border: 1px solid #dcdcdc;
+  background-color: #dcdcdc;
 }
 
 .bx-resource-values-full {
@@ -73,3 +73,8 @@
 .bx-resource-values-partiality {
   background-color: #b94a48;
 }
+
+.bx-resource-node-link {
+  vertical-align: middle;
+}
+
