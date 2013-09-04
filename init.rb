@@ -24,3 +24,17 @@ Redmine::Plugin.register :redmine_bx do
     ActiveSupport::Dependencies.autoload_paths += [dir]
   end
 end
+
+Redmine::WikiFormatting::Macros.register do
+  macro :bx_resource do |obj, args|
+    resource_id = args.first
+    resource = BxResourceNode.where(:id => resource_id).first
+    if resource
+      link_label = resource.code
+      link_label << " : #{resource.summary}" if resource.summary.present?
+      link_to(link_label, project_bx_resource_path(resource.project, resource))
+    else
+      ""
+    end
+  end
+end
