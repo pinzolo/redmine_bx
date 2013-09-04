@@ -12,4 +12,10 @@ module BxResourcesHelper
                   end
     content_tag(:span, "", :class => ["bx-resource-mark", color_class])
   end
+
+  def bx_resource_node_text(resource)
+    text = resource.code
+    text << " : #{resource.summary}" if resource.summary.present?
+    text
+  end
 end
