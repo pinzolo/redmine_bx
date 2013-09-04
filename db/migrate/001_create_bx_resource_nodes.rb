@@ -9,6 +9,7 @@ class CreateBxResourceNodes < ActiveRecord::Migration
       t.integer :parent_id, :null => false, :default => 0
       t.integer :category_id, :null => false, :default => 0
       t.string :code, :null => false, :default => ""
+      t.string :path, :null => false, :default => ""
       t.string :summary, :null => false, :default => ""
     end
 

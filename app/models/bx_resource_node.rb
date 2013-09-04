@@ -9,6 +9,8 @@ class BxResourceNode < ActiveRecord::Base
   has_many :values, :class_name => "BxResourceValue", :foreign_key => :node_id
   delegate :branches, :to => :category
 
+  before_save :set_path
+
   def depth
     @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1
   end
@@ -25,15 +27,16 @@ class BxResourceNode < ActiveRecord::Base
     end
   end
 
-  def path(delimiter)
-    self.ancestry.map { |node| node.code }.join(delimiter)
-  end
-
   def histories
     @histories ||= BxHistory.where(:target => "resource", :source_id => self.id)
   end
 
   def value(branch)
     self.values.detect { |value| value.branch_id == branch.id }.try(:value)
+  end
+
+  private
+  def set_path
+    self.path = self.ancestry.map(&:code).join(":")
   end
 end
