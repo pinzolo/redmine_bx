@@ -112,3 +112,4 @@ ja:
         parent_not_in_project: "親リソース(id: %{id})はこのプロジェクトに存在していません。"
         contains_unusable_chars: "に不正な文字 %{chars} が含まれています。"
 
+  label_bx_resource_node_plural: "リソース(Bx)"

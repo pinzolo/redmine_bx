@@ -16,6 +16,7 @@ Redmine::Plugin.register :redmine_bx do
                                      :bx_resource_categories => [:new, :edit, :create, :update, :destroy],
                                      :bx_resource_branches => [:new, :edit, :create, :update, :destroy],
                                      :require => :member
+    permission :view_bx_resource_nodes, :bx_resources => [:index, :show] # for search
   end
 
   menu :project_menu, :bx, { :controller => :bx_resources, :action => :index }, :param => :project_id
@@ -37,4 +38,8 @@ Redmine::WikiFormatting::Macros.register do
       ""
     end
   end
+end
+
+Redmine::Search.map do |search|
+  search.register :bx_resource_nodes
 end

@@ -110,3 +110,4 @@ en:
         parent_not_in_project: "Parent resource(id: %{id}) not exist in this project."
         contains_unusable_chars: "contains invalid chars. %{chars}"
 
+  label_bx_resource_node_plural: "Resources(Bx)"
