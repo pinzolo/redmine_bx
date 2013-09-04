@@ -19,6 +19,8 @@
     <dd><%= @resource.code %></dd>
     <dt><%= l("bx.label.resource.path") %> :</dt>
     <dd><%= @resource.path %></dd>
+    <dt><%= l("bx.label.resource.route") %> :</dt>
+    <dd><%= bx_resource_route(@resource) %></dd>
     <dt><%= l("bx.label.resource.summary") %> :</dt>
     <dd><%= @resource.summary %></dd>
   </dl>
@@ -26,12 +28,14 @@
 
 <div class="bx-content-box">
   <%= bx_category_title("bx.label.resource.values") %>
-  <dl class="bx-informations">
+  <table class="bx-resource-values">
   <% @resource.branches.each do |branch| %>
-    <dt><%= "#{branch.name} [#{branch.code}]" %> :</dt>
-    <dd><%= hbr(@resource.value(branch) || "&nbsp;".html_safe) %></dd>
+    <tr>
+      <th><%= "#{branch.name} [#{branch.code}]" %> :</th>
+      <td><%= hbr(@resource.value(branch) || "&nbsp;".html_safe) %></td>
+    </tr>
   <% end %>
-  </dl>
+  </table>
 </div>
 
 <div class="bx-content-box">

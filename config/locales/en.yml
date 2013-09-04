@@ -14,6 +14,7 @@ en:
         values: "Values"
         category: "Category"
         children: "Children resources"
+        route: "Route"
       category:
         information: "Information"
         new: "New category"

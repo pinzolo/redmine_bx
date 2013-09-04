@@ -14,6 +14,7 @@ ja:
         values: "値情報"
         category: "カテゴリ"
         children: "子リソース"
+        route: "ルート"
       category:
         information: "カテゴリ情報"
         new: "新しいカテゴリ"
