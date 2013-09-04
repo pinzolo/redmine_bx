@@ -4,7 +4,7 @@
 
 Rails.application.routes.draw do
   resources :projects do
-    get :bx, :controller => :bx_menu, :action => :index
+    get :bx, :controller => :bx_resources, :action => :index
 
     namespace :bx, :module => nil do
       resources :resources, :controller => :bx_resources do

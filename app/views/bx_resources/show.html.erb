@@ -36,13 +36,13 @@
 
 <div class="bx-content-box">
   <%= bx_category_title("bx.label.resource.children") %>
-  <div class="bx-resources">
 <% if @resource.children.empty? %>
-    <p class="nodata"><%= l(:label_no_data) %></p>
+  <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
+  <div class="bx-resources">
     <%= render :partial => "bx_resources/tree", :locals => { :resources => @resource.children } %>
-<% end %>
   </div>
+<% end %>
 </div>
 
 <%= render :partial => "bx_histories/list", :locals => { :histories => @resource.histories } %>
