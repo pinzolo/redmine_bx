@@ -19,8 +19,8 @@ module BxHelper
     content_tag(:h2, l("bx.label.bx"))
   end
 
-  def bx_category_title(title_key)
-    content_tag(:h3, l(title_key), :class => "bx-category-title")
+  def bx_content_title(title_key)
+    content_tag(:h3, l(title_key), :class => "bx-content-title")
   end
 
   def bx_form_label(form, attribute)

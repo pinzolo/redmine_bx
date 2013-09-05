@@ -11,7 +11,7 @@
       <%= delete_link project_bx_resource_path(@project, @resource) %>
     </div>
   <% end %>
-  <%= bx_category_title("bx.label.resource.information") %>
+  <%= bx_content_title("bx.label.resource.information") %>
   <dl class="bx-informations">
     <dt><%= l("bx.label.resource.category") %> :</dt>
     <dd><%= @resource.category.name %></dd>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="bx-content-box">
-  <%= bx_category_title("bx.label.resource.values") %>
+  <%= bx_content_title("bx.label.resource.values") %>
   <table class="bx-resource-values">
   <% @resource.branches.each do |branch| %>
     <tr>
@@ -39,7 +39,7 @@
 </div>
 
 <div class="bx-content-box">
-  <%= bx_category_title("bx.label.resource.children") %>
+  <%= bx_content_title("bx.label.resource.children") %>
 <% if @resource.children.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>

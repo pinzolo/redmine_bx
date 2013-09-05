@@ -11,7 +11,7 @@
       <%= delete_link project_bx_category_path(@project, @category) %>
     </div>
   <% end %>
-  <%= bx_category_title("bx.label.category.information") %>
+  <%= bx_content_title("bx.label.category.information") %>
   <dl class="bx-informations">
     <dt><%= l("bx.label.category.name") %> :</dt>
     <dd><%= @category.name %></dd>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="bx-content-box">
-  <%= bx_category_title("bx.label.branch.list") %>
+  <%= bx_content_title("bx.label.branch.list") %>
 <% if @category.branches.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
