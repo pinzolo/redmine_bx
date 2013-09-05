@@ -9,5 +9,7 @@ class CreateBxResourceCategories < ActiveRecord::Migration
       t.string :name, :null => false, :default => ""
       t.text :description, :null => false, :default => ""
     end
+
+    add_index :bx_resource_categories, :project_id
   end
 end
