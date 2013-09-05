@@ -10,13 +10,12 @@ Redmine::Plugin.register :redmine_bx do
   author_url 'https://github.com/pinzolo'
 
   project_module :bx do
-    permission :bx_view_resources, :bx_resources => [:index, :show],
-                                   :bx_resource_categories => [:show]
-    permission :bx_manage_resources, :bx_resources => [:new, :edit, :create, :update, :destroy],
-                                     :bx_resource_categories => [:new, :edit, :create, :update, :destroy],
-                                     :bx_resource_branches => [:new, :edit, :create, :update, :destroy],
-                                     :require => :member
-    permission :view_bx_resource_nodes, :bx_resources => [:index, :show] # for search
+    permission :view_bx_resource_nodes, :bx_resources => [:index, :show],
+                                        :bx_resource_categories => [:show]
+    permission :manage_bx_resource_nodes, :bx_resources => [:new, :edit, :create, :update, :destroy],
+                                          :bx_resource_categories => [:new, :edit, :create, :update, :destroy],
+                                          :bx_resource_branches => [:new, :edit, :create, :update, :destroy],
+                                          :require => :member
   end
 
   menu :project_menu, :bx, { :controller => :bx_resources, :action => :index }, :param => :project_id

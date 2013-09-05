@@ -4,7 +4,7 @@
 <%= bx_tabs params[:tab] %>
 
 <div class="bx-content-box">
-  <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+  <% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
     <div class="contextual">
       <%= link_to l("bx.label.resource.add"), new_project_bx_resource_path(@project, :category_id => @category), :class => 'icon icon-duplicate' %>
       <%= link_to l(:button_edit), edit_project_bx_category_path(@project, @category), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
@@ -40,7 +40,7 @@
         <td><%= branch.name %></td>
         <td>
           <div class="contextual">
-    <% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+    <% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
           <%= link_to l(:button_edit), edit_project_bx_branch_path(@project, branch), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
           <%= delete_link project_bx_branch_path(@project, branch) %>
     <% end %>
@@ -51,7 +51,7 @@
     </tbody>
   </table>
 <% end %>
-<% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+<% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
   <p><%= link_to l("bx.label.branch.new"), new_project_bx_category_branch_path(@project, @category), :class => 'icon icon-add' %></p>
 <% end %>
 </div>

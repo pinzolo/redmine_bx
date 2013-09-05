@@ -4,7 +4,7 @@
 <%= bx_tabs params[:tab] %>
 
 <div class="tab-content">
-<% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+<% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
   <p><%= link_to l("bx.label.category.new"), new_project_bx_category_path(@project), :class => 'icon icon-add' %></p>
 <% end %>
 <% categories = BxResourceCategory.where(:project_id => @project.id) %>
@@ -20,7 +20,7 @@
   </div>
   <% end %>
 <% end %>
-<% if User.current.allowed_to?(:bx_manage_resources, @project) %>
+<% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
   <p><%= link_to l("bx.label.category.new"), new_project_bx_category_path(@project), :class => 'icon icon-add' %></p>
 <% end %>
 </div>

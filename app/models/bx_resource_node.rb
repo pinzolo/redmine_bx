@@ -16,7 +16,8 @@ class BxResourceNode < ActiveRecord::Base
                      :order_column => "#{table_name}.id"
   acts_as_event :title => Proc.new { |o| o.path + (o.summary.present? ? " : #{o.summary}" : "") },
                 :url => Proc.new { |o| { :controller => "bx_resources", :action => :show, :project_id => o.project.identifier, :id => o.id } },
-                :description => Proc.new { |o| o.summary }
+                :description => Proc.new { |o| o.summary },
+                :datetime => :created_at
 
   def depth
     @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1
@@ -40,10 +41,6 @@ class BxResourceNode < ActiveRecord::Base
 
   def value(branch)
     self.values.detect { |value| value.branch_id == branch.id }.try(:value)
-  end
-
-  def created_on
-    self.created_at
   end
 
   private
