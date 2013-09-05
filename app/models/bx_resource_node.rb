@@ -13,7 +13,8 @@ class BxResourceNode < ActiveRecord::Base
 
   acts_as_searchable :columns => ["path", "summary", "#{BxResourceValue.table_name}.value"],
                      :include => [:project, :values],
-                     :order_column => "#{table_name}.id"
+                     :date_column => "#{table_name}.created_at",
+                     :permission => :view_bx_resource_nodes
   acts_as_event :title => Proc.new { |o| o.path + (o.summary.present? ? " : #{o.summary}" : "") },
                 :url => Proc.new { |o| { :controller => "bx_resources", :action => :show, :project_id => o.project.identifier, :id => o.id } },
                 :description => Proc.new { |o| o.summary },
