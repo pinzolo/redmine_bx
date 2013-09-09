@@ -2,7 +2,7 @@
 <% if resources.present? %>
 <ul>
   <% resources.each do |resource| %>
-  <li>
+    <li id="bx-resource-%<= resource.id %>">
     <%= bx_resource_mark(resource) %>
     <%= link_to(bx_resource_node_text(resource), project_bx_resource_path(@project, resource), :class => "bx-resource-node-link") %>
     <%= render :partial => "bx_resources/tree", :locals => { :resources => resource.children } %>
