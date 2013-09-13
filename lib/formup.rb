@@ -7,6 +7,8 @@ require "active_model"
 module Formup
   extend ActiveSupport::Concern
 
+  TRUE_VALUES = [1, true, "1", "true", "t"]
+
   included do
     include ActiveModel::Conversion
     include ActiveModel::Validations
@@ -48,6 +50,10 @@ module Formup
     def deploy_attributes(defs)
       defs.values.each do |attr|
         attr_accessor attr
+
+        define_method "#{attr}?" do
+          Formup::TRUE_VALUES.include?(self.__send__(attr))
+        end
       end
     end
 
