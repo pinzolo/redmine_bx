@@ -11,6 +11,6 @@ class CreateBxResourceBranches < ActiveRecord::Migration
     end
 
     add_index :bx_resource_branches, :category_id
-    add_index :bx_resource_branches, [:category_id, :code], :unique => false
+    add_index :bx_resource_branches, [:category_id, :code], :unique => true
   end
 end
