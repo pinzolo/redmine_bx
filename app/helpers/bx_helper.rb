@@ -2,15 +2,24 @@
 module BxHelper
   def bx_tabs(tab = nil)
     content_tag(:div, :class => "tabs") do
-      ul = content_tag(:ul) do
-        if User.current.allowed_to?(:view_bx_resource_nodes, @project)
+      if User.current.allowed_to?(:view_bx_resource_nodes, @project)
+        resources_ul = content_tag(:ul) do
           link_opts = {}
           link_opts = link_opts.merge(:class => "selected") if tab.to_s == "bx_resources" || tab.nil?
           link = link_to(l("bx.menu.resources"), project_bx_resources_path(@project), link_opts)
           concat(content_tag(:li, link, :id => "tab-bx_resources"))
         end
+        concat(resources_ul)
       end
-      concat(ul)
+      if User.current.allowed_to?(:view_bx_table_defs, @project)
+        table_defs_ul = content_tag(:ul) do
+          link_opts = {}
+          link_opts = link_opts.merge(:class => "selected") if tab.to_s == "bx_table_defs" || tab.nil?
+          link = link_to(l("bx.menu.table_defs"), project_bx_table_defs_path(@project), link_opts)
+          concat(content_tag(:li, link, :id => "tab-bx_table_defs"))
+        end
+        concat(table_defs_ul)
+      end
     end
   end
 
