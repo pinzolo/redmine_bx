@@ -3,7 +3,7 @@ module BxHelper
   def bx_tabs(tab = nil)
     content_tag(:div, :class => "tabs") do
       ul = content_tag(:ul) do
-        if User.current.allowed_to?(:bx_view_resources, @project)
+        if User.current.allowed_to?(:view_bx_resource_nodes, @project)
           link_opts = {}
           link_opts = link_opts.merge(:class => "selected") if tab.to_s == "bx_resources" || tab.nil?
           link = link_to(l("bx.menu.resources"), project_bx_resources_path(@project), link_opts)
