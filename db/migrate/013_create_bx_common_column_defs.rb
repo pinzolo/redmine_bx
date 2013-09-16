@@ -13,6 +13,8 @@ class CreateBxCommonColumnDefs < ActiveRecord::Migration
       t.integer :scale, :null => false, :default => 0
       t.boolean :nullable, :null => false, :default => false
       t.integer :reference_column_id, :null => false, :default => 0
+      t.string :type, :null => false, :default => ""
+      t.integer :position, :null => false, :default => 0
       t.text :note, :null => false, :default => ""
     end
 

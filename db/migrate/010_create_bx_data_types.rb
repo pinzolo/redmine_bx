@@ -9,6 +9,7 @@ class CreateBxDataTypes < ActiveRecord::Migration
       t.integer :database_id, :null => false, :default => 0
       t.boolean :sizable, :null => false, :default => true
       t.boolean :scalable, :null => false, :default => false
+      t.boolean :default_use, :null => false, :default => false
     end
 
     add_index :bx_data_types, :database_id
