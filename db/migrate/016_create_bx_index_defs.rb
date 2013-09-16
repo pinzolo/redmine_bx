@@ -8,6 +8,7 @@ class CreateBxIndexDefs < ActiveRecord::Migration
       t.integer :table_id, :null => false, :default => 0
       t.string :logical_name, :null => false, :default => ""
       t.string :physical_name, :null => false, :default => ""
+      t.boolean :unique, :null => false, :default => false
       t.text :description, :null => false, :default => ""
     end
 
