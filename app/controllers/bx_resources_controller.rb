@@ -6,6 +6,7 @@ class BxResourcesController < ApplicationController
   bx_tab :bx_resources
 
   def index
+    @categories = BxResourceCategory.where(:project_id => @project.id).includes(:resources)
   end
 
   def show

@@ -7,11 +7,10 @@
 <% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
   <p><%= link_to l("bx.label.category.new"), new_project_bx_category_path(@project), :class => 'icon icon-add' %></p>
 <% end %>
-<% categories = BxResourceCategory.where(:project_id => @project.id) %>
-<% if categories.empty? %>
+<% if @categories.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
-  <% categories.each do |category| %>
+  <% @categories.each do |category| %>
   <div class="bx-category">
     <%= link_to category.name, project_bx_category_path(@project, category) %>
   </div>
