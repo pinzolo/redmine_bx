@@ -25,6 +25,8 @@ ja:
         new: "新しいブランチ"
         code: "コード"
         name: "ブランチ名"
+      table_group:
+        new: "新しいテーブルグループ"
       history:
         list: "履歴"
         operation: "処理"
@@ -68,6 +70,7 @@ ja:
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
     menu:
       resources: "リソース"
+      table_defs: "テーブル定義"
 
   activemodel:
     attributes:
@@ -80,6 +83,11 @@ ja:
       bx_resource_branch_form:
         code: "コード"
         name: "ブランチ名"
+      bx_table_group_form:
+        name: "グループ名"
+        database_id: "データベース"
+        description: "グループ説明"
+        data_types: "データ型を選択"
 
     errors:
       template:

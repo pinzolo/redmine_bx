@@ -1,1 +1,19 @@
-<h2>BxTableDefsController#index</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+<% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+  <p><%= link_to l("bx.label.table_group.new"), new_project_bx_table_group_path(@project), :class => 'icon icon-add' %></p>
+<% end %>
+<% if @table_groups.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <% @table_groups.each do |table_group| %>
+  <% end %>
+<% end %>
+<% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+  <p><%= link_to l("bx.label.table_group.new"), new_project_bx_table_group_path(@project), :class => 'icon icon-add' %></p>
+<% end %>
+</div>

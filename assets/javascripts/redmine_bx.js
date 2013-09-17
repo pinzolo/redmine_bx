@@ -9,3 +9,23 @@ if ($.jstree) {
     });
   });
 }
+
+if ($("#form_database_id")) {
+  $(".bx-data-types").each(function() {
+    $(this).removeClass("bx-data-types-selected");
+    $(this).addClass("bx-data-types-unselected");
+    $(this).find("input[type=checkbox]").prop("checked", false);
+  });
+  $("#form_database_id").on("change", function() {
+    $(".bx-data-types").each(function() {
+      $(this).removeClass("bx-data-types-selected");
+      $(this).addClass("bx-data-types-unselected");
+      $(this).find("input[type=checkbox]").prop("checked", false);
+    });
+    $("#bx_data_types_" + $(this).val())
+      .removeClass("bx-data-types-unselected")
+      .addClass("bx-data-types-selected")
+      .find("input[data-default-checked=true]")
+      .prop("checked", true);
+  });
+}
