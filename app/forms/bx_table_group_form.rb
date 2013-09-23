@@ -7,6 +7,8 @@ class BxTableGroupForm
   attr_accessor :data_types
 
   validates :name, :presence => true, :length => { :maximum => 255 }
+  validates :database_id, :presence => true
+  validates :data_types, :presence => true
 
   def initialize(params = {})
     self.data_types = []

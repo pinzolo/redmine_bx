@@ -87,7 +87,7 @@ ja:
         name: "グループ名"
         database_id: "データベース"
         description: "グループ説明"
-        data_types: "データ型を選択"
+        data_types: "使用するデータ型"
 
     errors:
       template:

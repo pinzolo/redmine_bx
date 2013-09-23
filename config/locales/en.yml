@@ -86,7 +86,7 @@ en:
         name: "Name"
         database_id: "Database"
         description: "Description"
-        data_types: "Select data types"
+        data_types: "Using data types"
 
     errors:
       template:
