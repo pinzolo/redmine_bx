@@ -3,9 +3,15 @@
 <div class="box tabular">
   <p><%= f.text_field :physical_name, :label => bx_form_label(form, :physical_name), :required => true %></p>
   <p><%= f.text_field :logical_name, :label => bx_form_label(form, :logical_name) %></p>
-  <p><%= f.select :data_type_id, data_types.map { |data_type| [data_type.name, data_type.id] }, :label => bx_form_label(form, :data_type_id), :required => true, :include_blank => true %></p>
-  <p><%= f.text_field :size, :label => bx_form_label(form, :size), :size => 10 %></p>
-  <p><%= f.text_field :scale, :label => bx_form_label(form, :scale), :size => 10 %></p>
+  <p>
+    <%= f.select :data_type_id, data_types.map { |data_type| [data_type.name, data_type.id] }, :label => bx_form_label(form, :data_type_id), :required => true, :include_blank => true %>
+    <script type="text/javascript">
+    var sizables = { <%= data_types.map { |data_type| "#{data_type.id} : #{data_type.sizable}" }.join(", ") %> };
+    var scalables = { <%= data_types.map { |data_type| "#{data_type.id} : #{data_type.scalable}" }.join(", ") %> };
+    </script>
+  </p>
+  <p><%= f.text_field :size, :label => bx_form_label(form, :size), :size => 10, :disabled => "disabled" %></p>
+  <p><%= f.text_field :scale, :label => bx_form_label(form, :scale), :size => 10, :disabled => "disabled" %></p>
   <p>
     <%= f.check_box :nullable, :label => bx_form_label(form, :nullable) %>
     <%= label_tag "form_nullable", l("bx.label.accept_null"), :class => "inline" %>

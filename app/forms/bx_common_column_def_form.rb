@@ -18,11 +18,11 @@ class BxCommonColumnDefForm
   attr_accessor :base_common_column_def
 
   validates :physical_name, :presence => true, :length => { :maximum => 200 }, :bx_common_column_def_physical_name_uniqueness => true
-  validates :logical_name, :presence => true, :length => { :maximum => 200 }
+  validates :logical_name, :length => { :maximum => 200 }
   validates :data_type_id, :presence => true, :bx_data_type_id_presence => true
-  validates :size, :format => { :with => /\A\d+\z/ }
-  validates :scale, :format => { :with => /\A\d+\z/ }
-  validates :primary_key_number, :format => { :with => /\A\d+\z/ }
+  validates :size, :format => { :with => /\A\d+\z/ }, :allow_blank => true
+  validates :scale, :format => { :with => /\A\d+\z/ }, :allow_blank => true
+  validates :primary_key_number, :format => { :with => /\A\d+\z/ }, :allow_blank => true
   validates :type, :inclusion => { :in => ["header", "footer"] }
 
   def handle_extra_params(params)

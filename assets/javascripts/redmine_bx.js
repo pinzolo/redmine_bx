@@ -36,3 +36,10 @@ if ($("#form_database_id").size() > 0) {
       .prop("checked", true);
   });
 }
+
+if (sizables && scalables) {
+  $("#form_data_type_id").on("change", function() {
+    $("#form_size").prop("disabled", !sizables[$(this).val()]);
+    $("#form_scale").prop("disabled", !scalables[$(this).val()]);
+  });
+}
