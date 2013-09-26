@@ -27,6 +27,11 @@ en:
         name: "Name"
       table_group:
         new: "New table group"
+        information: "Information"
+        name: "Name"
+        description: "Description"
+      table_def:
+        list: "Table definitions"
       history:
         list: "Histories"
         operation: "Operation"
@@ -54,6 +59,11 @@ en:
           update_branch:
             name: "Branch name"
             code: "Code"
+          create_table_group:
+            name: "Group name"
+            description: "Description"
+            database: "Database"
+            data_types: "Using data types"
     text:
       history_operations:
         create_resource: "Resource [%{key}] was created."
@@ -64,6 +74,7 @@ en:
         create_branch: "Branch [%{key}] was created."
         update_branch: "Branch [%{key}] was updated."
         delete_branch: "Branch [%{key}] was deleted."
+        create_table_group: "Table group [%{key}] was created."
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"

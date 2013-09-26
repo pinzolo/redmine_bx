@@ -27,6 +27,13 @@ ja:
         name: "ブランチ名"
       table_group:
         new: "新しいテーブルグループ"
+        information: "グループ情報"
+        name: "グループ名"
+        description: "説明"
+        database: "データベース"
+        data_types: "使用するデータ型"
+      table_def:
+        list: "テーブル定義一覧"
       history:
         list: "履歴"
         operation: "処理"
@@ -55,6 +62,11 @@ ja:
           update_branch:
             name: "ブランチ名"
             code: "コード"
+          create_table_group:
+            name: "グループ名"
+            description: "説明"
+            database: "データベース"
+            data_types: "使用データ型"
     text:
       history_operations:
         create_resource: "リソース [%{key}] を作成"
@@ -65,6 +77,7 @@ ja:
         create_branch: "ブランチ [%{key}] を作成"
         update_branch: "ブランチ [%{key}] を更新"
         delete_branch: "ブランチ [%{key}] を削除"
+        create_table_group: "テーブルグループ [%{key}] を作成"
       history_detail_notes:
         create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"

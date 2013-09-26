@@ -1,1 +1,32 @@
-<h2>BxTableGroupsController#show</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="bx-content-box">
+  <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+    <div class="contextual">
+    </div>
+  <% end %>
+  <%= bx_content_title("bx.label.table_group.information") %>
+  <dl class="bx-informations">
+    <dt><%= l("bx.label.table_group.name") %> :</dt>
+    <dd><%= @table_group.name %></dd>
+    <dt><%= l("bx.label.table_group.description") %> :</dt>
+    <dd><%= hbr(@table_group.description) %></dd>
+    <dt><%= l("bx.label.table_group.database") %> :</dt>
+    <dd><%= @table_group.database.name %></dd>
+    <dt><%= l("bx.label.table_group.data_types") %> :</dt>
+    <dd><%= @table_group.data_types.map(&:name).join(",") %></dd>
+  </dl>
+</div>
+
+<div class="bx-content-box">
+  <%= bx_content_title("bx.label.table_def.list") %>
+<% if @table_group.table_defs.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+<% end %>
+</div>
+
+<%= render :partial => "bx_histories/list", :locals => { :histories => @table_group.histories } %>
