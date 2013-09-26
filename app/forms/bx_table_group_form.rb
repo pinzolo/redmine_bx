@@ -3,7 +3,11 @@ class BxTableGroupForm
   include Formup
   include BxIssuesRelation
 
-  source :table_group, :aliases => { :name => :name, :database_id => :database_id, :description => :description, :lock_version => :lock_version }
+  source :table_group, :aliases => { :project_id => :project_id,
+                                     :name => :name,
+                                     :database_id => :database_id,
+                                     :description => :description,
+                                     :lock_version => :lock_version }
   attr_accessor :data_types
 
   validates :name, :presence => true, :length => { :maximum => 255 }
