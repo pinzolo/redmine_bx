@@ -7,8 +7,8 @@ class BxResourceBranchForm
 
   attr_accessor :base_branch
 
-  validates :name, :presence => true, :length => { :maximum => 255 }
-  validates :code, :presence => true, :length => { :maximum => 255 }, :bx_resource_branch_code_uniqueness => true
+  validates :name, :presence => true, :length => { :maximum => 200 }
+  validates :code, :presence => true, :length => { :maximum => 200 }, :bx_resource_branch_code_uniqueness => true
 
   def handle_extra_params(params)
     self.relational_issues = params[:relational_issues]

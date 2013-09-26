@@ -13,8 +13,8 @@ class BxResourceForm
 
   validates :category_id, :presence => true, :bx_resource_category_presence => true
   validates :parent_id, :presence => true, :bx_resource_parent_presence_or_zero => true
-  validates :code, :presence => true, :length => { :maximum => 255 }, :bx_resource_code_uniqueness => true, :bx_unusable_chars => { :chars => [":"] }
-  validates :summary, :length => { :maximum => 255 }
+  validates :code, :presence => true, :length => { :maximum => 200 }, :bx_resource_code_uniqueness => true, :bx_unusable_chars => { :chars => [":"] }
+  validates :summary, :length => { :maximum => 200 }
 
   def initialize(params = {})
     self.branch_values = {}
