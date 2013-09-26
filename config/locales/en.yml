@@ -3,6 +3,7 @@ en:
   bx:
     tab: "Bx"
     label:
+      accept_null: "Accept NULL"
       resources: "Resources"
       relational_issues: "Relational issues"
       resource:
@@ -32,6 +33,10 @@ en:
         description: "Description"
       table_def:
         list: "Table definitions"
+        new: "New table definition"
+      common_column_def:
+        list: "Common column definitions"
+        new: "New common table definition"
       history:
         list: "Histories"
         operation: "Operation"

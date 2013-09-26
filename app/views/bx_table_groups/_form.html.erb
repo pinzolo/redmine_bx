@@ -2,8 +2,7 @@
 <%= f.hidden_field :lock_version %>
 <div class="box tabular">
   <p><%= f.text_field :name, :label => bx_form_label(form, "name"), :required => true %></p>
-  <p>
-  <%= f.select :database_id, databases.map { |db| [db.name, db.id] }, :label => bx_form_label(form, "database_id"), :required => true, :include_blank => true %>
+  <p><%= f.select :database_id, databases.map { |db| [db.name, db.id] }, :label => bx_form_label(form, "database_id"), :required => true, :include_blank => true %></p>
   <p>
     <label for="data_types"><%= bx_form_label(form, "data_types") %></label>
   <% databases.each do |database| %>

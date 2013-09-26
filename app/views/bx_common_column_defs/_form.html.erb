@@ -1,0 +1,19 @@
+<%# coding: utf-8 %>
+<%= f.hidden_field :lock_version %>
+<div class="box tabular">
+  <p><%= f.text_field :physical_name, :label => bx_form_label(form, :physical_name), :required => true %></p>
+  <p><%= f.text_field :logical_name, :label => bx_form_label(form, :logical_name) %></p>
+  <p><%= f.select :data_type_id, data_types.map { |data_type| [data_type.name, data_type.id] }, :label => bx_form_label(form, :data_type_id), :required => true, :include_blank => true %></p>
+  <p><%= f.text_field :size, :label => bx_form_label(form, :size), :size => 10 %></p>
+  <p><%= f.text_field :scale, :label => bx_form_label(form, :scale), :size => 10 %></p>
+  <p>
+    <%= f.check_box :nullable, :label => bx_form_label(form, :nullable) %>
+    <%= label_tag "form_nullable", l("bx.label.accept_null"), :class => "inline" %>
+  </p>
+  <p><%= f.text_field :default_value, :label => bx_form_label(form, :default_value) %></p>
+  <p><%= f.text_field :primary_key_number, :label => bx_form_label(form, :primary_key_number), :size => 10 %></p>
+  <p><%= f.select :type, ["header", "footer"], :label => bx_form_label(form, :type) %></p>
+  <p><%= f.text_area :note, :label => bx_form_label(form, :note), :size => "80x5" %></p>
+  <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
+</div>
+

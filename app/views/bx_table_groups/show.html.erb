@@ -22,10 +22,24 @@
 </div>
 
 <div class="bx-content-box">
+  <%= bx_content_title("bx.label.common_column_def.list") %>
+<% if @table_group.common_column_defs.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+<% end %>
+<% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+  <p><%= link_to l("bx.label.common_column_def.new"), new_project_bx_table_group_common_column_def_path(@project, @table_group), :class => 'icon icon-add' %></p>
+<% end %>
+</div>
+
+<div class="bx-content-box">
   <%= bx_content_title("bx.label.table_def.list") %>
 <% if @table_group.table_defs.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
+<% end %>
+<% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+  <p><%= link_to l("bx.label.table_def.new"), new_project_bx_table_group_table_def_path(@project, @table_group), :class => 'icon icon-add' %></p>
 <% end %>
 </div>
 
