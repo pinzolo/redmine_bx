@@ -15,7 +15,7 @@ class BxTableGroupsController < ApplicationController
   end
 
   def create
-    @form = BxTableGroupForm.new(params[:form])
+    @form = BxTableGroupForm.new(params[:form].merge(:project_id => @project.id))
     @result = BxTableDefService.new(@form).create_table_group!
     if @result.success?
       flash[:notice] = l(:notice_successful_create)
