@@ -48,7 +48,8 @@
         <th><%= l("bx.label.common_column_def.position_type") %></th>
         <th><%= l("bx.label.common_column_def.note") %></th>
   <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
-        <th>&nbsp;</th>
+        <th class="bx-reorder-column">&nbsp;</th>
+        <th class="bx-command-column">&nbsp;</th>
   <% end %>
       </tr>
     </thead>
@@ -58,15 +59,27 @@
         <td><%= common_column_def.physical_name %></td>
         <td><%= common_column_def.logical_name %></td>
         <td><%= common_column_def.data_type.name %></td>
-        <td class="bx-number-column"><%= common_column_def.size %></td>
-        <td class="bx-number-column"><%= common_column_def.scale %></td>
-        <td class="bx-icon-column"><%= image_tag "#{common_column_def.nullable}.png" %></td>
+        <td class="bx-number-cell"><%= common_column_def.size %></td>
+        <td class="bx-number-cell"><%= common_column_def.scale %></td>
+        <td class="bx-icon-cell"><%= image_tag "#{common_column_def.nullable}.png" %></td>
         <td><%= common_column_def.default_value %></td>
-        <td><%= common_column_def.primary_key_number %></td>
+        <td class="bx-number-cell"><%= common_column_def.primary_key_number %></td>
         <td><%= common_column_def.position_type %></td>
-        <td><%= common_column_def.note %></td>
+        <td><%= hbr(common_column_def.note) %></td>
     <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
-        <td class="bx-column-commands">
+        <td>
+      <% if common_column_def == @table_group.common_header_column_defs.first || common_column_def == @table_group.common_footer_column_defs.first %>
+          <span class="bx-reorder-disable"></span>
+      <% else %>
+          <a href="#" class="icon bx-reorder-up"></a>
+      <% end %>
+      <% if common_column_def == @table_group.common_header_column_defs.last || common_column_def == @table_group.common_footer_column_defs.last %>
+          <span class="bx-reorder-disable"></span>
+      <% else %>
+          <a href="#" class="icon bx-reorder-down"></a>
+      <% end %>
+        </td>
+        <td>
           <%= link_to l(:button_edit), edit_project_bx_common_column_def_path(@project, common_column_def), :class => 'icon icon-edit' %>
           <%= delete_link project_bx_common_column_def_path(@project, common_column_def) %>
         </td>

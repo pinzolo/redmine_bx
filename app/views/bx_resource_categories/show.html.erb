@@ -29,12 +29,14 @@
 <% if @category.branches.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
-  <table class="list">
+  <table class="bx-grid">
     <thead>
       <tr>
         <th><%= l("bx.label.branch.code") %></th>
         <th><%= l("bx.label.branch.name") %></th>
-        <th></th>
+    <% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
+        <th class="bx-command-column"></th>
+    <% end %>
       </tr>
     </thead>
     <tbody>
@@ -43,12 +45,10 @@
         <td><%= branch.code %></td>
         <td><%= branch.name %></td>
         <td>
-          <div class="contextual">
     <% if User.current.allowed_to?(:manage_bx_resource_nodes, @project) %>
           <%= link_to l(:button_edit), edit_project_bx_branch_path(@project, branch), :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
           <%= delete_link project_bx_branch_path(@project, branch) %>
     <% end %>
-          </div>
         </td>
       </tr>
   <% end %>
