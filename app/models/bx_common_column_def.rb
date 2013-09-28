@@ -12,4 +12,12 @@ class BxCommonColumnDef < ActiveRecord::Base
   def footer?
     position_type == "footer"
   end
+
+  def can_up?
+    self == table_group.common_header_column_defs.first || self == table_group.common_footer_column_defs.first
+  end
+
+  def can_down?
+    self == table_group.common_header_column_defs.last || self == table_group.common_footer_column_defs.last
+  end
 end

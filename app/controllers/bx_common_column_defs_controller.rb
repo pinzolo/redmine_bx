@@ -32,4 +32,24 @@ class BxCommonColumnDefsController < ApplicationController
 
   def destroy
   end
+
+  def up
+    @common_column_def = BxCommonColumnDef.find(params[:id])
+    @result = BxTableDefService.new.up_common_column_def_position!(@common_column_def)
+    if @result.success?
+      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group)
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
+  end
+
+  def down
+    @common_column_def = BxCommonColumnDef.find(params[:id])
+    @result = BxTableDefService.new.down_common_column_def_position!(@common_column_def)
+    if @result.success?
+      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group)
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
+  end
 end

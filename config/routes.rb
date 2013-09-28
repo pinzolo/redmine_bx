@@ -18,7 +18,12 @@ Rails.application.routes.draw do
         resources :common_column_defs, :controller => :bx_common_column_defs, :only => [:new, :create]
         resources :table_defs, :controller => :bx_table_defs, :only => [:new, :create]
       end
-      resources :common_column_defs, :controller => :bx_common_column_defs, :only => [:edit, :update, :destroy]
+      resources :common_column_defs, :controller => :bx_common_column_defs, :only => [:edit, :update, :destroy] do
+        member do
+          put :up
+          put :down
+        end
+      end
       resources :table_defs, :controller => :bx_table_defs, :only => [:show, :edit, :update, :destroy]
     end
   end

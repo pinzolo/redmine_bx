@@ -21,5 +21,29 @@ class BxTableDefService
     common_column_def.save!
     BxTableDefHistoryService.new.register_create_common_column_def_history(common_column_def, @input.relational_issues)
   end
+
+  def up_common_column_def_position(common_column_def)
+    return if common_column_def.can_up?
+
+    another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
+                                      :position_type => common_column_def.position_type,
+                                      :position => common_column_def.position - 1).first
+    common_column_def.position -= 1
+    another.position += 1
+    common_column_def.save!
+    another.save!
+  end
+
+  def down_common_column_def_position(common_column_def)
+    return if common_column_def.can_down?
+
+    another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
+                                      :position_type => common_column_def.position_type,
+                                      :position => common_column_def.position + 1).first
+    common_column_def.position += 1
+    another.position -= 1
+    common_column_def.save!
+    another.save!
+  end
 end
 
