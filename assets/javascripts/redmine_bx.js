@@ -45,7 +45,7 @@ if (typeof sizables !== "undefined" && typeof scalables !== "undefined") {
 }
 
 $(".bx-display-note").on("click", function() {
-  $(this).next().dialog({
+  $("#bx_note_dialog").html($(this).next().html()).dialog({
     modal: true,
     buttons: {
       "OK": function() {

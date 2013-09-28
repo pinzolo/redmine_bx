@@ -88,6 +88,7 @@
   <% end %>
     </tbody>
   </table>
+  <div id="bx_note_dialog" class="bx-note-dialog"></div>
 <% end %>
 <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
   <p><%= link_to l("bx.label.common_column_def.new"), new_project_bx_table_group_common_column_def_path(@project, @table_group), :class => 'icon icon-add' %></p>
