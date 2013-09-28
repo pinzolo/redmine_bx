@@ -9,12 +9,12 @@ class CreateBxCommonColumnDefs < ActiveRecord::Migration
       t.string :logical_name, :null => false, :default => ""
       t.string :physical_name, :null => false, :default => ""
       t.integer :data_type_id, :null => false, :default => 0
-      t.integer :size, :null => false, :default => 0
-      t.integer :scale, :null => false, :default => 0
+      t.integer :size
+      t.integer :scale
       t.boolean :nullable, :null => false, :default => false
       t.string :default_value, :null => false, :default => ""
-      t.integer :primary_key_number, :null => true, :default => 0
-      t.string :type, :null => false, :default => ""
+      t.integer :primary_key_number
+      t.string :position_type, :null => false, :default => ""
       t.integer :position, :null => false, :default => 0
       t.text :note, :null => false, :default => ""
     end

@@ -18,8 +18,6 @@ class BxTableDefService
     common_column_def = BxCommonColumnDef.new(@input.params_for(:common_column_def, :lock_version))
     base_defs = common_column_def.header? ? common_column_def.table_group.common_header_column_defs : common_column_def.table_group.common_footer_column_defs
     common_column_def.position = base_defs.length + 1
-    common_column_def.size = common_column_def.size.to_i
-    common_column_def.scale = common_column_def.scale.to_i
     common_column_def.save!
     BxTableDefHistoryService.new.register_create_common_column_def_history(common_column_def, @input.relational_issues)
   end

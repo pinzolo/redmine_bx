@@ -18,7 +18,7 @@
   </p>
   <p><%= f.text_field :default_value, :label => bx_form_label(form, :default_value) %></p>
   <p><%= f.text_field :primary_key_number, :label => bx_form_label(form, :primary_key_number), :size => 10 %></p>
-  <p><%= f.select :type, ["header", "footer"], :label => bx_form_label(form, :type) %></p>
+  <p><%= f.select :position_type, ["header", "footer"], :label => bx_form_label(form, :position_type) %></p>
   <p><%= f.text_area :note, :label => bx_form_label(form, :note), :size => "80x5" %></p>
   <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
 </div>

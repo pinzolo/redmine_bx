@@ -34,8 +34,7 @@ module BxHelper
   end
 
   def hbr(text)
-    safe_text = h(text)
-    text.gsub(/\r\n/, "\n").gsub(/\n/, "<br />").html_safe
+    h(text).gsub(/\r\n/, "\n").gsub(/\n/, "<br />").html_safe
   end
 
   def bx_history_details_note(history, detail)

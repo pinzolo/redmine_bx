@@ -6,10 +6,10 @@ class BxCommonColumnDef < ActiveRecord::Base
   belongs_to :data_type, :class_name => "BxDataType", :foreign_key => :data_type_id
 
   def header?
-    self.type == "header"
+    position_type == "header"
   end
 
   def footer?
-    self.type == "footer"
+    position_type == "footer"
   end
 end
