@@ -9,16 +9,24 @@
     </div>
   <% end %>
   <%= bx_content_title("bx.label.table_group.information") %>
-  <dl class="bx-informations">
-    <dt><%= l("bx.label.table_group.name") %> :</dt>
-    <dd><%= @table_group.name %></dd>
-    <dt><%= l("bx.label.table_group.description") %> :</dt>
-    <dd><%= hbr(@table_group.description) %></dd>
-    <dt><%= l("bx.label.table_group.database") %> :</dt>
-    <dd><%= @table_group.database.name %></dd>
-    <dt><%= l("bx.label.table_group.data_types") %> :</dt>
-    <dd><%= @table_group.data_types.map(&:name).join(",") %></dd>
-  </dl>
+  <table class="bx-informations">
+    <tr>
+      <th><%= l("bx.label.table_group.name") %> :</th>
+      <td><%= @table_group.name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.table_group.description") %> :</th>
+      <td><%= hbr(@table_group.description) %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.table_group.database") %> :</th>
+      <td><%= @table_group.database.name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.table_group.data_types") %> :</th>
+      <td><%= @table_group.data_types.map(&:name).join(",") %></td>
+    </tr>
+  </table>
 </div>
 
 <div class="bx-content-box">

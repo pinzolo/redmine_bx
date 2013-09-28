@@ -12,18 +12,28 @@
     </div>
   <% end %>
   <%= bx_content_title("bx.label.resource.information") %>
-  <dl class="bx-informations">
-    <dt><%= l("bx.label.resource.category") %> :</dt>
-    <dd><%= @resource.category.name %></dd>
-    <dt><%= l("bx.label.resource.code") %> :</dt>
-    <dd><%= @resource.code %></dd>
-    <dt><%= l("bx.label.resource.path") %> :</dt>
-    <dd><%= @resource.path %></dd>
-    <dt><%= l("bx.label.resource.route") %> :</dt>
-    <dd><%= bx_resource_route(@resource) %></dd>
-    <dt><%= l("bx.label.resource.summary") %> :</dt>
-    <dd><%= @resource.summary %></dd>
-  </dl>
+  <table class="bx-informations">
+    <tr>
+      <th><%= l("bx.label.resource.category") %> :</th>
+      <td><%= @resource.category.name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.resource.code") %> :</th>
+      <td><%= @resource.code %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.resource.path") %> :</th>
+      <td><%= @resource.path %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.resource.route") %> :</th>
+      <td><%= bx_resource_route(@resource) %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.resource.summary") %> :</th>
+      <td><%= @resource.summary %></td>
+    </tr>
+  </table>
 </div>
 
 <div class="bx-content-box">

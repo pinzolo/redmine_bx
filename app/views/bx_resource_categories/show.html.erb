@@ -12,12 +12,16 @@
     </div>
   <% end %>
   <%= bx_content_title("bx.label.category.information") %>
-  <dl class="bx-informations">
-    <dt><%= l("bx.label.category.name") %> :</dt>
-    <dd><%= @category.name %></dd>
-    <dt><%= l("bx.label.category.description") %> :</dt>
-    <dd><%= hbr(@category.description) %></dd>
-  </dl>
+  <table class="bx-informations">
+    <tr>
+      <th><%= l("bx.label.category.name") %> :</th>
+      <td><%= @category.name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.category.description") %> :</th>
+      <td><%= hbr(@category.description) %></td>
+    </tr>
+  </table>
 </div>
 
 <div class="bx-content-box">

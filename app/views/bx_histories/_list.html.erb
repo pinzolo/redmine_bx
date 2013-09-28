@@ -6,34 +6,45 @@
 <% else %>
   <% histories.each do |history| %>
   <div class="bx-history">
-    <dl class="bx-informations">
-      <dt><%= l("bx.label.history.changed_by") %> :</dt>
-      <dd><%= link_to_user(history.changed_user) %></dd>
-      <dt><%= l("bx.label.history.changed_at") %> :</dt>
-      <dd><%= format_time(history.changed_at) %></dd>
-      <dt><%= l("bx.label.history.operation") %> :</dt>
-      <dd><%= l("bx.text.history_operations.#{history.operation}", :key => history.key) %></dd>
+    <table class="bx-informations">
+      </tr>
+      <tr>
+        <th><%= l("bx.label.history.changed_by") %> :</th>
+        <td><%= link_to_user(history.changed_user) %></td>
+      </tr>
+      <tr>
+        <th><%= l("bx.label.history.changed_at") %> :</th>
+        <td><%= format_time(history.changed_at) %></td>
+      </tr>
+      <tr>
+        <th><%= l("bx.label.history.operation") %> :</th>
+        <td><%= l("bx.text.history_operations.#{history.operation}", :key => history.key) %></td>
+      </tr>
     <% if history.operation_type != "delete" %>
-      <dt><%= l("bx.label.history.details") %> :</dt>
-      <dd>
-        <ul>
+      <tr>
+        <th><%= l("bx.label.history.details") %> :</th>
+        <td>
+          <ul>
       <% history.details.each do |detail| %>
-          <li><%= bx_history_details_note(history, detail) %></li>
+            <li><%= bx_history_details_note(history, detail) %></li>
       <% end %>
-        </ul>
-      </dd>
+          </ul>
+        </td>
+      </tr>
     <% end %>
     <% if history.issues.present? %>
-      <dt><%= l("bx.label.relational_issues") %> :</dt>
-      <dd>
-        <ul>
+      <tr>
+        <th><%= l("bx.label.relational_issues") %> :</th>
+        <td>
+          <ul>
       <% history.issues.each do |issue| %>
-          <li><%= link_to_issue(issue) %></li>
+            <li><%= link_to_issue(issue) %></li>
       <% end %>
-        </ul>
-      </dd>
+          </ul>
+        </td>
+      </tr>
     <% end %>
-    </dl>
+    </table>
   </div>
     <% if histories.last != history %>
   <hr/>
