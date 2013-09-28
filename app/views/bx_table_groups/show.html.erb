@@ -65,7 +65,7 @@
         <td><%= common_column_def.default_value %></td>
         <td class="bx-number-cell"><%= common_column_def.primary_key_number %></td>
         <td><%= common_column_def.position_type %></td>
-        <td><%= hbr(common_column_def.note) %></td>
+        <td><%= bx_note(common_column_def.note) %></td>
     <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
         <td>
       <% if common_column_def == @table_group.common_header_column_defs.first || common_column_def == @table_group.common_footer_column_defs.first %>

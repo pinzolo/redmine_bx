@@ -41,4 +41,13 @@ module BxHelper
     prop = l("bx.label.history_detail.properties.#{history.operation}.#{detail.property}")
     l("bx.text.history_detail_notes.#{history.operation_type}", :property => prop, :new_value => detail.new_value, :old_value => detail.old_value).html_safe
   end
+
+  def bx_note(note)
+    return "" if note.blank?
+
+    div = content_tag(:div, :class => "bx-note-content") do
+      concat(hbr(note))
+    end
+    link_to(l("bx.label.display_note"), "#", :class => "bx-display-note") + div
+  end
 end

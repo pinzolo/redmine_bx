@@ -16,7 +16,7 @@ if ($("#form_database_id").size() > 0) {
     $(this).addClass("bx-data-types-unselected");
     $(this).find("input[type=checkbox]").prop("checked", false);
   });
-  if ($("#form_database_id").val() != "") {
+  if ($("#form_database_id").val() !== "") {
     $("#bx_data_types_" + $("#form_database_id").val())
       .removeClass("bx-data-types-unselected")
       .addClass("bx-data-types-selected")
@@ -37,9 +37,22 @@ if ($("#form_database_id").size() > 0) {
   });
 }
 
-if (sizables && scalables) {
+if (typeof sizables !== "undefined" && typeof scalables !== "undefined") {
   $("#form_data_type_id").on("change", function() {
     $("#form_size").prop("disabled", !sizables[$(this).val()]);
     $("#form_scale").prop("disabled", !scalables[$(this).val()]);
   });
 }
+
+$(".bx-display-note").on("click", function() {
+  $(this).next().dialog({
+    modal: true,
+    buttons: {
+      "OK": function() {
+        $(this).dialog("close");
+      }
+    },
+    height: "auto",
+    width: "300px"
+  });
+});

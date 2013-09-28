@@ -59,3 +59,5 @@ table.bx-grid td { vertical-align: top; padding-right:10px; border: 1px solid #e
 .bx-reorder-disable { display: inline-block; vertical-align: middle; width: 16px; height: 16px; }
 .bx-reorder-up { background-image: url(/images/1uparrow.png); }
 .bx-reorder-down { background-image: url(/images/1downarrow.png); }
+
+.bx-note-content { display: none; }

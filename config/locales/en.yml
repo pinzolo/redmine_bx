@@ -6,6 +6,7 @@ en:
       accept_null: "Accept NULL"
       resources: "Resources"
       relational_issues: "Relational issues"
+      display_note: "Display"
       resource:
         add: "Add resource"
         information: "Information"

@@ -6,6 +6,7 @@ ja:
       accept_null: "NULLを許容する"
       resources: "リソース"
       relational_issues: "関連チケット"
+      display_note: "表示する"
       resource:
         add: "リソース追加"
         information: "リソース情報"
