@@ -11,7 +11,7 @@ class BxTableGroup < ActiveRecord::Base
   has_many :data_types_rels, :class_name => "BxTableGroupDataType", :foreign_key => :table_group_id
   has_many :data_types, :through => :data_types_rels, :order => :name
   has_many :histories, :class_name => "BxHistory", :foreign_key => :source_id,
-                       :conditions => Proc.new { ["target = ?", "table_group"] }, :include => :details
+                       :conditions => Proc.new { ["target = ?", "table_group"] }, :include => [:details, :issues]
 
   def common_column_defs
     common_header_column_defs.to_a + common_footer_column_defs.to_a

@@ -8,7 +8,7 @@ class BxResourceNode < ActiveRecord::Base
   has_many :children, :class_name => "BxResourceNode", :foreign_key => :parent_id, :order => :code, :include => :values
   has_many :values, :class_name => "BxResourceValue", :foreign_key => :node_id
   has_many :histories, :class_name => "BxHistory", :foreign_key => :source_id,
-                       :conditions => Proc.new { ["target = ?", "resource"] }, :include => :details
+                       :conditions => Proc.new { ["target = ?", "resource"] }, :include => [:details, :issues]
   delegate :branches, :to => :category
 
   before_save :set_path
