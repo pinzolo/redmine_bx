@@ -45,5 +45,10 @@ class BxTableDefService
     common_column_def.save!
     another.save!
   end
+
+  def delete_common_column_def(common_column_def, history_registration = true)
+    common_column_def.destroy
+    BxTableDefHistoryService.new.register_delete_common_column_def_history(common_column_def) if history_registration
+  end
 end
 

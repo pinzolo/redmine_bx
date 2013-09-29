@@ -20,4 +20,8 @@ class BxTableDefHistoryService < BxHistoryService
     changesets = changesets.merge(common_column_def.previous_changes.slice("size", "scale", "nullable", "default_value", "primary_key_number", "position_type", "note"))
     self.register_history("table_group", "create_common_column_def", common_column_def.physical_name, common_column_def.table_group.id, changesets, issue_ids)
   end
+
+  def register_delete_common_column_def_history(common_column_def)
+    self.register_history("table_group", "delete_common_column_def", common_column_def.physical_name, common_column_def.table_group_id, nil, nil)
+  end
 end
