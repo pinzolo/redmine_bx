@@ -10,7 +10,7 @@ class BxTableGroupForm
                                      :lock_version => :lock_version }
   attr_accessor :data_types
 
-  validates :name, :presence => true, :length => { :maximum => 255 }
+  validates :name, :presence => true, :length => { :maximum => 200 }
   validates :database_id, :presence => true
   validates :data_types, :presence => true
 
