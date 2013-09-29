@@ -25,9 +25,26 @@ class BxCommonColumnDefsController < ApplicationController
   end
 
   def edit
+    @common_column_def = BxCommonColumnDef.find(params[:id])
+    @form = BxCommonColumnDefForm.new(:table_group_id => @common_column_def.table_group_id)
+    @form.load(:common_column_def => @common_column_def)
   end
 
   def update
+    @common_column_def = BxCommonColumnDef.find(params[:id])
+    @form = BxCommonColumnDefForm.new(params[:form].merge(:table_group_id => @common_column_def.table_group_id, :base_common_column_def => @common_column_def))
+    @result = BxTableDefService.new(@form).update_common_column_def!(@common_column_def)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_update)
+      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group_id)
+    elsif @result.invalid_input?
+      render :action => :edit
+    elsif @result.conflict?
+      flash.now[:error] = l(:notice_locking_conflict)
+      render :action => :edit
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
   end
 
   def destroy

@@ -1,2 +1,13 @@
 <%# coding: utf-8 %>
-<h2>BxCommonColumnDefsController#edit</h2>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => project_bx_common_column_def_path(@project, @common_column_def), :method => :put do |f| %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form, :data_types => @common_column_def.table_group.data_types } %>
+    <%= f.submit l(:button_update) %>
+    <%= link_to l(:button_cancel), project_bx_table_group_path(@project, @common_column_def.table_group_id) %>
+  <% end %>
+</div>

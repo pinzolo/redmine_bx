@@ -22,6 +22,17 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_create_common_column_def_history(common_column_def, @input.relational_issues)
   end
 
+  def update_common_column_def(common_column_def)
+    common_column_def.update_attributes!(@input.params_for(:common_column_def, :table_group_id))
+    BxTableDefHistoryService.new.register_update_common_column_def_history(common_column_def, @input.relational_issues)
+    common_column_def
+  end
+
+  def delete_common_column_def(common_column_def, history_registration = true)
+    common_column_def.destroy
+    BxTableDefHistoryService.new.register_delete_common_column_def_history(common_column_def) if history_registration
+  end
+
   def up_common_column_def_position(common_column_def)
     return if common_column_def.can_up?
 
@@ -44,11 +55,6 @@ class BxTableDefService
     another.position -= 1
     common_column_def.save!
     another.save!
-  end
-
-  def delete_common_column_def(common_column_def, history_registration = true)
-    common_column_def.destroy
-    BxTableDefHistoryService.new.register_delete_common_column_def_history(common_column_def) if history_registration
   end
 end
 
