@@ -56,5 +56,25 @@ class BxTableDefService
     common_column_def.save!
     another.save!
   end
+
+  def create_table_def
+    table_def = BxTableDef.create!(@input.params_for(:table_def, :lock_version))
+    valid_common_column_defs = BxCommonColumnDef.where(:table_group_id => table_def.table_group_id, :id => @input.using_common_column_defs)
+    valid_common_column_defs.each.with_index(1) do |common_column_def, position|
+      BxColumnDef.create!(:table_id => table_def.id,
+                          :physical_name => common_column_def.physical_name,
+                          :logical_name => common_column_def.logical_name,
+                          :data_type_id => common_column_def.data_type_id,
+                          :size => common_column_def.size,
+                          :scale => common_column_def.scale,
+                          :nullable => common_column_def.nullable,
+                          :default_value => common_column_def.default_value,
+                          :common_column_id => common_column_def.id,
+                          :primary_key_number => common_column_def.primary_key_number,
+                          :position => position)
+    end
+    BxTableDefHistoryService.new.register_create_table_def_history(table_def, @input.relational_issue_ids)
+    table_def
+  end
 end
 

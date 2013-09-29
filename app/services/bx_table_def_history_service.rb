@@ -35,4 +35,12 @@ class BxTableDefHistoryService < BxHistoryService
   def register_delete_common_column_def_history(common_column_def)
     self.register_history("table_group", "delete_common_column_def", common_column_def.physical_name, common_column_def.table_group_id, nil, nil)
   end
+
+  def register_create_table_def_history(table_def, issue_ids)
+    changesets = table_def.previous_changes.slice("physical_name", "logical_name", "description")
+    if table_def.column_defs.present?
+      changesets["using_common_column_defs"] = ["", table_def.column_defs.map(&:physical_name).join(", ")]
+    end
+    self.register_history("table_def", "create_table_def", table_def.physical_name, table_def.id, changesets, issue_ids)
+  end
 end

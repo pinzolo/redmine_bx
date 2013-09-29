@@ -37,6 +37,10 @@ ja:
       table_def:
         list: "テーブル定義一覧"
         new: "新しいテーブル定義"
+        physical_name: "物理名"
+        logical_name: "論理名"
+        using_common_column_defs: "使用する共通列"
+        description: "説明"
       common_column_def:
         list: "共通列定義一覧"
         new: "新しい共通列定義"
@@ -153,7 +157,11 @@ ja:
         primary_key_number: "主キー番号"
         position_type: "種別"
         note: "備考"
-
+      bx_table_def_form:
+        physical_name: "物理名"
+        logical_name: "論理名"
+        using_common_column_defs: "使用する共通列"
+        description: "説明"
     errors:
       template:
         header:
