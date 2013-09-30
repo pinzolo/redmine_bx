@@ -42,10 +42,7 @@ class BxTableDefService
     another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
                                       :position_type => common_column_def.position_type,
                                       :position => common_column_def.position - 1).first
-    common_column_def.position -= 1
-    another.position += 1
-    common_column_def.save!
-    another.save!
+    transpose_position!(common_column_def, another)
   end
 
   def down_common_column_def_position(common_column_def)
@@ -54,10 +51,7 @@ class BxTableDefService
     another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
                                       :position_type => common_column_def.position_type,
                                       :position => common_column_def.position + 1).first
-    common_column_def.position += 1
-    another.position -= 1
-    common_column_def.save!
-    another.save!
+    transpose_position!(common_column_def, another)
   end
   # }}}
 
@@ -94,19 +88,22 @@ class BxTableDefService
     return unless column_def.can_up?
 
     another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position - 1).first
-    column_def.position, another.position = another.position, column_def.position
-    column_def.save!
-    another.save!
+    transpose_position!(column_def, another)
   end
 
   def down_column_def_position(column_def)
     return unless column_def.can_down?
 
     another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position + 1).first
-    column_def.position, another.position = another.position, column_def.position
-    column_def.save!
-    another.save!
+    transpose_position!(column_def, another)
   end
   # }}}
+
+  private
+  def transpose_position!(one, another)
+    one.position, another.position = another.position, one.position
+    one.save!
+    another.save!
+  end
 end
 
