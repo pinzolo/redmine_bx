@@ -21,6 +21,7 @@ Redmine::Plugin.register :redmine_bx do
     permission :manage_bx_table_defs, :bx_table_defs => [:new, :edit, :create, :update, :destroy],
                                       :bx_table_groups => [:new, :edit, :create, :update, :destroy],
                                       :bx_common_column_defs => [:new, :edit, :create, :update, :destroy, :up, :down],
+                                      :bx_column_defs => [:new, :edit, :create, :update, :destroy, :up, :down],
                                       :require => :member
   end
 

@@ -2,6 +2,7 @@
 class BxTableDefService
   include BxService
 
+  # table group {{{
   def create_table_group
     table_group = BxTableGroup.create!(@input.params_for(:table_group, :lock_version))
     valid_data_type_ids = BxDataType.where(:database_id => table_group.database_id).pluck(:id)
@@ -13,7 +14,9 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_create_table_group_history(table_group, @input.relational_issue_ids)
     table_group
   end
+  # }}}
 
+  # common column {{{
   def create_common_column_def
     common_column_def = BxCommonColumnDef.new(@input.params_for(:common_column_def, :lock_version))
     base_defs = common_column_def.header? ? common_column_def.table_group.common_header_column_defs : common_column_def.table_group.common_footer_column_defs
@@ -56,7 +59,9 @@ class BxTableDefService
     common_column_def.save!
     another.save!
   end
+  # }}}
 
+  # table def {{{
   def create_table_def
     table_def = BxTableDef.create!(@input.params_for(:table_def, :lock_version))
     valid_common_column_defs = BxCommonColumnDef.where(:table_group_id => table_def.table_group_id, :id => @input.using_common_column_defs)
@@ -82,5 +87,26 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_update_table_def_history(table_def, @input.relational_issue_ids)
     table_def
   end
+  # }}}
+
+  # column def {{{
+  def up_column_def_position(column_def)
+    return unless column_def.can_up?
+
+    another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position - 1).first
+    column_def.position, another.position = another.position, column_def.position
+    column_def.save!
+    another.save!
+  end
+
+  def down_column_def_position(column_def)
+    return unless column_def.can_down?
+
+    another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position + 1).first
+    column_def.position, another.position = another.position, column_def.position
+    column_def.save!
+    another.save!
+  end
+  # }}}
 end
 
