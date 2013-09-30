@@ -76,5 +76,11 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_create_table_def_history(table_def, @input.relational_issue_ids)
     table_def
   end
+
+  def update_table_def(table_def)
+    table_def.update_attributes!(@input.params_for(:table_def, :table_group_id))
+    BxTableDefHistoryService.new.register_update_table_def_history(table_def, @input.relational_issue_ids)
+    table_def
+  end
 end
 

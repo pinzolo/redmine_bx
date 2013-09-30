@@ -43,4 +43,9 @@ class BxTableDefHistoryService < BxHistoryService
     end
     self.register_history("table_def", "create_table_def", table_def.physical_name, table_def.id, changesets, issue_ids)
   end
+
+  def register_update_table_def_history(table_def, issue_ids)
+    changesets = table_def.previous_changes.slice("physical_name", "logical_name", "description")
+    self.register_history("table_def", "update_table_def", table_def.physical_name, table_def.id, changesets, issue_ids)
+  end
 end

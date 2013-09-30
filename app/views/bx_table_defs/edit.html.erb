@@ -1,1 +1,13 @@
-<h2>BxTableDefsController#edit</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => project_bx_table_def_path(@project, @table_def), :method => :put do |f| %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form, :common_column_defs => nil } %>
+    <%= f.submit l(:button_update) %>
+    <%= link_to l(:button_cancel), project_bx_table_def_path(@project, @table_def) %>
+  <% end %>
+</div>
