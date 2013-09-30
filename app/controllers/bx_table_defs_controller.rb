@@ -10,6 +10,7 @@ class BxTableDefsController < ApplicationController
   end
 
   def show
+    @table_def = BxTableDef.find(params[:id])
   end
 
   def new

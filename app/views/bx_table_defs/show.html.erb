@@ -1,1 +1,96 @@
-<h2>BxTableDefsController#show</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="bx-content-box">
+  <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+    <div class="contextual">
+    </div>
+  <% end %>
+  <%= bx_content_title("bx.label.table_def.information") %>
+  <table class="bx-informations">
+    <tr>
+      <th><%= l("bx.label.table_def.physical_name") %> :</th>
+      <td><%= @table_def.physical_name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.table_def.logical_name") %> :</th>
+      <td><%= @table_def.logical_name %></td>
+    </tr>
+    <tr>
+      <th><%= l("bx.label.table_def.description") %> :</th>
+      <td><%= hbr(@table_def.description) %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="bx-content-box">
+  <%= bx_content_title("bx.label.column_def.list") %>
+<% if @table_def.column_defs.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <table class="bx-grid">
+    <thead>
+      <tr>
+        <th><%= l("bx.label.column_def.physical_name") %></th>
+        <th><%= l("bx.label.column_def.logical_name") %></th>
+        <th><%= l("bx.label.column_def.data_type") %></th>
+        <th><%= l("bx.label.column_def.size") %></th>
+        <th><%= l("bx.label.column_def.scale") %></th>
+        <th><%= l("bx.label.column_def.nullable") %></th>
+        <th><%= l("bx.label.column_def.default_value") %></th>
+        <th><%= l("bx.label.column_def.reference_column") %></th>
+        <th><%= l("bx.label.column_def.primary_key_number") %></th>
+        <th><%= l("bx.label.column_def.note") %></th>
+  <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+        <th class="bx-reorder-column">&nbsp;</th>
+        <th class="bx-command-column">&nbsp;</th>
+  <% end %>
+      </tr>
+    </thead>
+    <tbody>
+  <% @table_def.column_defs.each do |column_def| %>
+      <tr>
+        <td><%= column_def.physical_name %></td>
+        <td><%= column_def.logical_name %></td>
+        <td><%= column_def.data_type.name %></td>
+        <td class="bx-number-cell"><%= column_def.size %></td>
+        <td class="bx-number-cell"><%= column_def.scale %></td>
+        <td class="bx-icon-cell"><%= image_tag "#{column_def.nullable}.png" %></td>
+        <td><%= column_def.default_value %></td>
+        <td><%= column_def.reference_column.try(:full_physical_name) %></td>
+        <td class="bx-number-cell"><%= column_def.primary_key_number %></td>
+        <td><%= bx_note(column_def.note) %></td>
+    <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+        <td>
+      <% if column_def.can_up? %>
+          <%= link_to("", up_project_bx_column_def_path(@project, column_def), :method => :put, :class => "icon bx-reorder-up") %>
+      <% else %>
+          <span class="bx-reorder-disable"></span>
+      <% end %>
+      <% if column_def.can_down? %>
+          <%= link_to("", down_project_bx_column_def_path(@project, column_def), :method => :put, :class => "icon bx-reorder-down") %>
+      <% else %>
+          <span class="bx-reorder-disable"></span>
+      <% end %>
+        </td>
+        <td>
+          <%= link_to l(:button_edit), edit_project_bx_column_def_path(@project, column_def), :class => 'icon icon-edit' %>
+          <%= delete_link project_bx_column_def_path(@project, column_def) %>
+        </td>
+    <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+  <div id="bx_note_dialog" class="bx-note-dialog"></div>
+<% end %>
+<% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+  <p><%= link_to l("bx.label.column_def.new"), new_project_bx_table_def_column_def_path(@project, @table_def), :class => 'icon icon-add' %></p>
+<% end %>
+</div>
+
+<%# TODO: indexes %>
+
+<%= render :partial => "bx_histories/list", :locals => { :histories => @table_def.histories } %>

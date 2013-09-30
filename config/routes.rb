@@ -24,7 +24,15 @@ Rails.application.routes.draw do
           put :down
         end
       end
-      resources :table_defs, :controller => :bx_table_defs, :only => [:show, :edit, :update, :destroy]
+      resources :table_defs, :controller => :bx_table_defs, :only => [:show, :edit, :update, :destroy] do
+        resources :column_defs, :controller => :bx_column_defs, :only => [:new, :create]
+      end
+      resources :column_defs, :controller => :bx_column_defs, :only => [:edit, :update, :destroy] do
+        member do
+          put :up
+          put :down
+        end
+      end
     end
   end
 end

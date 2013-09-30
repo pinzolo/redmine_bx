@@ -35,13 +35,14 @@ en:
       table_def:
         list: "Table definitions"
         new: "New table definition"
+        information: "Information"
         physical_name: "Physical name"
         logical_name: "Logical name"
         using_common_column_defs: "Using common columns"
         description: "Description"
       common_column_def:
         list: "Common column definitions"
-        new: "New common table definition"
+        new: "New common column definition"
         physical_name: "Physical name"
         logical_name: "Logical name"
         data_type: "Data type"
@@ -50,7 +51,20 @@ en:
         nullable: "NULL"
         default_value: "Default value"
         primary_key_number: "PK"
-        type: "Type"
+        position_type: "Type"
+        note: "Note"
+      column_def:
+        list: "Column definitions"
+        new: "New column definition"
+        physical_name: "Physical name"
+        logical_name: "Logical name"
+        data_type: "Data type"
+        size: "Size"
+        scale: "Scale"
+        nullable: "NULL"
+        default_value: "Default value"
+        reference_column: "Reference column"
+        primary_key_number: "PK"
         note: "Note"
       history:
         list: "Histories"
@@ -106,6 +120,11 @@ en:
             primary_key_number: "PK"
             type: "Type"
             note: "Note"
+          create_table_def:
+            physical_name: "Physical name"
+            logical_name: "Logical name"
+            description: "Description"
+            using_common_column_defs: "Using common columns"
     text:
       history_operations:
         create_resource: "Resource [%{key}] was created."
@@ -120,6 +139,7 @@ en:
         create_common_column_def: "Common column definition [%{key}] was created."
         update_common_column_def: "Common column definition [%{key}] was updated."
         delete_common_column_def: "Common column definition [%{key}] was deleted."
+        create_table_def: "Table definition [%{key}] was created."
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"
