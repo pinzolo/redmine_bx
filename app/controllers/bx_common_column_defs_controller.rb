@@ -58,7 +58,7 @@ class BxCommonColumnDefsController < ApplicationController
     @common_column_def = BxCommonColumnDef.find(params[:id])
     @result = BxTableDefService.new.up_common_column_def_position!(@common_column_def)
     if @result.success?
-      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group)
+      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end
@@ -68,7 +68,7 @@ class BxCommonColumnDefsController < ApplicationController
     @common_column_def = BxCommonColumnDef.find(params[:id])
     @result = BxTableDefService.new.down_common_column_def_position!(@common_column_def)
     if @result.success?
-      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group)
+      redirect_to project_bx_table_group_path(@project, @common_column_def.table_group_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end

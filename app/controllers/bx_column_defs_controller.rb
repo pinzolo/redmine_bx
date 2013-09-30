@@ -22,7 +22,7 @@ class BxColumnDefsController < ApplicationController
     @column_def = BxColumnDef.find(params[:id])
     @result = BxTableDefService.new.up_column_def_position!(@column_def)
     if @result.success?
-      redirect_to project_bx_table_def_path(@project, @column_def.table_def)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end
@@ -32,7 +32,7 @@ class BxColumnDefsController < ApplicationController
     @column_def = BxColumnDef.find(params[:id])
     @result = BxTableDefService.new.down_column_def_position!(@column_def)
     if @result.success?
-      redirect_to project_bx_table_def_path(@project, @column_def.table_def)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end
