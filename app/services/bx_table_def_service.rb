@@ -34,7 +34,7 @@ class BxTableDefService
   end
 
   def up_common_column_def_position(common_column_def)
-    return if common_column_def.can_up?
+    return unless common_column_def.can_up?
 
     another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
                                       :position_type => common_column_def.position_type,
@@ -46,7 +46,7 @@ class BxTableDefService
   end
 
   def down_common_column_def_position(common_column_def)
-    return if common_column_def.can_down?
+    return unless common_column_def.can_down?
 
     another = BxCommonColumnDef.where(:table_group_id => common_column_def.table_group_id,
                                       :position_type => common_column_def.position_type,
