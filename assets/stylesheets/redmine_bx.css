@@ -63,3 +63,5 @@ table.bx-grid td { vertical-align: top; padding-right:10px; border: 1px solid #e
 
 .bx-note-dialog { display: none; }
 .bx-note-content { display: none; }
+
+.bx-table-columns-selection { display: none; }

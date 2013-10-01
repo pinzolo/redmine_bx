@@ -4,6 +4,9 @@ class BxColumnDefsController < ApplicationController
   unloadable
 
   def new
+    @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
+    @table_def = BxTableDef.find(params[:table_def_id])
+    @form = BxColumnDefForm.new(:table_id => @table_def.id)
   end
 
   def create

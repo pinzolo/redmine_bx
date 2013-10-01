@@ -187,6 +187,17 @@ ja:
         logical_name: "論理名"
         using_common_column_defs: "使用する共通列"
         description: "説明"
+      bx_column_def_form:
+        physical_name: "物理名"
+        logical_name: "論理名"
+        data_type_id: "データ型"
+        size: "データ長"
+        scale: "スケール"
+        nullable: "NULL許可"
+        default_value: "初期値"
+        reference_column_id: "参照列"
+        primary_key_number: "主キー番号"
+        note: "備考"
     errors:
       template:
         header:

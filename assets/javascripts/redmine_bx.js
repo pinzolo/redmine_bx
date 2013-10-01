@@ -44,15 +44,25 @@ if (typeof sizables !== "undefined" && typeof scalables !== "undefined") {
   });
 }
 
-$(".bx-display-note").on("click", function() {
-  $("#bx_note_dialog").html($(this).next().html()).dialog({
-    modal: true,
-    buttons: {
-      "OK": function() {
-        $(this).dialog("close");
-      }
-    },
-    height: "auto",
-    width: "300px"
+if ($(".bx-display-note").size() > 0) {
+  $(".bx-display-note").on("click", function() {
+    $("#bx_note_dialog").html($(this).next().html()).dialog({
+      modal: true,
+      buttons: {
+        "OK": function() {
+          $(this).dialog("close");
+        }
+      },
+      height: "auto",
+      width: "500px"
+    });
   });
-});
+}
+
+if ($("#form_reference_table_id").size() > 0) {
+  $(".bx-table-columns-selection").hide().find("select").prop("disabled", true).val("");
+  $("#form_reference_table_id").on("change", function() {
+    $(".bx-table-columns-selection").hide().find("select").prop("disabled", true).val("");
+    $("#bx_reference_column_candidates_" + $(this).val()).prop("disabled", false).parent().show();
+  });
+}
