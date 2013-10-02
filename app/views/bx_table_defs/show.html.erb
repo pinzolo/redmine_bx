@@ -13,6 +13,10 @@
   <%= bx_content_title("bx.label.table_def.information") %>
   <table class="bx-informations">
     <tr>
+      <th><%= l("bx.label.table_def.table_group") %> :</th>
+      <td><%= link_to @table_def.table_group.name, project_bx_table_group_path(@project, @table_def.table_group) %></td>
+    </tr>
+    <tr>
       <th><%= l("bx.label.table_def.physical_name") %> :</th>
       <td><%= @table_def.physical_name %></td>
     </tr>

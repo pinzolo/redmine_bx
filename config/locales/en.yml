@@ -36,6 +36,7 @@ en:
         list: "Table definitions"
         new: "New table definition"
         information: "Information"
+        table_group: "Belonging table group"
         physical_name: "Physical name"
         logical_name: "Logical name"
         using_common_column_defs: "Using common columns"
