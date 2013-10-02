@@ -48,7 +48,6 @@
         <th><%= l("bx.label.column_def.default_value") %></th>
         <th><%= l("bx.label.column_def.reference_column_def") %></th>
         <th><%= l("bx.label.column_def.primary_key_number") %></th>
-        <th><%= l("bx.label.column_def.common_column_def") %></th>
         <th><%= l("bx.label.column_def.note") %></th>
   <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
         <th class="bx-reorder-column">&nbsp;</th>
@@ -58,7 +57,7 @@
     </thead>
     <tbody>
   <% @table_def.column_defs.each do |column_def| %>
-      <tr>
+      <tr class="<%= column_def.common_column_def ? 'bx-common-column-row' : 'bx-column-row' %>">
         <td><%= column_def.physical_name %></td>
         <td><%= column_def.logical_name %></td>
         <td><%= column_def.data_type.name %></td>
@@ -68,7 +67,6 @@
         <td><%= column_def.default_value %></td>
         <td><%= column_def.reference_column_def.try(:full_physical_name) %></td>
         <td class="bx-number-cell"><%= column_def.primary_key_number %></td>
-        <td><%= column_def.common_column_def.try(:position_type) %></td>
         <td><%= bx_note(column_def.note) %></td>
     <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
         <td>
