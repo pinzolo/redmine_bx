@@ -39,7 +39,18 @@ Redmine::WikiFormatting::Macros.register do
     if resource
       link_label = resource.code
       link_label << " : #{resource.summary}" if resource.summary.present?
-      link_to(link_label, project_bx_resource_path(resource.project, resource))
+      link_to(link_label, project_bx_resource_path(resource.project_id, resource))
+    else
+      ""
+    end
+  end
+  macro :bx_table do |obj, args|
+    table_id = args.first
+    table_def = BxTableDef.where(:id => table_id).first
+    if table_def
+      link_label = table_def.physical_name
+      link_label << " : #{table_def.logical_name}" if table_def.logical_name.present?
+      link_to(link_label, project_bx_table_def_path(table_def.project_id, table_def))
     else
       ""
     end
