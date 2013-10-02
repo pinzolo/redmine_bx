@@ -84,6 +84,22 @@ class BxTableDefService
   # }}}
 
   # column def {{{
+  def create_column_def
+    column_def = BxColumnDef.new(@input.params_for(:column_def, :lock_version))
+    existing_column_defs = BxColumnDef.where(:table_id => column_def.table_id).order(:position)
+    last_column_def_without_footer = existing_column_defs.select { |c| !c.common_column_def.try(:footer?) }.last
+    column_def.position = last_column_def_without_footer ? last_column_def_without_footer.position + 1 : 1
+    existing_column_defs.each do |c|
+      if c.position > last_column_def_without_footer.position
+        c.position += 1
+        c.save!
+      end
+    end
+    column_def.reference_column_id ||= 0
+    column_def.save!
+    BxTableDefHistoryService.new.register_create_column_def_history(column_def, @input.relational_issues)
+  end
+
   def up_column_def_position(column_def)
     return unless column_def.can_up?
 

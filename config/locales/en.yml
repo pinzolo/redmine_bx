@@ -63,7 +63,7 @@ en:
         scale: "Scale"
         nullable: "NULL"
         default_value: "Default value"
-        reference_column: "Reference column"
+        reference_column_def: "Reference column"
         primary_key_number: "PK"
         note: "Note"
       history:

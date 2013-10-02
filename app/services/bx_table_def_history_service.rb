@@ -48,4 +48,19 @@ class BxTableDefHistoryService < BxHistoryService
     changesets = table_def.previous_changes.slice("physical_name", "logical_name", "description")
     self.register_history("table_def", "update_table_def", table_def.physical_name, table_def.id, changesets, issue_ids)
   end
+
+  def register_create_column_def_history(column_def, issue_ids)
+    changesets = column_def.previous_changes.slice("physical_name", "logical_name", "data_type_id")
+    if changesets.key?("data_type_id")
+      changesets["data_type"] = ["", column_def.data_type.name]
+      changesets.delete("data_type_id")
+    end
+    changesets = changesets.merge(column_def.previous_changes.slice("size", "scale", "nullable", "default_value", "reference_column_id"))
+    if column_def.reference_column_def && changesets.key?("reference_column_id")
+      changesets["reference_column_def"] = ["", column_def.reference_column_def.full_physical_name]
+      changesets.delete("reference_column_id")
+    end
+    changesets = changesets.merge(column_def.previous_changes.slice("primary_key_number", "note"))
+    self.register_history("table_def", "create_column_def", column_def.physical_name, column_def.table_id, changesets, issue_ids)
+  end
 end
