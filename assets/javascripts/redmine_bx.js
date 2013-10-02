@@ -38,6 +38,11 @@ if ($("#form_database_id").size() > 0) {
 }
 
 if (typeof sizables !== "undefined" && typeof scalables !== "undefined") {
+  var selected_data_type_id = $("#form_data_type_id").val();
+  if (selected_data_type_id !== "") {
+    $("#form_size").prop("disabled", !sizables[selected_data_type_id]);
+    $("#form_scale").prop("disabled", !scalables[selected_data_type_id]);
+  }
   $("#form_data_type_id").on("change", function() {
     $("#form_size").prop("disabled", !sizables[$(this).val()]);
     $("#form_scale").prop("disabled", !scalables[$(this).val()]);
