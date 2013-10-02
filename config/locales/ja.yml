@@ -67,6 +67,7 @@ ja:
         default_value: "初期値"
         primary_key_number: "PK"
         reference_column_def: "参照列"
+        common_column_def: "共通列"
         note: "備考"
       history:
         list: "履歴"

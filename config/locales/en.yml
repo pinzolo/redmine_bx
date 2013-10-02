@@ -64,6 +64,7 @@ en:
         nullable: "NULL"
         default_value: "Default value"
         reference_column_def: "Reference column"
+        common_column_def: "Common column"
         primary_key_number: "PK"
         note: "Note"
       history:
