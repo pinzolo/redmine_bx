@@ -3,6 +3,8 @@ class BxColumnDefsController < ApplicationController
   include BxController
   unloadable
 
+  bx_tab :bx_table_defs
+
   def new
     @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
     @table_def = BxTableDef.find(params[:table_def_id])
@@ -16,7 +18,11 @@ class BxColumnDefsController < ApplicationController
     @result = BxTableDefService.new(@form).create_column_def!
     if @result.success?
       flash[:notice] = l(:notice_successful_create)
-      redirect_to project_bx_table_def_path(@project, @table_def)
+      if params[:continue]
+        redirect_to new_project_bx_table_def_column_def_path(@project, @table_def)
+      else
+        redirect_to project_bx_table_def_path(@project, @table_def)
+      end
     elsif @result.invalid_input?
       render :action => :new
     elsif @result.error?
