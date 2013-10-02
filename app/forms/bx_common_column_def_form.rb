@@ -20,9 +20,9 @@ class BxCommonColumnDefForm
   validates :physical_name, :presence => true, :length => { :maximum => 200 }, :bx_common_column_def_physical_name_uniqueness => true
   validates :logical_name, :length => { :maximum => 200 }
   validates :data_type_id, :presence => true, :bx_data_type_id_presence => true
-  validates :size, :numericality => { :only_integer => true }, :allow_blank => true
-  validates :scale, :numericality => { :only_integer => true }, :allow_blank => true
-  validates :primary_key_number, :numericality => { :only_integer => true }, :allow_blank => true
+  validates :size, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
+  validates :scale, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
+  validates :primary_key_number, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
   validates :position_type, :inclusion => { :in => ["header", "footer"] }
 
   def handle_extra_params(params)
