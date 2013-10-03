@@ -1,0 +1,19 @@
+<%# coding: utf-8 %>
+<table class="bx-multi-column-list">
+  <tbody>
+    <tr>
+<% table_defs.each_with_index do |table_def, index| %>
+      <td>
+        <%= link_to table_def.physical_name, project_bx_table_def_path(@project, table_def) %>
+  <% if table_def.logical_name.present? %>
+        &nbsp;[<%= table_def.logical_name %>]
+  <% end %>
+      </td>
+  <% if index % 3 == 2 %>
+    </tr>
+    <tr>
+  <% end %>
+<% end %>
+    </tr>
+  </tbody>
+</table>
