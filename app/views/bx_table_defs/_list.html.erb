@@ -9,7 +9,7 @@
         &nbsp;[<%= table_def.logical_name %>]
   <% end %>
       </td>
-  <% if index % 3 == 2 %>
+  <% if index % 3 == 2 && table_def != table_defs.last %>
     </tr>
     <tr>
   <% end %>
