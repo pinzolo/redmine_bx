@@ -51,8 +51,12 @@ class BxResourceCategoriesController < ApplicationController
 
   def destroy
     @category = BxResourceCategory.find(params[:id])
-    BxResourceService.new.delete_category!(@category)
-    flash[:notice] = l(:notice_successful_delete)
+    @result = BxResourceService.new.delete_category!(@category)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = @result.data.message
+    end
     redirect_to project_bx_resources_path(@project)
   end
 end

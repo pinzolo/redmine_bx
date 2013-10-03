@@ -49,8 +49,12 @@ class BxResourceBranchesController < ApplicationController
 
   def destroy
     @branch = BxResourceBranch.find(params[:id])
-    BxResourceService.new.delete_branch!(@branch)
-    flash[:notice] = l(:notice_successful_delete)
+    @result = BxResourceService.new.delete_branch!(@branch)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = @result.data.message
+    end
     redirect_to project_bx_category_path(@project, @branch.category_id)
   end
 end

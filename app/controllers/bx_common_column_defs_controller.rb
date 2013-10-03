@@ -49,8 +49,12 @@ class BxCommonColumnDefsController < ApplicationController
 
   def destroy
     @common_column_def = BxCommonColumnDef.find(params[:id])
-    BxTableDefService.new.delete_common_column_def!(@common_column_def)
-    flash[:notice] = l(:notice_successful_delete)
+    @result = BxTableDefService.new.delete_common_column_def!(@common_column_def)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = @result.data.message
+    end
     redirect_to project_bx_table_group_path(@project, @common_column_def.table_group_id)
   end
 
