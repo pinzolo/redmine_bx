@@ -84,4 +84,8 @@ class BxTableDefHistoryService < BxHistoryService
     changesets = changesets.merge(prev_changes.slice("primary_key_number", "note"))
     self.register_history("table_def", "update_column_def", column_def.physical_name, column_def.table_id, changesets, issue_ids)
   end
+
+  def register_delete_column_def_history(column_def)
+    self.register_history("table_def", "delete_column_def", column_def.physical_name, column_def.table_id, nil, nil)
+  end
 end

@@ -105,6 +105,11 @@ class BxTableDefService
     column_def
   end
 
+  def delete_column_def(column_def, history_registration = true)
+    column_def.destroy
+    BxTableDefHistoryService.new.register_delete_column_def_history(column_def) if history_registration
+  end
+
   def up_column_def_position(column_def)
     return unless column_def.can_up?
 

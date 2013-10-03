@@ -171,6 +171,7 @@ en:
         update_table_def: "Table definition [%{key}] was updated."
         create_column_def: "Column definition [%{key}] was created."
         update_column_def: "Column definition [%{key}] was updated."
+        delete_column_def: "Column definition [%{key}] was deleted."
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"
