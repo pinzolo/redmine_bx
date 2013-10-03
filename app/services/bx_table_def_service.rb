@@ -95,9 +95,14 @@ class BxTableDefService
         c.save!
       end
     end
-    column_def.reference_column_id ||= 0
     column_def.save!
     BxTableDefHistoryService.new.register_create_column_def_history(column_def, @input.relational_issues)
+  end
+
+  def update_column_def(column_def)
+    column_def.update_attributes!(@input.params_for(:column_def, :table_id))
+    BxTableDefHistoryService.new.register_update_column_def_history(column_def, @input.relational_issues)
+    column_def
   end
 
   def up_column_def_position(column_def)

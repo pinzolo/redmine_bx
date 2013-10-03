@@ -14,6 +14,7 @@ module BxService
         end
       rescue => ex
         Rails.logger.error(ex)
+        Rails.logger.error(ex.backtrace.join("\n"))
         data = ex
         reason = ex.is_a?(ActiveRecord::StaleObjectError) ? :conflict : :error
       end

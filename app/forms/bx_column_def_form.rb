@@ -29,6 +29,7 @@ class BxColumnDefForm
     self.base_column_def = params[:base_column_def]
     self.table_group_id = params[:table_group_id]
     self.reference_table_id = params[:reference_table_id]
+    self.reference_column_id ||= 0
   end
 end
 

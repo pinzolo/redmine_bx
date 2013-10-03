@@ -31,9 +31,30 @@ class BxColumnDefsController < ApplicationController
   end
 
   def edit
+    @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
+    @column_def = BxColumnDef.find(params[:id])
+    @form = BxColumnDefForm.new(:reference_table_id => @column_def.reference_column_def.try(:table_id))
+    @form.load(:column_def => @column_def)
   end
 
   def update
+    @column_def = BxColumnDef.find(params[:id])
+    merged_params = params[:form].merge(:table_id => @column_def.table_id,
+                                        :table_group_id => @column_def.table_def.table_group_id,
+                                        :base_column_def => @column_def)
+    @form = BxColumnDefForm.new(merged_params)
+    @result = BxTableDefService.new(@form).update_column_def!(@column_def)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_update)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
+    elsif @result.invalid_input?
+      render :action => :edit
+    elsif @result.conflict?
+      flash.now[:error] = l(:notice_locking_conflict)
+      render :action => :edit
+    elsif @result.error?
+      render_error(:message => @result.data.message)
+    end
   end
 
   def destroy

@@ -145,6 +145,17 @@ ja:
             reference_column_def: "参照列"
             primary_key_number: "PK"
             note: "備考"
+          update_column_def:
+            physical_name: "物理名"
+            logical_name: "論理名"
+            data_type: "データ型"
+            size: "データ長"
+            scale: "スケール"
+            nullable: "NULL許可"
+            default_value: "初期値"
+            reference_column_def: "参照列"
+            primary_key_number: "PK"
+            note: "備考"
     text:
       history_operations:
         create_resource: "リソース [%{key}] を作成"
@@ -162,6 +173,7 @@ ja:
         create_table_def: "テーブル定義 [%{key}] を作成"
         update_table_def: "テーブル定義 [%{key}] を更新"
         create_column_def: "列定義 [%{key}] を作成"
+        update_column_def: "列定義 [%{key}] を更新"
       history_detail_notes:
         create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
