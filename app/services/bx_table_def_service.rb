@@ -5,13 +5,17 @@ class BxTableDefService
   # table group {{{
   def create_table_group
     table_group = BxTableGroup.create!(@input.params_for(:table_group, :lock_version))
-    valid_data_type_ids = BxDataType.where(:database_id => table_group.database_id).pluck(:id)
-    @input.data_types.each do |data_type|
-      if valid_data_type_ids.include?(data_type.to_i)
-        BxTableGroupDataType.create!(:data_type_id => data_type, :table_group_id => table_group.id)
-      end
-    end
+    create_table_group_data_types!(table_group)
     BxTableDefHistoryService.new.register_create_table_group_history(table_group, @input.relational_issue_ids)
+    table_group
+  end
+
+  def update_table_group(table_group)
+    old_data_types = table_group.data_types.to_a
+    table_group.update_attributes!(@input.params_for(:table_group, :project_id))
+    BxTableGroupDataType.delete_all(:table_group_id => table_group.id)
+    create_table_group_data_types!(table_group)
+    BxTableDefHistoryService.new.register_update_table_group_history(table_group, old_data_types, @input.relational_issue_ids)
     table_group
   end
   # }}}
@@ -130,6 +134,15 @@ class BxTableDefService
     one.position, another.position = another.position, one.position
     one.save!
     another.save!
+  end
+
+  def create_table_group_data_types!(table_group)
+    valid_data_type_ids = BxDataType.where(:database_id => table_group.database_id).pluck(:id)
+    @input.data_types.each do |data_type|
+      if valid_data_type_ids.include?(data_type.to_i)
+        BxTableGroupDataType.create!(:data_type_id => data_type, :table_group_id => table_group.id)
+      end
+    end
   end
 end
 

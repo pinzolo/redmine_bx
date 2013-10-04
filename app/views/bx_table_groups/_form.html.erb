@@ -9,7 +9,7 @@
     <ul id="bx_data_types_<%= database.id %>" class="bx-data-types bx-labelled-list">
     <% database.data_types.each do |data_type| %>
       <li>
-        <%= check_box_tag "form[data_types][]", data_type.id, false, { :id => "form_data_types_#{data_type.id}", "data-default-checked" => data_type.default_use? } %>
+        <%= check_box_tag "form[data_types][]", data_type.id, false, { :id => "form_data_types_#{data_type.id}", "data-default-checked" => form.data_types.include?(data_type.id) } %>
         <%= label_tag "form_data_types_#{data_type.id}", data_type.name, :class => "inline" %>
      </li>
     <% end %>
@@ -19,5 +19,4 @@
   <p><%= f.text_area :description, :label => bx_form_label(form, "description"), :size => "80x5" %></p>
   <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
 </div>
-
 

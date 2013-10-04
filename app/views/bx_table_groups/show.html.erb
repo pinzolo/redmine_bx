@@ -6,6 +6,8 @@
 <div class="bx-content-box">
   <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
     <div class="contextual">
+      <%= link_to l(:button_edit), edit_project_bx_table_group_path(@project, @table_group), :class => 'icon icon-edit' %>
+      <%= delete_link project_bx_table_group_path(@project, @table_group) %>
     </div>
   <% end %>
   <%= bx_content_title("bx.label.table_group.information") %>

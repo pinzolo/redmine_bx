@@ -100,6 +100,11 @@ en:
             description: "Description"
             database: "Database"
             data_types: "Using data types"
+          update_table_group:
+            name: "Group name"
+            description: "Description"
+            database: "Database"
+            data_types: "Using data types"
           create_common_column_def:
             physical_name: "Physical name"
             logical_name: "Logical name"
@@ -164,6 +169,7 @@ en:
         update_branch: "Branch [%{key}] was updated."
         delete_branch: "Branch [%{key}] was deleted."
         create_table_group: "Table group [%{key}] was created."
+        update_table_group: "Table group [%{key}] was updated."
         create_common_column_def: "Common column definition [%{key}] was created."
         update_common_column_def: "Common column definition [%{key}] was updated."
         delete_common_column_def: "Common column definition [%{key}] was deleted."
