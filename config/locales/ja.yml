@@ -78,37 +78,22 @@ ja:
         details: "詳細"
       history_detail:
         properties:
-          create_resource:
+          resource:
             code: "コード"
             summary: "概要"
             value: "値"
-          update_resource:
-            code: "コード"
-            summary: "概要"
-            value: "値"
-          create_category:
+          category:
             name: "カテゴリ名"
             description: "説明"
-          update_category:
-            name: "カテゴリ名"
-            description: "説明"
-          create_branch:
+          branch:
             name: "ブランチ名"
             code: "コード"
-          update_branch:
-            name: "ブランチ名"
-            code: "コード"
-          create_table_group:
+          table_group:
             name: "グループ名"
             description: "説明"
             database: "データベース"
             data_types: "使用データ型"
-          update_table_group:
-            name: "グループ名"
-            description: "説明"
-            database: "データベース"
-            data_types: "使用データ型"
-          create_common_column_def:
+          common_column_def:
             physical_name: "物理名"
             logical_name: "論理名"
             data_type: "データ型"
@@ -119,38 +104,12 @@ ja:
             primary_key_number: "PK"
             position_type: "種別"
             note: "備考"
-          update_common_column_def:
-            physical_name: "物理名"
-            logical_name: "論理名"
-            data_type: "データ型"
-            size: "データ長"
-            scale: "スケール"
-            nullable: "NULL許可"
-            default_value: "初期値"
-            primary_key_number: "PK"
-            position_type: "種別"
-            note: "備考"
-          create_table_def:
+          table_def:
             physical_name: "物理名"
             logical_name: "論理名"
             description: "説明"
             using_common_column_defs: "使用する共通列"
-          update_table_def:
-            physical_name: "物理名"
-            logical_name: "論理名"
-            description: "説明"
-          create_column_def:
-            physical_name: "物理名"
-            logical_name: "論理名"
-            data_type: "データ型"
-            size: "データ長"
-            scale: "スケール"
-            nullable: "NULL許可"
-            default_value: "初期値"
-            reference_column_def: "参照列"
-            primary_key_number: "PK"
-            note: "備考"
-          update_column_def:
+          column_def:
             physical_name: "物理名"
             logical_name: "論理名"
             data_type: "データ型"
