@@ -11,7 +11,7 @@ class BxColumnDefForm
                                     :scale => :scale,
                                     :nullable => :nullable,
                                     :default_value => :default_value,
-                                    :reference_column_id => :reference_column_id,
+                                    :reference_column_def_id => :reference_column_def_id,
                                     :primary_key_number => :primary_key_number,
                                     :note => :note,
                                     :lock_version => :lock_version }
@@ -29,7 +29,7 @@ class BxColumnDefForm
     self.base_column_def = params[:base_column_def]
     self.table_group_id = params[:table_group_id]
     self.reference_table_def_id = params[:reference_table_def_id]
-    self.reference_column_id ||= 0
+    self.reference_column_def_id ||= 0
   end
 end
 

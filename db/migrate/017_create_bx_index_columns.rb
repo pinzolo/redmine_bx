@@ -6,11 +6,11 @@ class CreateBxIndexColumns < ActiveRecord::Migration
       t.timestamps
 
       t.integer :index_id, :null => false, :default => 0
-      t.integer :column_id, :null => false, :default => 0
+      t.integer :column_def_id, :null => false, :default => 0
     end
 
     add_index :bx_index_columns, :index_id
-    add_index :bx_index_columns, :column_id
-    add_index :bx_index_columns, [:index_id, :column_id], :unique => true
+    add_index :bx_index_columns, :column_def_id
+    add_index :bx_index_columns, [:index_id, :column_def_id], :unique => true
   end
 end

@@ -71,10 +71,10 @@ class BxTableDefHistoryService < BxHistoryService
       changesets["data_type"] = ["", column_def.data_type.name]
       changesets.delete("data_type_id")
     end
-    changesets = changesets.merge(prev_changes.slice("size", "scale", "nullable", "default_value", "reference_column_id"))
-    if column_def.reference_column_def && changesets.key?("reference_column_id")
+    changesets = changesets.merge(prev_changes.slice("size", "scale", "nullable", "default_value", "reference_column_def_id"))
+    if column_def.reference_column_def && changesets.key?("reference_column_def_id")
       changesets["reference_column_def"] = ["", column_def.reference_column_def.full_physical_name]
-      changesets.delete("reference_column_id")
+      changesets.delete("reference_column_def_id")
     end
     changesets = changesets.merge(prev_changes.slice("primary_key_number", "note"))
     self.register_history("table_def", "create_column_def", column_def.physical_name, column_def.table_def_id, changesets, issue_ids)
@@ -88,13 +88,13 @@ class BxTableDefHistoryService < BxHistoryService
       changesets["data_type"] = [prev_data_type.name, column_def.data_type.name]
       changesets.delete("data_type_id")
     end
-    changesets = changesets.merge(prev_changes.slice("size", "scale", "nullable", "default_value", "reference_column_id"))
-    if changesets.key?("reference_column_id")
-      prev_id = changesets["reference_column_id"].first
+    changesets = changesets.merge(prev_changes.slice("size", "scale", "nullable", "default_value", "reference_column_def_id"))
+    if changesets.key?("reference_column_def_id")
+      prev_id = changesets["reference_column_def_id"].first
       prev_value = prev_id.to_i.zero? ? "" : BxColumnDef.find(prev_id).full_physical_name
       new_value = column_def.reference_column_def.try(:full_physical_name) || ""
       changesets["reference_column_def"] = [prev_value, new_value]
-      changesets.delete("reference_column_id")
+      changesets.delete("reference_column_def_id")
     end
     changesets = changesets.merge(prev_changes.slice("primary_key_number", "note"))
     self.register_history("table_def", "update_column_def", column_def.physical_name, column_def.table_def_id, changesets, issue_ids)

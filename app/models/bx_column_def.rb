@@ -4,8 +4,8 @@ class BxColumnDef < ActiveRecord::Base
 
   belongs_to :table_def, :class_name => "BxTableDef", :foreign_key => :table_def_id
   belongs_to :data_type, :class_name => "BxDataType", :foreign_key => :data_type_id
-  belongs_to :common_column_def, :class_name => "BxCommonColumnDef", :foreign_key => :common_column_id
-  belongs_to :reference_column_def, :class_name => "BxColumnDef", :foreign_key => :reference_column_id
+  belongs_to :common_column_def, :class_name => "BxCommonColumnDef", :foreign_key => :common_column_def_id
+  belongs_to :reference_column_def, :class_name => "BxColumnDef", :foreign_key => :reference_column_def_id
 
   def full_physical_name
     "#{table_def.physical_name}.#{physical_name}"

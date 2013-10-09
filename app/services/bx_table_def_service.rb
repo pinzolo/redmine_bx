@@ -72,7 +72,7 @@ class BxTableDefService
                           :scale => common_column_def.scale,
                           :nullable => common_column_def.nullable,
                           :default_value => common_column_def.default_value,
-                          :common_column_id => common_column_def.id,
+                          :common_column_def_id => common_column_def.id,
                           :primary_key_number => common_column_def.primary_key_number,
                           :position => position)
     end

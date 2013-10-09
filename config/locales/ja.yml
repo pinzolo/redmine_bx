@@ -187,7 +187,7 @@ ja:
         scale: "スケール"
         nullable: "NULL許可"
         default_value: "初期値"
-        reference_column_id: "参照列"
+        reference_column_def_id: "参照列"
         primary_key_number: "主キー番号"
         note: "備考"
     errors:
