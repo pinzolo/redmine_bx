@@ -8,13 +8,13 @@ class BxColumnDefsController < ApplicationController
   def new
     @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
     @table_def = BxTableDef.find(params[:table_def_id])
-    @form = BxColumnDefForm.new(:table_id => @table_def.id)
+    @form = BxColumnDefForm.new(:table_def_id => @table_def.id)
   end
 
   def create
     @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
     @table_def = BxTableDef.find(params[:table_def_id])
-    @form = BxColumnDefForm.new(params[:form].merge(:table_group_id => @table_def.table_group_id, :table_id => @table_def.id))
+    @form = BxColumnDefForm.new(params[:form].merge(:table_group_id => @table_def.table_group_id, :table_def_id => @table_def.id))
     @result = BxTableDefService.new(@form).create_column_def!
     if @result.success?
       flash[:notice] = l(:notice_successful_create)
@@ -33,20 +33,20 @@ class BxColumnDefsController < ApplicationController
   def edit
     @table_defs = BxTableDef.where(:project_id => @project.id).order(:physical_name)
     @column_def = BxColumnDef.find(params[:id])
-    @form = BxColumnDefForm.new(:reference_table_id => @column_def.reference_column_def.try(:table_id))
+    @form = BxColumnDefForm.new(:reference_table_def_id => @column_def.reference_column_def.try(:table_def_id))
     @form.load(:column_def => @column_def)
   end
 
   def update
     @column_def = BxColumnDef.find(params[:id])
-    merged_params = params[:form].merge(:table_id => @column_def.table_id,
+    merged_params = params[:form].merge(:table_def_id => @column_def.table_def_id,
                                         :table_group_id => @column_def.table_def.table_group_id,
                                         :base_column_def => @column_def)
     @form = BxColumnDefForm.new(merged_params)
     @result = BxTableDefService.new(@form).update_column_def!(@column_def)
     if @result.success?
       flash[:notice] = l(:notice_successful_update)
-      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_def_id)
     elsif @result.invalid_input?
       render :action => :edit
     elsif @result.conflict?
@@ -65,14 +65,14 @@ class BxColumnDefsController < ApplicationController
     else
       flash[:error] = @result.data.message
     end
-    redirect_to project_bx_table_def_path(@project, @column_def.table_id)
+    redirect_to project_bx_table_def_path(@project, @column_def.table_def_id)
   end
 
   def up
     @column_def = BxColumnDef.find(params[:id])
     @result = BxTableDefService.new.up_column_def_position!(@column_def)
     if @result.success?
-      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_def_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end
@@ -82,7 +82,7 @@ class BxColumnDefsController < ApplicationController
     @column_def = BxColumnDef.find(params[:id])
     @result = BxTableDefService.new.down_column_def_position!(@column_def)
     if @result.success?
-      redirect_to project_bx_table_def_path(@project, @column_def.table_id)
+      redirect_to project_bx_table_def_path(@project, @column_def.table_def_id)
     elsif @result.error?
       render_error(:message => @result.data.message)
     end

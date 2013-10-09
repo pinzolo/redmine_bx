@@ -11,6 +11,6 @@
                                                 :data_types => @column_def.table_def.table_group.data_types,
                                                 :table_defs => @table_defs } %>
     <%= f.submit l(:button_update) %>
-    <%= link_to l(:button_cancel), project_bx_table_def_path(@project, @column_def.table_id) %>
+    <%= link_to l(:button_cancel), project_bx_table_def_path(@project, @column_def.table_def_id) %>
   <% end %>
 </div>

@@ -64,11 +64,11 @@ if ($(".bx-display-note").size() > 0) {
   });
 }
 
-if ($("#form_reference_table_id").size() > 0) {
+if ($("#form_reference_table_def_id").size() > 0) {
   $(".bx-table-columns-selection").each(function() {
     var p = $(this);
     var s = p.find("select");
-    if (s.attr("id") === "bx_reference_column_candidates_" + $("#form_reference_table_id").val()) {
+    if (s.attr("id") === "bx_reference_column_candidates_" + $("#form_reference_table_def_id").val()) {
       p.show();
       s.prop("disabled", false);
     } else {
@@ -76,7 +76,7 @@ if ($("#form_reference_table_id").size() > 0) {
       s.prop("disabled", true).val("");
     }
   });
-  $("#form_reference_table_id").on("change", function() {
+  $("#form_reference_table_def_id").on("change", function() {
     $(".bx-table-columns-selection").hide().find("select").prop("disabled", true).val("");
     $("#bx_reference_column_candidates_" + $(this).val()).prop("disabled", false).parent().show();
   });

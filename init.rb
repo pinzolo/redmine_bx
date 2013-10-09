@@ -45,8 +45,8 @@ Redmine::WikiFormatting::Macros.register do
     end
   end
   macro :bx_table do |obj, args|
-    table_id = args.first
-    table_def = BxTableDef.where(:id => table_id).first
+    table_def_id = args.first
+    table_def = BxTableDef.where(:id => table_def_id).first
     if table_def
       link_label = table_def.physical_name
       link_label << " : #{table_def.logical_name}" if table_def.logical_name.present?

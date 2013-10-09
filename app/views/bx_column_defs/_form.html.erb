@@ -18,7 +18,7 @@
   </p>
   <p><%= f.text_field :default_value, :label => bx_form_label(form, :default_value) %></p>
   <p>
-    <%= f.select :reference_table_id, table_defs.map { |t| [t.physical_name, t.id] }, :label => bx_form_label(form, :reference_column_id), :include_blank => true %>
+    <%= f.select :reference_table_def_id, table_defs.map { |t| [t.physical_name, t.id] }, :label => bx_form_label(form, :reference_column_id), :include_blank => true %>
   <% table_defs.each do |t| %>
     <span class="bx-table-columns-selection">
       <%= select_tag "form[reference_column_id]", options_for_select(t.column_defs.map { |c| [c.physical_name, c.id] }, form.reference_column_id), :id => "bx_reference_column_candidates_#{t.id}", :include_blank => true %>

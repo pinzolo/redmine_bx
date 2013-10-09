@@ -64,7 +64,7 @@ class BxTableDefService
     table_def = BxTableDef.create!(@input.params_for(:table_def, :lock_version))
     valid_common_column_defs = BxCommonColumnDef.where(:table_group_id => table_def.table_group_id, :id => @input.using_common_column_defs)
     valid_common_column_defs.each.with_index(1) do |common_column_def, position|
-      BxColumnDef.create!(:table_id => table_def.id,
+      BxColumnDef.create!(:table_def_id => table_def.id,
                           :physical_name => common_column_def.physical_name,
                           :logical_name => common_column_def.logical_name,
                           :data_type_id => common_column_def.data_type_id,
@@ -90,7 +90,7 @@ class BxTableDefService
   # column def {{{
   def create_column_def
     column_def = BxColumnDef.new(@input.params_for(:column_def, :lock_version))
-    existing_column_defs = BxColumnDef.where(:table_id => column_def.table_id).order(:position)
+    existing_column_defs = BxColumnDef.where(:table_def_id => column_def.table_def_id).order(:position)
     last_column_def_without_footer = existing_column_defs.select { |c| !c.common_column_def.try(:footer?) }.last
     column_def.position = last_column_def_without_footer ? last_column_def_without_footer.position + 1 : 1
     existing_column_defs.each do |c|
@@ -104,7 +104,7 @@ class BxTableDefService
   end
 
   def update_column_def(column_def)
-    column_def.update_attributes!(@input.params_for(:column_def, :table_id))
+    column_def.update_attributes!(@input.params_for(:column_def, :table_def_id))
     BxTableDefHistoryService.new.register_update_column_def_history(column_def, @input.relational_issues)
     column_def
   end
@@ -117,14 +117,14 @@ class BxTableDefService
   def up_column_def_position(column_def)
     return unless column_def.can_up?
 
-    another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position - 1).first
+    another = BxColumnDef.where(:table_def_id => column_def.table_def_id, :position => column_def.position - 1).first
     transpose_position!(column_def, another)
   end
 
   def down_column_def_position(column_def)
     return unless column_def.can_down?
 
-    another = BxColumnDef.where(:table_id => column_def.table_id, :position => column_def.position + 1).first
+    another = BxColumnDef.where(:table_def_id => column_def.table_def_id, :position => column_def.position + 1).first
     transpose_position!(column_def, another)
   end
   # }}}

@@ -5,7 +5,7 @@ class CreateBxColumnDefs < ActiveRecord::Migration
       t.integer :lock_version, :null => false, :default => 0
       t.timestamps
 
-      t.integer :table_id, :null => false, :default => 0
+      t.integer :table_def_id, :null => false, :default => 0
       t.string :logical_name, :null => false, :default => ""
       t.string :physical_name, :null => false, :default => ""
       t.integer :data_type_id, :null => false, :default => 0
@@ -20,7 +20,7 @@ class CreateBxColumnDefs < ActiveRecord::Migration
       t.text :note, :null => false, :default => ""
     end
 
-    add_index :bx_column_defs, :table_id
-    add_index :bx_column_defs, [:table_id, :physical_name], :unique => true
+    add_index :bx_column_defs, :table_def_id
+    add_index :bx_column_defs, [:table_def_id, :physical_name], :unique => true
   end
 end
