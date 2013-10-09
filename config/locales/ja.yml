@@ -70,6 +70,14 @@ ja:
         reference_column_def: "参照列"
         common_column_def: "共通列"
         note: "備考"
+      index_def:
+        list: "インデックス定義一覧"
+        new: "新しいインデックス定義"
+        physical_name: "物理名"
+        logical_name: "論理名"
+        unique: "ユニーク"
+        position: "順序"
+        note: "備考"
       history:
         list: "履歴"
         operation: "処理"
@@ -189,6 +197,13 @@ ja:
         default_value: "初期値"
         reference_column_def_id: "参照列"
         primary_key_number: "主キー番号"
+        note: "備考"
+      bx_index_def_form:
+        physical_name: "物理名"
+        logical_name: "論理名"
+        unique: "ユニーク"
+        define_as_unique: "ユニークインデックスとして定義する"
+        column_defs: "列選択"
         note: "備考"
     errors:
       template:

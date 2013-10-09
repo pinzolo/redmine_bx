@@ -71,3 +71,11 @@ table.bx-multi-column-list tbody td:hover { background-color:#ffffdd; }
 
 .bx-table-columns-selection { display: none; }
 .bx-common-column-row { background-color: #effbef; }
+
+.bx-columns-for-index {
+  float: none;
+  margin: 0 0 0 180px;
+  padding: 0;
+  vertical-align: top;
+  width: auto !important;
+}

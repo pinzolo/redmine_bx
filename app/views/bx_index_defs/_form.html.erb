@@ -1,0 +1,43 @@
+<%# coding: utf-8 %>
+<%= f.hidden_field :lock_version %>
+<div class="box tabular">
+  <p><%= f.text_field :physical_name, :label => bx_form_label(form, :physical_name), :required => true %></p>
+  <p><%= f.text_field :logical_name, :label => bx_form_label(form, :logical_name) %></p>
+  <p>
+    <%= f.check_box :unique, :label => bx_form_label(form, :unique) %>
+    <%= label_tag "form_unique", bx_form_label(form, :define_as_unique), :class => "inline" %>
+  </p>
+  <p>
+    <%= label_tag "form_column_defs", bx_form_label(form, :column_defs) %>
+    <table id="bx_columns_for_index" class="bx-grid bx-columns-for-index">
+      <thead>
+        <tr>
+          <th><%= l("bx.label.index_def.position") %></th>
+          <th><%= l("bx.label.column_def.physical_name") %></th>
+          <th><%= l("bx.label.column_def.logical_name") %></th>
+          <th><%= l("bx.label.column_def.data_type") %></th>
+          <th><%= l("bx.label.column_def.nullable") %></th>
+          <th><%= l("bx.label.column_def.primary_key_number") %></th>
+          <th><%= l("bx.label.column_def.note") %></th>
+        </tr>
+      </thead>
+      <tbody>
+<% column_defs.each do |column_def| %>
+        <tr class="<%= column_def.common_column_def ? 'bx-common-column-row' : 'bx-column-row' %>">
+          <td class="bx-number-cell"><%= text_field_tag "form[positions][#{column_def.id}]", form.positions[column_def.id], :size => 5 %></td>
+          <td><%= column_def.physical_name %></td>
+          <td><%= column_def.logical_name %></td>
+          <td><%= column_def.data_type.name %></td>
+          <td class="bx-icon-cell"><%= image_tag "#{column_def.nullable}.png" %></td>
+          <td class="bx-number-cell"><%= column_def.primary_key_number %></td>
+          <td><%= bx_note(column_def.note) %></td>
+        </tr>
+<% end %>
+      </tbody>
+    </table>
+  </p>
+  <p><%= f.text_area :note, :label => bx_form_label(form, :note), :size => "80x5" %></p>
+  <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
+</div>
+
+

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       end
       resources :table_defs, :controller => :bx_table_defs, :only => [:show, :edit, :update, :destroy] do
         resources :column_defs, :controller => :bx_column_defs, :only => [:new, :create]
+        resources :index_defs, :controller => :bx_index_defs, :only => [:new, :create]
       end
       resources :column_defs, :controller => :bx_column_defs, :only => [:edit, :update, :destroy] do
         member do
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
           put :down
         end
       end
+      resources :index_defs, :controller => :bx_index_defs, :only => [:edit, :update, :destroy]
     end
   end
 end
