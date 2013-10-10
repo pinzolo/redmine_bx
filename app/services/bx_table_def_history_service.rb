@@ -103,4 +103,11 @@ class BxTableDefHistoryService < BxHistoryService
   def register_delete_column_def_history(column_def)
     self.register_history("table_def", "delete_column_def", column_def.physical_name, column_def.table_def_id, nil, nil)
   end
+
+  def register_create_index_def_history(index_def, issue_ids)
+    changesets = index_def.previous_changes.slice("physical_name", "logical_name", "unique")
+    changesets["column_defs"] = ["", index_def.column_defs.map(&:physical_name).join(", ")]
+    changesets.merge(index_def.previous_changes.slice("note"))
+    self.register_history("table_def", "create_index_def", index_def.physical_name, index_def.table_def_id, changesets, issue_ids)
+  end
 end

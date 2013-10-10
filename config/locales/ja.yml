@@ -128,6 +128,12 @@ ja:
             reference_column_def: "参照列"
             primary_key_number: "PK"
             note: "備考"
+          index_def:
+            physical_name: "物理名"
+            logical_name: "論理名"
+            unique: "ユニーク"
+            column_defs: "列"
+            note: "備考"
     text:
       history_operations:
         create_resource: "リソース [%{key}] を作成"
@@ -148,6 +154,7 @@ ja:
         create_column_def: "列定義 [%{key}] を作成"
         update_column_def: "列定義 [%{key}] を更新"
         delete_column_def: "列定義 [%{key}] を削除"
+        create_index_def: "インデックス定義 [%{key}] を作成"
       history_detail_notes:
         create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
@@ -204,6 +211,7 @@ ja:
         unique: "ユニーク"
         define_as_unique: "ユニークインデックスとして定義する"
         column_defs: "列選択"
+        positions: "列順"
         note: "備考"
     errors:
       template:
@@ -235,5 +243,7 @@ ja:
         category_not_in_project: "カテゴリ(id: %{id})はこのプロジェクトに存在していません。"
         parent_not_in_project: "親リソース(id: %{id})はこのプロジェクトに存在していません。"
         contains_unusable_chars: "に不正な文字 %{chars} が含まれています。"
+        invalid_order: "は順序として不正です。"
+        contains_not_a_number: "は数値で入力してください。"
 
   label_bx_resource_node_plural: "リソース(Bx)"

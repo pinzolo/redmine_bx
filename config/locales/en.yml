@@ -126,6 +126,12 @@ en:
             reference_column_def: "Reference column"
             primary_key_number: "PK"
             note: "Note"
+          index_def:
+            physical_name: "Physical name"
+            logical_name: "Logical name"
+            unique: "Unique index"
+            column_defs: "Columns"
+            note: "Not"
     text:
       history_operations:
         create_resource: "Resource [%{key}] was created."
@@ -146,6 +152,7 @@ en:
         create_column_def: "Column definition [%{key}] was created."
         update_column_def: "Column definition [%{key}] was updated."
         delete_column_def: "Column definition [%{key}] was deleted."
+        create_index_def: "Index definition [%{key}] was created."
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"
@@ -191,6 +198,7 @@ en:
         unique: "Unique"
         define_as_unique: "Define as unique index"
         column_defs: "Select columns"
+        positions: "Order"
         note: "Note"
     errors:
       template:
@@ -221,5 +229,7 @@ en:
         category_not_in_project: "Category(id: %{id}) not exist in this project."
         parent_not_in_project: "Parent resource(id: %{id}) not exist in this project."
         contains_unusable_chars: "contains invalid chars. %{chars}"
+        invalid_order: "are invalid as order"
+        contains_not_a_number: "contains not number"
 
   label_bx_resource_node_plural: "Resources(Bx)"

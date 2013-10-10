@@ -129,6 +129,16 @@ class BxTableDefService
   end
   # }}}
 
+  # index def {{{
+  def create_index_def
+    index_def = BxIndexDef.create!(@input.params_for(:index_def, :lock_version))
+    @input.positions.each do |column_def_id, position|
+      BxIndexColumn.create!(:index_def_id => index_def.id, :column_def_id => column_def_id, :position => position)
+    end
+    BxTableDefHistoryService.new.register_create_index_def_history(index_def, @input.relational_issues)
+  end
+  # }}}
+
   private
   def transpose_position!(one, another)
     one.position, another.position = another.position, one.position
