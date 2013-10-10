@@ -1,2 +1,15 @@
 <%# coding: utf-8 %>
-<h2>BxIndexesController#edit</h2>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => project_bx_index_def_path(@project, @index_def), :method => :put do |f| %>
+    <%= render :partial => "form", :locals => { :f => f,
+                                                :form => @form,
+                                                :column_defs => @index_def.table_def.column_defs } %>
+    <%= f.submit l(:button_update) %>
+    <%= link_to l(:button_cancel), project_bx_table_def_path(@project, @index_def.table_def_id) %>
+  <% end %>
+</div>

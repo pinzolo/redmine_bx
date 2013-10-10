@@ -110,4 +110,11 @@ class BxTableDefHistoryService < BxHistoryService
     changesets.merge(index_def.previous_changes.slice("note"))
     self.register_history("table_def", "create_index_def", index_def.physical_name, index_def.table_def_id, changesets, issue_ids)
   end
+
+  def register_update_index_def_history(index_def, old_column_defs, issue_ids)
+    changesets = index_def.previous_changes.slice("physical_name", "logical_name", "unique")
+    changesets["column_defs"] = [old_column_defs.map(&:physical_name).join(", "), index_def.column_defs(true).map(&:physical_name).join(", ")]
+    changesets.merge(index_def.previous_changes.slice("note"))
+    self.register_history("table_def", "update_index_def", index_def.physical_name, index_def.table_def_id, changesets, issue_ids)
+  end
 end

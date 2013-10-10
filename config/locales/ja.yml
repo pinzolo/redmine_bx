@@ -78,6 +78,7 @@ ja:
         unique: "ユニーク"
         position: "順序"
         note: "備考"
+        column_defs: "列"
       history:
         list: "履歴"
         operation: "処理"

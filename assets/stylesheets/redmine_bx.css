@@ -57,9 +57,11 @@ table.bx-multi-column-list { border: 1px solid #e4e4e4;  border-collapse: collap
 table.bx-multi-column-list tbody td { vertical-align: top; padding-right:10px; border: 1px solid #e4e4e4; width: 33%; padding: 5px }
 table.bx-multi-column-list tbody td:hover { background-color:#ffffdd; }
 
+.bx-auto-width { width: auto !important; }
+
 .bx-number-cell { text-align: right; width: 8%; }
 .bx-icon-cell { text-align: center; width: 5%; }
-.bx-command-cell { width: 10%; }
+.bx-command-column { width: 10%; }
 
 .bx-reorder-column { width: 46px; }
 .bx-reorder-disable { display: inline-block; vertical-align: middle; width: 16px; height: 16px; }
@@ -79,3 +81,6 @@ table.bx-multi-column-list tbody td:hover { background-color:#ffffdd; }
   vertical-align: top;
   width: auto !important;
 }
+
+.bx-index-columns { list-style-type: none; margin: 0; padding: 0; }
+.bx-index-columns li { padding: 3px; }

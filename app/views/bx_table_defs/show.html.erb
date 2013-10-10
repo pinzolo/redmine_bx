@@ -96,12 +96,48 @@
 <% end %>
 </div>
 
-<%# TODO: indexes %>
 <div class="bx-content-box">
   <%= bx_content_title("bx.label.index_def.list") %>
 <% if @table_def.index_defs.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
+  <table class="bx-grid bx-auto-width">
+    <thead>
+      <tr>
+        <th><%= l("bx.label.index_def.physical_name") %></th>
+        <th><%= l("bx.label.index_def.logical_name") %></th>
+        <th><%= l("bx.label.index_def.unique") %></th>
+        <th><%= l("bx.label.index_def.column_defs") %></th>
+        <th><%= l("bx.label.index_def.note") %></th>
+  <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+        <th class="bx-command-column">&nbsp;</th>
+  <% end %>
+      </tr>
+    </thead>
+    <tbody>
+  <% @table_def.index_defs.each do |index_def| %>
+      <tr>
+        <td><%= index_def.physical_name %></td>
+        <td><%= index_def.logical_name %></td>
+        <td class="bx-icon-cell"><%= image_tag("true.png") if index_def.unique? %></td>
+        <td>
+          <ul class="bx-index-columns">
+    <% index_def.column_defs.each do |column_def| %>
+            <li><%= column_def.physical_name %></li>
+    <% end %>
+          </ul>
+        </td>
+        <td><%= bx_note(index_def.note) %></td>
+    <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
+        <td>
+          <%= link_to l(:button_edit), edit_project_bx_index_def_path(@project, index_def), :class => 'icon icon-edit' %>
+          <%= delete_link project_bx_index_def_path(@project, index_def) %>
+        </td>
+    <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
 <% end %>
 <% if User.current.allowed_to?(:manage_bx_table_defs, @project) %>
   <p><%= link_to l("bx.label.index_def.new"), new_project_bx_table_def_index_def_path(@project, @table_def), :class => 'icon icon-add' %></p>

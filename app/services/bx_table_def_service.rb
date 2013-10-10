@@ -133,10 +133,17 @@ class BxTableDefService
   # index def {{{
   def create_index_def
     index_def = BxIndexDef.create!(@input.params_for(:index_def, :lock_version))
-    @input.positions.each do |column_def_id, position|
-      BxIndexColumn.create!(:index_def_id => index_def.id, :column_def_id => column_def_id, :position => position)
-    end
+    create_index_columns!(index_def)
     BxTableDefHistoryService.new.register_create_index_def_history(index_def, @input.relational_issues)
+  end
+
+  def update_index_def(index_def)
+    old_column_defs = index_def.column_defs.to_a
+    index_def.update_attributes!(@input.params_for(:index_def, :table_def_id))
+    BxIndexColumn.delete_all(:index_def_id => index_def.id)
+    create_index_columns!(index_def)
+    BxTableDefHistoryService.new.register_update_index_def_history(index_def, old_column_defs, @input.relational_issues)
+    index_def
   end
   # }}}
 
@@ -153,6 +160,12 @@ class BxTableDefService
       if valid_data_type_ids.include?(data_type.to_i)
         BxTableGroupDataType.create!(:data_type_id => data_type, :table_group_id => table_group.id)
       end
+    end
+  end
+
+  def create_index_columns!(index_def)
+    @input.positions.each do |column_def_id, position|
+      BxIndexColumn.create!(:index_def_id => index_def.id, :column_def_id => column_def_id, :position => position)
     end
   end
 end

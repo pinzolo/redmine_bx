@@ -76,6 +76,7 @@ en:
         unique: "Unique"
         position: "Position"
         note: "Note"
+        column_defs: "Columns"
       history:
         list: "Histories"
         operation: "Operation"
