@@ -63,6 +63,7 @@ class BxTableDefService
   def create_table_def
     table_def = BxTableDef.create!(@input.params_for(:table_def, :lock_version))
     valid_common_column_defs = BxCommonColumnDef.where(:table_group_id => table_def.table_group_id, :id => @input.using_common_column_defs)
+                                                .order("position_type desc", :position)
     valid_common_column_defs.each.with_index(1) do |common_column_def, position|
       BxColumnDef.create!(:table_def_id => table_def.id,
                           :physical_name => common_column_def.physical_name,
