@@ -250,3 +250,4 @@ ja:
         contains_not_a_number: "は数値で入力してください。"
 
   label_bx_resource_node_plural: "リソース(Bx)"
+  label_bx_table_def_plural: "テーブル定義(Bx)"
