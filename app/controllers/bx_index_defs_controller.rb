@@ -55,5 +55,13 @@ class BxIndexDefsController < ApplicationController
   end
 
   def destroy
+    @index_def = BxIndexDef.find(params[:id])
+    @result = BxTableDefService.new.delete_index_def!(@index_def)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = @result.data.message
+    end
+    redirect_to project_bx_table_def_path(@project, @index_def.table_def_id)
   end
 end

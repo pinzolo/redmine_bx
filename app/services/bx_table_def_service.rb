@@ -145,6 +145,12 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_update_index_def_history(index_def, old_column_defs, @input.relational_issues)
     index_def
   end
+
+  def delete_index_def(index_def, history_registration = true)
+    BxIndexColumn.delete_all(:index_def_id => index_def.id)
+    index_def.destroy
+    BxTableDefHistoryService.new.register_delete_index_def_history(index_def) if history_registration
+  end
   # }}}
 
   private

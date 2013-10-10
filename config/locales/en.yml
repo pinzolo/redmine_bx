@@ -154,6 +154,8 @@ en:
         update_column_def: "Column definition [%{key}] was updated."
         delete_column_def: "Column definition [%{key}] was deleted."
         create_index_def: "Index definition [%{key}] was created."
+        update_index_def: "Index definition [%{key}] was updated."
+        delete_index_def: "Index definition [%{key}] was deleted."
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"

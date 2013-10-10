@@ -117,4 +117,8 @@ class BxTableDefHistoryService < BxHistoryService
     changesets.merge(index_def.previous_changes.slice("note"))
     self.register_history("table_def", "update_index_def", index_def.physical_name, index_def.table_def_id, changesets, issue_ids)
   end
+
+  def register_delete_index_def_history(index_def)
+    self.register_history("table_def", "delete_index_def", index_def.physical_name, index_def.table_def_id, nil, nil)
+  end
 end

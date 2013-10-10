@@ -156,6 +156,8 @@ ja:
         update_column_def: "列定義 [%{key}] を更新"
         delete_column_def: "列定義 [%{key}] を削除"
         create_index_def: "インデックス定義 [%{key}] を作成"
+        update_index_def: "インデックス定義 [%{key}] を更新"
+        delete_index_def: "インデックス定義 [%{key}] を削除"
       history_detail_notes:
         create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
