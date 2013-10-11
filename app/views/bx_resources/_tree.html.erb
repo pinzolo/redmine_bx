@@ -1,12 +1,32 @@
 <%# coding: utf-8 %>
 <% if resources.present? %>
+  <% prev = nil %>
 <ul>
-  <% resources.each do |resource| %>
-    <li id="bx-resource-%<= resource.id %>">
+  <% resources.each_with_index do |resource, index| %>
+    <% next_resource = resource == resources.last ? nil : resources[index + 1] %>
+  <li id="bx_resource_<%= resource.id %>">
     <%= bx_resource_mark(resource) %>
     <%= link_to(bx_resource_node_text(resource), project_bx_resource_path(@project, resource), :class => "bx-resource-node-link") %>
-    <%= render :partial => "bx_resources/tree", :locals => { :resources => resource.children } %>
+    <% if next_resource.nil? %>
+      <%# last resource %>
+      <% resource.depth.times do %>
+    </ul>
   </li>
+      <% end %>
+    <% elsif next_resource.depth == resource.depth %>
+      <%# next resource is sibling (same level) %>
+  </li>
+    <% elsif next_resource.depth > resource.depth %>
+      <%# next resource is child resource %>
+    <ul>
+    <% else %>
+      <%# others %>
+  </li>
+      <% (resource.depth - next_resource.depth).times do %>
+    </ul>
+  </li>
+      <% end %>
+    <% end %>
   <% end %>
 </ul>
   <% Bx.rendering_tree = true %>

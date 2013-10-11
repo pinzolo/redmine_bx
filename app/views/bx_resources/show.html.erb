@@ -54,7 +54,7 @@
   <p class="nodata"><%= l(:label_no_data) %></p>
 <% else %>
   <div class="bx-resources">
-    <%= render :partial => "bx_resources/tree", :locals => { :resources => @resource.children } %>
+    <%= render :partial => "bx_resources/tree", :locals => { :resources => @resource.descendants } %>
   </div>
 <% end %>
 </div>

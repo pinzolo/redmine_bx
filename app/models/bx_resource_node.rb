@@ -23,7 +23,13 @@ class BxResourceNode < ActiveRecord::Base
                 :datetime => :created_at
 
   def depth
-    @depth ||= self.parent.nil? ? 0 : self.parent.depth + 1
+    @depth ||= self.path.split(":").length
+  end
+
+  def descendants
+    @descendants ||= BxResourceNode.where(:category_id => self.category_id)
+                                   .where("#{self.class.table_name}.path LIKE ?", "#{self.path}:%")
+                                   .order(:path).includes(:parent, :values)
   end
 
   def ancestry
