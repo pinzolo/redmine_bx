@@ -3,8 +3,8 @@ class BxResourceNode < ActiveRecord::Base
   unloadable
 
   belongs_to :project
-  belongs_to :parent, :class_name => "BxResourceNode", :foreign_key => :parent_id
-  belongs_to :category, :class_name => "BxResourceCategory", :foreign_key => :category_id
+  belongs_to :parent, :class_name => "BxResourceNode"
+  belongs_to :category, :class_name => "BxResourceCategory"
   has_many :children, :class_name => "BxResourceNode", :foreign_key => :parent_id, :order => :code, :include => :values
   has_many :values, :class_name => "BxResourceValue", :foreign_key => :node_id
   has_many :histories, :class_name => "BxHistory", :foreign_key => :source_id,

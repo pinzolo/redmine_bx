@@ -2,7 +2,7 @@
 class BxTableGroup < ActiveRecord::Base
   unloadable
 
-  belongs_to :database, :class_name => "BxDatabase", :foreign_key => :database_id
+  belongs_to :database, :class_name => "BxDatabase"
   has_many :table_defs, :class_name => "BxTableDef", :foreign_key => :table_group_id, :order => :physical_name
   has_many :common_header_column_defs, :class_name => "BxCommonColumnDef", :foreign_key => :table_group_id, :order => :position,
                                        :conditions => Proc.new { [ "position_type = ?", "header"] }

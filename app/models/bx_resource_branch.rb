@@ -2,5 +2,5 @@
 class BxResourceBranch < ActiveRecord::Base
   unloadable
 
-  belongs_to :category, :class_name => "BxResourceCategory", :foreign_key => :category_id
+  belongs_to :category, :class_name => "BxResourceCategory"
 end
