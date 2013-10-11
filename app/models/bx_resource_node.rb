@@ -13,7 +13,7 @@ class BxResourceNode < ActiveRecord::Base
 
   before_save :set_path
 
-  acts_as_searchable :columns => ["path", "summary", "#{BxResourceValue.table_name}.value"],
+  acts_as_searchable :columns => ["#{table_name}.path", "#{table_name}.summary", "#{BxResourceValue.table_name}.value"],
                      :include => [:project, :values],
                      :date_column => "#{table_name}.created_at",
                      :permission => :view_bx_resource_nodes
