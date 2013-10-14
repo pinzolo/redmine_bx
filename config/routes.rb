@@ -36,5 +36,6 @@ Rails.application.routes.draw do
       end
       resources :index_defs, :controller => :bx_index_defs, :only => [:edit, :update, :destroy]
     end
+    resources :templates, :controller => :bx_templates
   end
 end
