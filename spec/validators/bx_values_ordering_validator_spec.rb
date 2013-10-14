@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BxValuesOrderingValidator do
   before do
-    class TestClassWithoutOption
+    class BxValuesOrderingValidatorTestClassWithoutOption
       include ActiveModel::Conversion
       include ActiveModel::Validations
       extend ActiveModel::Naming
@@ -14,7 +14,7 @@ describe BxValuesOrderingValidator do
       validates :values, :bx_values_ordering => true
     end
 
-    class TestClassWithOption
+    class BxValuesOrderingValidatorTestClassWithOption
       include ActiveModel::Conversion
       include ActiveModel::Validations
       extend ActiveModel::Naming
@@ -29,7 +29,7 @@ describe BxValuesOrderingValidator do
   describe "#validate_each" do
     context "without option" do
       before(:each) do
-        @model = TestClassWithoutOption.new
+        @model = BxValuesOrderingValidatorTestClassWithoutOption.new
       end
 
       context "values is nil" do
@@ -127,7 +127,7 @@ describe BxValuesOrderingValidator do
 
     context "with option" do
       before(:each) do
-        @model = TestClassWithOption.new
+        @model = BxValuesOrderingValidatorTestClassWithOption.new
       end
 
       describe "same behavior with no option" do
@@ -230,7 +230,7 @@ describe BxValuesOrderingValidator do
 
   describe "error message" do
     before(:each) do
-      @model = TestClassWithoutOption.new
+      @model = BxValuesOrderingValidatorTestClassWithoutOption.new
       @model.values = [1, 3]
     end
 

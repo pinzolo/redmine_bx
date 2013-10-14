@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BxValuesNumericalityValidator do
   before do
-    class TestClassWithoutOption
+    class BxValuesNumericalityValidatorTestClassWithoutOption
       include ActiveModel::Conversion
       include ActiveModel::Validations
       extend ActiveModel::Naming
@@ -14,7 +14,7 @@ describe BxValuesNumericalityValidator do
       validates :values, :bx_values_numericality => true
     end
 
-    class TestClassWithOption
+    class BxValuesNumericalityValidatorTestClassWithOption
       include ActiveModel::Conversion
       include ActiveModel::Validations
       extend ActiveModel::Naming
@@ -29,7 +29,7 @@ describe BxValuesNumericalityValidator do
   describe "#validate_each" do
     context "without option" do
       before(:each) do
-        @model = TestClassWithoutOption.new
+        @model = BxValuesNumericalityValidatorTestClassWithoutOption.new
       end
 
       context "when values is nil" do
@@ -115,7 +115,7 @@ describe BxValuesNumericalityValidator do
 
     context "with ignore_blank option" do
       before(:each) do
-        @model = TestClassWithOption.new
+        @model = BxValuesNumericalityValidatorTestClassWithOption.new
       end
 
       describe "same behavior with no option" do
@@ -204,7 +204,7 @@ describe BxValuesNumericalityValidator do
 
   describe "error message" do
     before(:each) do
-      @model = TestClassWithoutOption.new
+      @model = BxValuesNumericalityValidatorTestClassWithoutOption.new
       @model.values = ["1", "a"]
     end
 

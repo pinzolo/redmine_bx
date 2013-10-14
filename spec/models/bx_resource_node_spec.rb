@@ -11,8 +11,8 @@ describe BxResourceNode do
         @node = BxResourceNode.find(1)
       end
 
-      it "equals 0" do
-        expect(@node.depth).to eq 0
+      it "equals 1" do
+        expect(@node.depth).to eq 1
       end
     end
 
@@ -22,7 +22,7 @@ describe BxResourceNode do
       end
 
       it "equals parent depth + 1" do
-        expect(@node.depth).to eq 2
+        expect(@node.depth).to eq 3
       end
     end
   end
