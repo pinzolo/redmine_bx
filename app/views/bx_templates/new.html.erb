@@ -1,1 +1,13 @@
-<h2>BxTemplatesController#new</h2>
+<%# coding: utf-8 %>
+<%= bx_title %>
+
+<%= bx_tabs params[:tab] %>
+
+<div class="tab-content">
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => project_bx_templates_path(@project) do |f| %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
+    <%= f.submit l(:button_create) %>
+    <%= link_to l(:button_cancel), @back_url %>
+  <% end %>
+</div>

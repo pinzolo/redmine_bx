@@ -24,6 +24,9 @@ Redmine::Plugin.register :redmine_bx do
                                       :bx_column_defs => [:new, :edit, :create, :update, :destroy, :up, :down],
                                       :bx_index_defs => [:new, :edit, :create, :update, :destroy],
                                       :require => :member
+    permission :view_bx_templates, :bx_templates => [:index, :show]
+    permission :manage_bx_templates, :bx_templates => [:new, :edit, :create, :update, :destroy],
+                                     :require => :member
   end
 
   menu :project_menu, :bx, { :controller => :bx_resources, :action => :index }, :param => :project_id

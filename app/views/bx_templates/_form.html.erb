@@ -1,0 +1,14 @@
+<%# coding: utf-8 %>
+<%= f.hidden_field :lock_version %>
+<%= f.hidden_field :target %>
+<div class="box tabular">
+  <p><%= f.text_field :name, :label => bx_form_label(form, :name), :required => true %></p>
+  <p><%= f.text_field :file_name, :label => bx_form_label(form, :file_name), :required => true %></p>
+  <p>
+    <%= f.check_box :allow_direct, :label => bx_form_label(form, :allow_direct) %>
+    <%= label_tag "form_allow_direct", l("bx.label.allow_direct"), :class => "inline" %>
+  </p>
+  <p><%= f.text_area :content, :label => bx_form_label(form, :content), :size => "120x50", :required => true %></p>
+  <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
+</div>
+

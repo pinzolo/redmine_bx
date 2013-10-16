@@ -1,5 +1,5 @@
 # coding: utf-8
-class BxResourceBranchCodeUniquenessValidator < ActiveModel::EachValidator
+class BxTemplateFileNameUniquenessValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return if record.base_template && record.base_template.file_name == value
 

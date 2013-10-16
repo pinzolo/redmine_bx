@@ -7,6 +7,7 @@ en:
       resources: "Resources"
       relational_issues: "Relational issues"
       display_note: "Display"
+      allow_direct: "Allow direct output"
       resource:
         add: "Add resource"
         information: "Information"
@@ -159,6 +160,9 @@ en:
       history_detail_notes:
         create: "<strong>%{property}</strong> set to <em>\"%{new_value}\"</em>"
         update: "<strong>%{property}</strong> changed from <em>\"%{old_value}\"</em> to <em>\"%{new_value}\"</em>"
+      error:
+        template_target_not_found: "Target of template is not found."
+        invalid_template_target: "%{target} is invalide as target of template."
     menu:
       resources: "Resources"
       table_defs: "Table definitions"
@@ -203,6 +207,11 @@ en:
         column_defs: "Select columns"
         positions: "Order"
         note: "Note"
+      bx_template_form:
+        name: "Name"
+        file_name: "File name"
+        allow_direct: "Direct output"
+        content: "Content"
     errors:
       template:
         header:

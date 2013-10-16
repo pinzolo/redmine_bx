@@ -7,6 +7,7 @@ ja:
       resources: "リソース"
       relational_issues: "関連チケット"
       display_note: "表示する"
+      allow_direct: "直接出力を許可する"
       resource:
         add: "リソース追加"
         information: "リソース情報"
@@ -161,6 +162,9 @@ ja:
       history_detail_notes:
         create: "<strong>%{property}</strong> を <em>\"%{new_value}\"</em> にセット"
         update: "<strong>%{property}</strong> を <em>\"%{old_value}\"</em> から <em>\"%{new_value}\"</em> に変更"
+      error:
+        template_target_not_found: "テンプレートの対象が指定されていません。"
+        invalid_template_target: "%{target}はテンプレートの対象として不正です。"
     menu:
       resources: "リソース"
       table_defs: "テーブル定義"
@@ -216,6 +220,11 @@ ja:
         column_defs: "列選択"
         positions: "列順"
         note: "備考"
+      bx_template_form:
+        name: "テンプレート名"
+        file_name: "ファイル名"
+        allow_direct: "直接出力"
+        content: "テンプレート内容"
     errors:
       template:
         header:

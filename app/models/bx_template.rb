@@ -4,7 +4,9 @@ class BxTemplate < ActiveRecord::Base
 
   belongs_to :project
 
+  AVAILABLE_TARGETS = ["resource", "table_def"]
+
   def self.available_target?(target)
-    ["resource", "table_def"].include?(target)
+    AVAILABLE_TARGETS.include?(target)
   end
 end
