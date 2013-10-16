@@ -23,7 +23,7 @@ class BxCommonColumnDefForm
   validates :size, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
   validates :scale, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
   validates :primary_key_number, :numericality => { :only_integer => true, :greater_than => 0 }, :allow_blank => true
-  validates :position_type, :inclusion => { :in => ["header", "footer"] }
+  validates :position_type, :presence => true, :inclusion => { :in => ["header", "footer"] }
 
   def handle_extra_params(params)
     self.relational_issues = params[:relational_issues]
