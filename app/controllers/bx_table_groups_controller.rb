@@ -59,5 +59,13 @@ class BxTableGroupsController < ApplicationController
   end
 
   def destroy
+    @table_group = BxTableGroup.find(params[:id])
+    @result = BxTableDefService.new.delete_table_group!(@table_group)
+    if @result.success?
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = @result.data.message
+    end
+    redirect_to project_bx_table_defs_path(@project)
   end
 end

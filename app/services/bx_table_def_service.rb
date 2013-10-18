@@ -18,6 +18,16 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_update_table_group_history(table_group, old_data_types, @input.relational_issue_ids)
     table_group
   end
+
+  def delete_table_group(table_group)
+    table_group.common_column_defs.each do |common_column_def|
+      delete_common_column_def(common_column_def)
+    end
+    table_group.table_defs.each do |table_def|
+      delete_table_def(table_def)
+    end
+    table_group.destroy
+  end
   # }}}
 
   # common column {{{
