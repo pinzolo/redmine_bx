@@ -20,9 +20,16 @@ module BxHelper
     end
   end
 
-  def bx_title
-    html_title(l("bx.label.bx"))
-    content_tag(:h2, l("bx.label.bx"))
+  def bx_title(*keys)
+    title = l("bx.title.bx")
+    if keys.present?
+      keys.each do |key|
+        title << " >> "
+        title << l("bx.title.#{key}")
+      end
+    end
+    html_title(title)
+    content_tag(:h2, title)
   end
 
   def bx_content_title(title_key)

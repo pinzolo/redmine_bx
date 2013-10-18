@@ -167,6 +167,20 @@ en:
     menu:
       resources: "Resources"
       table_defs: "Table definitions"
+    title:
+      bx: "Bx"
+      column_def: "Column definition"
+      common_column_def: "Common column definition"
+      index_def: "Index definition"
+      resource: "Resource"
+      resource_branch: "Resource branch"
+      resource_category: "Resource category"
+      table_def: "Table definition"
+      table_group: "Table group"
+      template: "Template"
+      edit: "Edit"
+      new: "New"
+      show: "Detail"
 
   activemodel:
     attributes:

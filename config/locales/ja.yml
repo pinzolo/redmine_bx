@@ -169,6 +169,20 @@ ja:
     menu:
       resources: "リソース"
       table_defs: "テーブル定義"
+    title:
+      bx: "Bx"
+      column_def: "列定義"
+      common_column_def: "共通列定義"
+      index_def: "インデックス定義"
+      resource: "リソース"
+      resource_branch: "リソースブランチ"
+      resource_category: "リソースカテゴリ"
+      table_def: "テーブル定義"
+      table_group: "テーブルグループ"
+      template: "テンプレート"
+      edit: "編集"
+      new: "新規作成"
+      show: "詳細"
 
   activemodel:
     attributes:
