@@ -86,6 +86,17 @@ class BxTableDefService
     BxTableDefHistoryService.new.register_update_table_def_history(table_def, @input.relational_issue_ids)
     table_def
   end
+
+  def delete_table_def(table_def, history_registration = true)
+    table_def.index_defs.each do |index_def|
+      delete_index_def(index_def, false)
+    end
+    table_def.column_defs.each do |column_def|
+      delete_column_def(column_def, false)
+    end
+    table_def.destroy
+    BxTableDefHistoryService.new.register_delete_table_def_history(table_def) if history_registration
+  end
   # }}}
 
   # column def {{{

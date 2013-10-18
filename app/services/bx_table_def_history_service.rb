@@ -64,6 +64,10 @@ class BxTableDefHistoryService < BxHistoryService
     self.register_history("table_def", "update_table_def", table_def.physical_name, table_def.id, changesets, issue_ids)
   end
 
+  def register_delete_table_def_history(table_def)
+    self.register_history("table_group", "delete_table_def", table_def.physical_name, table_def.table_group_id, nil, nil)
+  end
+
   def register_create_column_def_history(column_def, issue_ids)
     prev_changes = column_def.previous_changes
     changesets = prev_changes.slice("physical_name", "logical_name", "data_type_id")
