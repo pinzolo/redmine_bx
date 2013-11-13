@@ -8,6 +8,9 @@
 #  10:     bx_root_resource_form:
 #  11:       resource_summary: "概要"
 #  12:       resource_code: "コード"
+#  13:     bx_resource_category_form:
+#  14:       name: "カテゴリ名"
+#  15:       description: "説明"
 
 ---
 bx_resource_node_001:
@@ -138,4 +141,37 @@ bx_resource_node_012:
   code: resource_code
   summary: ルートリソースフォーム：コード
   path: activemodel:attributes:bx_root_resource_form:resource_code
+bx_resource_node_013:
+  id: 13
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  lock_version: 0
+  parent_id: 9
+  project_id: 1
+  category_id: 1
+  code: bx_resource_category_form
+  summary: カテゴリフォーム
+  path: activemodel:attributes:bx_resource_category_form
+bx_resource_node_014:
+  id: 14
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  lock_version: 0
+  parent_id: 13
+  project_id: 1
+  category_id: 1
+  code: name
+  summary: カテゴリ名
+  path: activemodel:attributes:bx_resource_category_form:name
+bx_resource_node_015:
+  id: 15
+  created_at: 2013-07-21 00:00:00
+  updated_at: 2013-07-21 00:00:00
+  lock_version: 0
+  parent_id: 13
+  project_id: 1
+  category_id: 1
+  code: description
+  summary: カテゴリ説明
+  path: activemodel:attributes:bx_resource_category_form:description
 
