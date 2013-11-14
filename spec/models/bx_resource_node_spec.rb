@@ -4,6 +4,55 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe BxResourceNode do
   fixtures :projects, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values
 
+  describe "#project" do
+    it "returns belonging project" do
+      expected = Project.find(1)
+      expect(BxResourceNode.find(1).project).to eq expected
+    end
+  end
+
+  describe "#parent" do
+    context "when node is root" do
+      it "returns nil" do
+        expect(BxResourceNode.find(1).parent).to eq nil
+      end
+    end
+    context "when node is not root" do
+      it "returns parent resource" do
+        expected = BxResourceNode.find(1)
+        expect(BxResourceNode.find(3).parent).to eq expected
+      end
+    end
+  end
+
+  describe "#category" do
+    it "returns belonging category" do
+      expected = BxResourceCategory.find(1)
+      expect(BxResourceNode.find(1).category).to eq expected
+    end
+  end
+
+  describe "#children" do
+    it "returns resource nods that parent_id is self and orderd by code" do
+      expected = BxResourceNode.where(:parent_id => 1).order(:code).to_a
+      expect(BxResourceNode.find(1).children.to_a).to eq expected
+    end
+  end
+
+  describe "#values" do
+    it "returns BxResourceValue list that resource_id is self" do
+      expected = BxResourceValue.where(:node_id => 1).to_a
+      expect(BxResourceNode.find(1).values.to_a).to eq expected
+    end
+  end
+
+  describe "#histories" do
+    it "returns histories that source_id is self and target is 'resource' and orderd by changed_at" do
+      expected = BxHistory.where(:source_id => 1, :target => "resource").order(:changed_at).to_a
+      expect(BxResourceNode.find(1).histories.to_a).to eq expected
+    end
+  end
+
   describe "#depth" do
     context "when node is root" do
       it "equals 1" do
