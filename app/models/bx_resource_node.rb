@@ -47,11 +47,10 @@ class BxResourceNode < ActiveRecord::Base
   def value(branch)
     branch_id = branch.is_a?(BxResourceBranch) ? branch.id : branch
     values.where(:branch_id => branch_id).first.try(:value)
-    #self.values.detect { |value| value.branch_id == branch.id }.try(:value)
   end
 
   private
   def set_path
-    self.path = self.ancestry.map(&:code).join(":")
+    self.path = parent ? "#{parent.path}:#{code}" : code
   end
 end

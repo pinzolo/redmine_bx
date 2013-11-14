@@ -70,6 +70,7 @@ describe BxResourceNode do
   describe "#ancestry" do
     context "when node is root" do
       let (:node) { BxResourceNode.find(1) }
+
       it "returns array that conains self only" do
         expect(node.ancestry).to eq [node]
       end
@@ -94,6 +95,7 @@ describe BxResourceNode do
   describe "#value" do
     context "when node has value" do
       let(:node) { BxResourceNode.find(4) }
+
       context "when argument is BxResourceBranch" do
         it "returns value that branch_id equals to id of argument" do
           expect(node.value(BxResourceBranch.find(2))).to eq "Resources"
@@ -107,6 +109,58 @@ describe BxResourceNode do
       context "when argument is String" do
         it "returns value that branch_id equals to Integer expression of argument" do
           expect(node.value("2")).to eq "Resources"
+        end
+      end
+    end
+    context "when node doesn't have value" do
+      let(:node) { BxResourceNode.find(9) }
+
+      context "when argument is BxResourceBranch" do
+        it "returns nil" do
+          expect(node.value(BxResourceBranch.find(2))).to eq nil
+        end
+      end
+      context "when argument is Integer" do
+        it "returns nil" do
+          expect(node.value(2)).to eq nil
+        end
+      end
+      context "when argument is String" do
+        it "returns nil" do
+          expect(node.value("2")).to eq nil
+        end
+      end
+    end
+  end
+
+  describe "#path" do
+    context "when created" do
+      context "when node is root" do
+        it "set self code" do
+          node = BxResourceNode.create(:project_id => 1, :category_id => 1, :code => "new_root", :summary => "summary", :path => "foo")
+          expect(node.path).to eq "new_root"
+        end
+      end
+      context "when node is not root" do
+        it "set joined code by ':'" do
+          node = BxResourceNode.create(:project_id => 1, :parent_id => 5, :category_id => 1, :code => "new_root", :summary => "summary", :path => "foo")
+          expect(node.path).to eq "locales:label:resources:new_root"
+        end
+      end
+    end
+    context "when updated" do
+      context "when node is root" do
+        it "set self code" do
+          node = BxResourceNode.find(1)
+          node.update_attributes(:code => "bar", :path => "foo")
+          expect(node.path).to eq "bar"
+        end
+      end
+      context "when node is not root" do
+        it "set joined code by ':'" do
+          node = BxResourceNode.find(5)
+          node.update_attributes(:code => "bar", :path => "foo")
+          expect(node.path).to eq "locales:label:bar"
         end
       end
     end
