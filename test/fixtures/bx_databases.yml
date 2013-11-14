@@ -1,0 +1,25 @@
+---
+bx_databases_001:
+  id: 1
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.802755000 +09:00
+  updated_at: 2013-11-13 18:20:50.802755000 +09:00
+  name: Oracle
+bx_databases_002:
+  id: 2
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.909765000 +09:00
+  updated_at: 2013-11-13 18:20:50.909765000 +09:00
+  name: SQL Server
+bx_databases_003:
+  id: 3
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.983773000 +09:00
+  updated_at: 2013-11-13 18:20:50.983773000 +09:00
+  name: PostgreSQL
+bx_databases_004:
+  id: 4
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.035778000 +09:00
+  updated_at: 2013-11-13 18:20:51.035778000 +09:00
+  name: MySQL

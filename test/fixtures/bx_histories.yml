@@ -1,0 +1,229 @@
+---
+bx_histories_001:
+  id: 1
+  lock_version: 0
+  created_at: 2013-11-14 13:04:27.909180000 +09:00
+  updated_at: 2013-11-14 13:04:27.909180000 +09:00
+  target: resource_category
+  operation_type: create
+  operation: create_category
+  key: locales
+  source_id: 1
+  changed_by: 3
+  changed_at: 2013-11-14 13:04:27.900178000 +09:00
+bx_histories_002:
+  id: 2
+  lock_version: 0
+  created_at: 2013-11-14 13:05:19.497652000 +09:00
+  updated_at: 2013-11-14 13:05:19.497652000 +09:00
+  target: resource_category
+  operation_type: create
+  operation: create_category
+  key: mail settings
+  source_id: 2
+  changed_by: 3
+  changed_at: 2013-11-14 13:05:19.497652000 +09:00
+bx_histories_003:
+  id: 3
+  lock_version: 0
+  created_at: 2013-11-14 13:07:11.718308000 +09:00
+  updated_at: 2013-11-14 13:07:11.718308000 +09:00
+  target: resource_category
+  operation_type: create
+  operation: create_category
+  key: locales
+  source_id: 3
+  changed_by: 3
+  changed_at: 2013-11-14 13:07:11.718308000 +09:00
+bx_histories_004:
+  id: 4
+  lock_version: 0
+  created_at: 2013-11-14 13:07:46.453726000 +09:00
+  updated_at: 2013-11-14 13:07:46.453726000 +09:00
+  target: resource_category
+  operation_type: create
+  operation: create_branch
+  key: ja
+  source_id: 1
+  changed_by: 3
+  changed_at: 2013-11-14 13:07:46.453726000 +09:00
+bx_histories_005:
+  id: 5
+  lock_version: 0
+  created_at: 2013-11-14 13:07:54.813233000 +09:00
+  updated_at: 2013-11-14 13:07:54.813233000 +09:00
+  target: resource_category
+  operation_type: create
+  operation: create_branch
+  key: en
+  source_id: 1
+  changed_by: 3
+  changed_at: 2013-11-14 13:07:54.812233000 +09:00
+bx_histories_006:
+  id: 6
+  lock_version: 0
+  created_at: 2013-11-14 13:16:57.850030000 +09:00
+  updated_at: 2013-11-14 13:16:57.850030000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: text
+  source_id: 1
+  changed_by: 3
+  changed_at: 2013-11-14 13:16:57.850030000 +09:00
+bx_histories_007:
+  id: 7
+  lock_version: 0
+  created_at: 2013-11-14 13:17:55.149760000 +09:00
+  updated_at: 2013-11-14 13:17:55.149760000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: db
+  source_id: 2
+  changed_by: 3
+  changed_at: 2013-11-14 13:17:55.148760000 +09:00
+bx_histories_008:
+  id: 8
+  lock_version: 0
+  created_at: 2013-11-14 13:24:28.716113000 +09:00
+  updated_at: 2013-11-14 13:24:28.716113000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: label
+  source_id: 3
+  changed_by: 3
+  changed_at: 2013-11-14 13:24:28.715112000 +09:00
+bx_histories_009:
+  id: 9
+  lock_version: 0
+  created_at: 2013-11-14 13:24:55.241765000 +09:00
+  updated_at: 2013-11-14 13:24:55.241765000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: resources
+  source_id: 4
+  changed_by: 3
+  changed_at: 2013-11-14 13:24:55.240765000 +09:00
+bx_histories_010:
+  id: 10
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.510190000 +09:00
+  updated_at: 2013-11-14 13:27:59.510190000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: new_resource
+  source_id: 5
+  changed_by: 3
+  changed_at: 2013-11-14 13:27:59.509190000 +09:00
+bx_histories_011:
+  id: 11
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.658976000 +09:00
+  updated_at: 2013-11-14 13:28:42.658976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: relational_issues
+  source_id: 6
+  changed_by: 3
+  changed_at: 2013-11-14 13:28:42.657976000 +09:00
+bx_histories_012:
+  id: 12
+  lock_version: 0
+  created_at: 2013-11-14 13:29:25.821976000 +09:00
+  updated_at: 2013-11-14 13:29:25.821976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: activemodel
+  source_id: 7
+  changed_by: 3
+  changed_at: 2013-11-14 13:29:25.820976000 +09:00
+bx_histories_013:
+  id: 13
+  lock_version: 0
+  created_at: 2013-11-14 13:29:35.872976000 +09:00
+  updated_at: 2013-11-14 13:29:35.872976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: attributes
+  source_id: 8
+  changed_by: 3
+  changed_at: 2013-11-14 13:29:35.872976000 +09:00
+bx_histories_014:
+  id: 14
+  lock_version: 0
+  created_at: 2013-11-14 13:30:13.345976000 +09:00
+  updated_at: 2013-11-14 13:30:13.345976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: bx_resource_form
+  source_id: 9
+  changed_by: 3
+  changed_at: 2013-11-14 13:30:13.345976000 +09:00
+bx_histories_015:
+  id: 15
+  lock_version: 0
+  created_at: 2013-11-14 13:30:37.498976000 +09:00
+  updated_at: 2013-11-14 13:30:37.498976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: summary
+  source_id: 10
+  changed_by: 3
+  changed_at: 2013-11-14 13:30:37.497976000 +09:00
+bx_histories_016:
+  id: 16
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.147976000 +09:00
+  updated_at: 2013-11-14 13:30:49.147976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: code
+  source_id: 11
+  changed_by: 3
+  changed_at: 2013-11-14 13:30:49.147976000 +09:00
+bx_histories_017:
+  id: 17
+  lock_version: 0
+  created_at: 2013-11-14 13:34:11.999976000 +09:00
+  updated_at: 2013-11-14 13:34:11.999976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: bx_resource_category_form
+  source_id: 12
+  changed_by: 3
+  changed_at: 2013-11-14 13:34:11.998976000 +09:00
+bx_histories_018:
+  id: 18
+  lock_version: 0
+  created_at: 2013-11-14 13:34:26.071976000 +09:00
+  updated_at: 2013-11-14 13:34:26.071976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: name
+  source_id: 13
+  changed_by: 3
+  changed_at: 2013-11-14 13:34:26.070976000 +09:00
+bx_histories_019:
+  id: 19
+  lock_version: 0
+  created_at: 2013-11-14 13:34:40.509976000 +09:00
+  updated_at: 2013-11-14 13:34:40.509976000 +09:00
+  target: resource
+  operation_type: create
+  operation: create_resource
+  key: description
+  source_id: 14
+  changed_by: 3
+  changed_at: 2013-11-14 13:34:40.509976000 +09:00

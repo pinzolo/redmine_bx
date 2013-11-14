@@ -1,177 +1,155 @@
-#   1: locales:
-#   3:   label:
-#   5:     resources: "リソース"
-#   6:     new_resource: "新しいリソース"
-#   7:     relational_issues: "関連するチケット"
-#   8: activemodel:
-#   9:   attributes:
-#  10:     bx_root_resource_form:
-#  11:       resource_summary: "概要"
-#  12:       resource_code: "コード"
-#  13:     bx_resource_category_form:
-#  14:       name: "カテゴリ名"
-#  15:       description: "説明"
-
 ---
-bx_resource_node_001:
+bx_resource_nodes_001:
   id: 1
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 0
+  created_at: 2013-11-14 13:16:57.848030000 +09:00
+  updated_at: 2013-11-14 13:16:57.848030000 +09:00
   project_id: 1
+  parent_id: 0
   category_id: 1
-  code: locales
-  summary: locale settings
-  path: locales
-bx_resource_node_002:
+  code: text
+  path: text
+  summary: text settings root
+bx_resource_nodes_002:
   id: 2
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 0
+  created_at: 2013-11-14 13:17:55.147760000 +09:00
+  updated_at: 2013-11-14 13:17:55.147760000 +09:00
   project_id: 1
+  parent_id: 0
   category_id: 2
   code: db
-  summary: databse settings
   path: db
-bx_resource_node_003:
+  summary: database settings
+bx_resource_nodes_003:
   id: 3
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 1
+  created_at: 2013-11-14 13:24:28.712112000 +09:00
+  updated_at: 2013-11-14 13:24:28.712112000 +09:00
   project_id: 1
+  parent_id: 1
   category_id: 1
   code: label
-  path: locales:label
-bx_resource_node_004:
+  path: text:label
+  summary: label
+bx_resource_nodes_004:
   id: 4
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 0
-  project_id: 2
-  category_id: 3
-  code: locales
-  summary: locale settings
-  path: locales
-bx_resource_node_005:
-  id: 5
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  parent_id: 3
+  created_at: 2013-11-14 13:24:55.238765000 +09:00
+  updated_at: 2013-11-14 13:24:55.238765000 +09:00
   project_id: 1
+  parent_id: 3
   category_id: 1
   code: resources
-  summary: リソースラベル
-  path: locales:label:resources
-bx_resource_node_006:
-  id: 6
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  path: text:label:resources
+  summary: Resources
+bx_resource_nodes_005:
+  id: 5
   lock_version: 0
-  parent_id: 3
+  created_at: 2013-11-14 13:27:59.507190000 +09:00
+  updated_at: 2013-11-14 13:27:59.507190000 +09:00
   project_id: 1
+  parent_id: 3
   category_id: 1
   code: new_resource
-  summary: リソース新規作成ラベル
-  path: locales:label:new_resource
-bx_resource_node_007:
-  id: 7
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  path: text:label:new_resource
+  summary: New resource label
+bx_resource_nodes_006:
+  id: 6
   lock_version: 0
-  parent_id: 3
+  created_at: 2013-11-14 13:28:42.655976000 +09:00
+  updated_at: 2013-11-14 13:28:42.655976000 +09:00
   project_id: 1
+  parent_id: 3
   category_id: 1
   code: relational_issues
-  summary: 関連チケットラベル
-  path: locales:label:relational_issues
-bx_resource_node_008:
-  id: 8
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  path: text:label:relational_issues
+  summary: Relational issues label
+bx_resource_nodes_007:
+  id: 7
   lock_version: 0
-  parent_id: 0
+  created_at: 2013-11-14 13:29:25.818976000 +09:00
+  updated_at: 2013-11-14 13:29:25.818976000 +09:00
   project_id: 1
+  parent_id: 0
   category_id: 1
   code: activemodel
   path: activemodel
-bx_resource_node_009:
-  id: 9
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  summary: ''
+bx_resource_nodes_008:
+  id: 8
   lock_version: 0
-  parent_id: 8
+  created_at: 2013-11-14 13:29:35.870976000 +09:00
+  updated_at: 2013-11-14 13:29:35.870976000 +09:00
   project_id: 1
+  parent_id: 7
   category_id: 1
   code: attributes
   path: activemodel:attributes
-bx_resource_node_010:
+  summary: ''
+bx_resource_nodes_009:
+  id: 9
+  lock_version: 0
+  created_at: 2013-11-14 13:30:13.342976000 +09:00
+  updated_at: 2013-11-14 13:30:13.342976000 +09:00
+  project_id: 1
+  parent_id: 8
+  category_id: 1
+  code: bx_resource_form
+  path: activemodel:attributes:bx_resource_form
+  summary: ''
+bx_resource_nodes_010:
   id: 10
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 9
+  created_at: 2013-11-14 13:30:37.495976000 +09:00
+  updated_at: 2013-11-14 13:30:37.495976000 +09:00
   project_id: 1
+  parent_id: 9
   category_id: 1
-  code: bx_root_resource_form
-  path: activemodel:attributes:bx_root_resource_form
-bx_resource_node_011:
+  code: summary
+  path: activemodel:attributes:bx_resource_form:summary
+  summary: ''
+bx_resource_nodes_011:
   id: 11
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  parent_id: 10
+  created_at: 2013-11-14 13:30:49.145976000 +09:00
+  updated_at: 2013-11-14 13:30:49.145976000 +09:00
   project_id: 1
-  category_id: 1
-  code: resource_summary
-  summary: ルートリソースフォーム：サマリ
-  path: activemodel:attributes:bx_root_resource_form:resource_summary
-bx_resource_node_012:
-  id: 12
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  parent_id: 10
-  project_id: 1
-  category_id: 1
-  code: resource_code
-  summary: ルートリソースフォーム：コード
-  path: activemodel:attributes:bx_root_resource_form:resource_code
-bx_resource_node_013:
-  id: 13
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
   parent_id: 9
+  category_id: 1
+  code: code
+  path: activemodel:attributes:bx_resource_form:code
+  summary: ''
+bx_resource_nodes_012:
+  id: 12
+  lock_version: 0
+  created_at: 2013-11-14 13:34:11.995976000 +09:00
+  updated_at: 2013-11-14 13:34:11.995976000 +09:00
   project_id: 1
+  parent_id: 8
   category_id: 1
   code: bx_resource_category_form
-  summary: カテゴリフォーム
   path: activemodel:attributes:bx_resource_category_form
-bx_resource_node_014:
-  id: 14
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  summary: ''
+bx_resource_nodes_013:
+  id: 13
   lock_version: 0
-  parent_id: 13
+  created_at: 2013-11-14 13:34:26.067976000 +09:00
+  updated_at: 2013-11-14 13:34:26.067976000 +09:00
   project_id: 1
+  parent_id: 12
   category_id: 1
   code: name
-  summary: カテゴリ名
   path: activemodel:attributes:bx_resource_category_form:name
-bx_resource_node_015:
-  id: 15
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+  summary: ''
+bx_resource_nodes_014:
+  id: 14
   lock_version: 0
-  parent_id: 13
+  created_at: 2013-11-14 13:34:40.506976000 +09:00
+  updated_at: 2013-11-14 13:34:40.506976000 +09:00
   project_id: 1
+  parent_id: 12
   category_id: 1
   code: description
-  summary: カテゴリ説明
   path: activemodel:attributes:bx_resource_category_form:description
-
+  summary: ''

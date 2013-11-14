@@ -13,7 +13,7 @@ describe BxResourceNode do
 
     context "when node is not root" do
       it "equals parent depth + 1" do
-        expect(BxResourceNode.find(10).depth).to eq 3
+        expect(BxResourceNode.find(9).depth).to eq 3
       end
     end
   end
@@ -26,25 +26,25 @@ describe BxResourceNode do
       end
     end
     context "when node is not root" do
-      let(:node) { BxResourceNode.find(10) }
+      let(:node) { BxResourceNode.find(9) }
       it "returns array of BxResourceNode" do
         expect(node.ancestry.all? { |n| n.is_a?(BxResourceNode) }).to eq true
       end
       it "returns array that conains ancestors of node(contains self)" do
-        expect(node.ancestry.map(&:id)).to eq [8, 9, 10]
+        expect(node.ancestry.map(&:id)).to eq [7, 8, 9]
       end
     end
   end
 
   describe "#descendants" do
     it "returns descendant nodes" do
-      expect(BxResourceNode.find(9).descendants.map(&:id)).to eq [13, 15, 14, 10, 12, 11]
+      expect(BxResourceNode.find(8).descendants.map(&:id)).to eq [12, 14, 13, 9, 11, 10]
     end
   end
 
   describe "#value" do
     context "when node has value" do
-      let(:node) { BxResourceNode.find(5) }
+      let(:node) { BxResourceNode.find(4) }
       context "when argument is BxResourceBranch" do
         it "returns value that branch_id equals to id of argument" do
           expect(node.value(BxResourceBranch.find(2))).to eq "Resources"

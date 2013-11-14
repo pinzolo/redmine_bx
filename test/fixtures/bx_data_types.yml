@@ -1,0 +1,851 @@
+---
+bx_data_types_001:
+  id: 1
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.850759000 +09:00
+  updated_at: 2013-11-13 18:20:50.850759000 +09:00
+  name: CHAR
+  database_id: 1
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_002:
+  id: 2
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.852760000 +09:00
+  updated_at: 2013-11-13 18:20:50.852760000 +09:00
+  name: VARCHAR2
+  database_id: 1
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_003:
+  id: 3
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.853760000 +09:00
+  updated_at: 2013-11-13 18:20:50.853760000 +09:00
+  name: NCHAR
+  database_id: 1
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_004:
+  id: 4
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.854760000 +09:00
+  updated_at: 2013-11-13 18:20:50.854760000 +09:00
+  name: NVARCHAR2
+  database_id: 1
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_005:
+  id: 5
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.855760000 +09:00
+  updated_at: 2013-11-13 18:20:50.855760000 +09:00
+  name: CLOB
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_006:
+  id: 6
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.855760000 +09:00
+  updated_at: 2013-11-13 18:20:50.855760000 +09:00
+  name: BLOB
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_007:
+  id: 7
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.856760000 +09:00
+  updated_at: 2013-11-13 18:20:50.856760000 +09:00
+  name: NUMBER
+  database_id: 1
+  sizable: true
+  scalable: true
+  default_use: true
+bx_data_types_008:
+  id: 8
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.858760000 +09:00
+  updated_at: 2013-11-13 18:20:50.858760000 +09:00
+  name: BINARY_FLOAT
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_009:
+  id: 9
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.859760000 +09:00
+  updated_at: 2013-11-13 18:20:50.859760000 +09:00
+  name: BINARY_DOUBLE
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_010:
+  id: 10
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.860760000 +09:00
+  updated_at: 2013-11-13 18:20:50.860760000 +09:00
+  name: DATE
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_011:
+  id: 11
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.860760000 +09:00
+  updated_at: 2013-11-13 18:20:50.860760000 +09:00
+  name: TIMESTAMP
+  database_id: 1
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_012:
+  id: 12
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.861761000 +09:00
+  updated_at: 2013-11-13 18:20:50.861761000 +09:00
+  name: RAW
+  database_id: 1
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_013:
+  id: 13
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.911766000 +09:00
+  updated_at: 2013-11-13 18:20:50.911766000 +09:00
+  name: bigint
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_014:
+  id: 14
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.912766000 +09:00
+  updated_at: 2013-11-13 18:20:50.912766000 +09:00
+  name: int
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_015:
+  id: 15
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.913766000 +09:00
+  updated_at: 2013-11-13 18:20:50.913766000 +09:00
+  name: smallint
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_016:
+  id: 16
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.914766000 +09:00
+  updated_at: 2013-11-13 18:20:50.914766000 +09:00
+  name: tinyint
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_017:
+  id: 17
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.915766000 +09:00
+  updated_at: 2013-11-13 18:20:50.915766000 +09:00
+  name: numeric
+  database_id: 2
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_018:
+  id: 18
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.916766000 +09:00
+  updated_at: 2013-11-13 18:20:50.916766000 +09:00
+  name: decimal
+  database_id: 2
+  sizable: true
+  scalable: true
+  default_use: true
+bx_data_types_019:
+  id: 19
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.916766000 +09:00
+  updated_at: 2013-11-13 18:20:50.916766000 +09:00
+  name: smallmoney
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_020:
+  id: 20
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.917766000 +09:00
+  updated_at: 2013-11-13 18:20:50.917766000 +09:00
+  name: money
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_021:
+  id: 21
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.918766000 +09:00
+  updated_at: 2013-11-13 18:20:50.918766000 +09:00
+  name: float
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_022:
+  id: 22
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.918766000 +09:00
+  updated_at: 2013-11-13 18:20:50.918766000 +09:00
+  name: real
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_023:
+  id: 23
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.919766000 +09:00
+  updated_at: 2013-11-13 18:20:50.919766000 +09:00
+  name: bit
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_024:
+  id: 24
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.920766000 +09:00
+  updated_at: 2013-11-13 18:20:50.920766000 +09:00
+  name: date
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_025:
+  id: 25
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.920766000 +09:00
+  updated_at: 2013-11-13 18:20:50.920766000 +09:00
+  name: time
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_026:
+  id: 26
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.921767000 +09:00
+  updated_at: 2013-11-13 18:20:50.921767000 +09:00
+  name: datetime
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_027:
+  id: 27
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.922767000 +09:00
+  updated_at: 2013-11-13 18:20:50.922767000 +09:00
+  name: datetime2
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_028:
+  id: 28
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.923767000 +09:00
+  updated_at: 2013-11-13 18:20:50.923767000 +09:00
+  name: smalldatetime
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_029:
+  id: 29
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.924767000 +09:00
+  updated_at: 2013-11-13 18:20:50.924767000 +09:00
+  name: datetimeoffset
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_030:
+  id: 30
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.924767000 +09:00
+  updated_at: 2013-11-13 18:20:50.924767000 +09:00
+  name: char
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_031:
+  id: 31
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.953770000 +09:00
+  updated_at: 2013-11-13 18:20:50.953770000 +09:00
+  name: varchar
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_032:
+  id: 32
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.954770000 +09:00
+  updated_at: 2013-11-13 18:20:50.954770000 +09:00
+  name: text
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_033:
+  id: 33
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.955770000 +09:00
+  updated_at: 2013-11-13 18:20:50.955770000 +09:00
+  name: binary
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_034:
+  id: 34
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.956770000 +09:00
+  updated_at: 2013-11-13 18:20:50.956770000 +09:00
+  name: varbinary
+  database_id: 2
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_035:
+  id: 35
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.957770000 +09:00
+  updated_at: 2013-11-13 18:20:50.957770000 +09:00
+  name: image
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_036:
+  id: 36
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.957770000 +09:00
+  updated_at: 2013-11-13 18:20:50.957770000 +09:00
+  name: timestamp
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_037:
+  id: 37
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.958770000 +09:00
+  updated_at: 2013-11-13 18:20:50.958770000 +09:00
+  name: uniqueidentifier
+  database_id: 2
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_038:
+  id: 38
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.985773000 +09:00
+  updated_at: 2013-11-13 18:20:50.985773000 +09:00
+  name: smallint
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_039:
+  id: 39
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.986773000 +09:00
+  updated_at: 2013-11-13 18:20:50.986773000 +09:00
+  name: integer
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_040:
+  id: 40
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.986773000 +09:00
+  updated_at: 2013-11-13 18:20:50.986773000 +09:00
+  name: bigint
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_041:
+  id: 41
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.987773000 +09:00
+  updated_at: 2013-11-13 18:20:50.987773000 +09:00
+  name: decimal
+  database_id: 3
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_042:
+  id: 42
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.988773000 +09:00
+  updated_at: 2013-11-13 18:20:50.988773000 +09:00
+  name: numeric
+  database_id: 3
+  sizable: true
+  scalable: true
+  default_use: true
+bx_data_types_043:
+  id: 43
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.989773000 +09:00
+  updated_at: 2013-11-13 18:20:50.989773000 +09:00
+  name: real
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_044:
+  id: 44
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.989773000 +09:00
+  updated_at: 2013-11-13 18:20:50.989773000 +09:00
+  name: double precision
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_045:
+  id: 45
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.990773000 +09:00
+  updated_at: 2013-11-13 18:20:50.990773000 +09:00
+  name: serial
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_046:
+  id: 46
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.991774000 +09:00
+  updated_at: 2013-11-13 18:20:50.991774000 +09:00
+  name: bigserial
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_047:
+  id: 47
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.992774000 +09:00
+  updated_at: 2013-11-13 18:20:50.992774000 +09:00
+  name: money
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_048:
+  id: 48
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.992774000 +09:00
+  updated_at: 2013-11-13 18:20:50.992774000 +09:00
+  name: char
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_049:
+  id: 49
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.993774000 +09:00
+  updated_at: 2013-11-13 18:20:50.993774000 +09:00
+  name: varchar
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_050:
+  id: 50
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.994774000 +09:00
+  updated_at: 2013-11-13 18:20:50.994774000 +09:00
+  name: text
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_051:
+  id: 51
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.995774000 +09:00
+  updated_at: 2013-11-13 18:20:50.995774000 +09:00
+  name: bytea
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_052:
+  id: 52
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.996774000 +09:00
+  updated_at: 2013-11-13 18:20:50.996774000 +09:00
+  name: timestamp
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_053:
+  id: 53
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.996774000 +09:00
+  updated_at: 2013-11-13 18:20:50.996774000 +09:00
+  name: timestamp with time zone
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_054:
+  id: 54
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.997774000 +09:00
+  updated_at: 2013-11-13 18:20:50.997774000 +09:00
+  name: date
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_055:
+  id: 55
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.998774000 +09:00
+  updated_at: 2013-11-13 18:20:50.998774000 +09:00
+  name: time
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_056:
+  id: 56
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.998774000 +09:00
+  updated_at: 2013-11-13 18:20:50.998774000 +09:00
+  name: time with time zone
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_057:
+  id: 57
+  lock_version: 0
+  created_at: 2013-11-13 18:20:50.999774000 +09:00
+  updated_at: 2013-11-13 18:20:50.999774000 +09:00
+  name: interval
+  database_id: 3
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_058:
+  id: 58
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.000774000 +09:00
+  updated_at: 2013-11-13 18:20:51.000774000 +09:00
+  name: boolean
+  database_id: 3
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_059:
+  id: 59
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.037778000 +09:00
+  updated_at: 2013-11-13 18:20:51.037778000 +09:00
+  name: TINYINT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_060:
+  id: 60
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.038778000 +09:00
+  updated_at: 2013-11-13 18:20:51.038778000 +09:00
+  name: SMALLINT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_061:
+  id: 61
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.039778000 +09:00
+  updated_at: 2013-11-13 18:20:51.039778000 +09:00
+  name: MEDIUMINT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_062:
+  id: 62
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.040778000 +09:00
+  updated_at: 2013-11-13 18:20:51.040778000 +09:00
+  name: INT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_063:
+  id: 63
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.041779000 +09:00
+  updated_at: 2013-11-13 18:20:51.041779000 +09:00
+  name: BIGINT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_064:
+  id: 64
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.042779000 +09:00
+  updated_at: 2013-11-13 18:20:51.042779000 +09:00
+  name: FLOAT
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_065:
+  id: 65
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.043779000 +09:00
+  updated_at: 2013-11-13 18:20:51.043779000 +09:00
+  name: DOUBLE
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: true
+bx_data_types_066:
+  id: 66
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.043779000 +09:00
+  updated_at: 2013-11-13 18:20:51.043779000 +09:00
+  name: REAL
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_067:
+  id: 67
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.044779000 +09:00
+  updated_at: 2013-11-13 18:20:51.044779000 +09:00
+  name: DOUBLE PRECISION
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_068:
+  id: 68
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.045779000 +09:00
+  updated_at: 2013-11-13 18:20:51.045779000 +09:00
+  name: DECIMAL
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: true
+bx_data_types_069:
+  id: 69
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.045779000 +09:00
+  updated_at: 2013-11-13 18:20:51.045779000 +09:00
+  name: NUMERIC
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_070:
+  id: 70
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.046779000 +09:00
+  updated_at: 2013-11-13 18:20:51.046779000 +09:00
+  name: FIXED
+  database_id: 4
+  sizable: true
+  scalable: true
+  default_use: false
+bx_data_types_071:
+  id: 71
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.047779000 +09:00
+  updated_at: 2013-11-13 18:20:51.047779000 +09:00
+  name: BOOLEAN
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_072:
+  id: 72
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.047779000 +09:00
+  updated_at: 2013-11-13 18:20:51.047779000 +09:00
+  name: BIT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: false
+bx_data_types_073:
+  id: 73
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.048779000 +09:00
+  updated_at: 2013-11-13 18:20:51.048779000 +09:00
+  name: DATE
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_074:
+  id: 74
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.049779000 +09:00
+  updated_at: 2013-11-13 18:20:51.049779000 +09:00
+  name: DATETIME
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_075:
+  id: 75
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.050779000 +09:00
+  updated_at: 2013-11-13 18:20:51.050779000 +09:00
+  name: TIME
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_076:
+  id: 76
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.050779000 +09:00
+  updated_at: 2013-11-13 18:20:51.050779000 +09:00
+  name: TIMESTAMP
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_077:
+  id: 77
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.051780000 +09:00
+  updated_at: 2013-11-13 18:20:51.051780000 +09:00
+  name: YEAR
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_078:
+  id: 78
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.052780000 +09:00
+  updated_at: 2013-11-13 18:20:51.052780000 +09:00
+  name: CHAR
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_079:
+  id: 79
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.053780000 +09:00
+  updated_at: 2013-11-13 18:20:51.053780000 +09:00
+  name: VARCHAR
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_080:
+  id: 80
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.053780000 +09:00
+  updated_at: 2013-11-13 18:20:51.053780000 +09:00
+  name: TEXT
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_081:
+  id: 81
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.054780000 +09:00
+  updated_at: 2013-11-13 18:20:51.054780000 +09:00
+  name: MEDIUMTEXT
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_082:
+  id: 82
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.055780000 +09:00
+  updated_at: 2013-11-13 18:20:51.055780000 +09:00
+  name: LONGTEXT
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true
+bx_data_types_083:
+  id: 83
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.055780000 +09:00
+  updated_at: 2013-11-13 18:20:51.055780000 +09:00
+  name: BLOB
+  database_id: 4
+  sizable: true
+  scalable: false
+  default_use: true
+bx_data_types_084:
+  id: 84
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.056780000 +09:00
+  updated_at: 2013-11-13 18:20:51.056780000 +09:00
+  name: MEDIUMBLOB
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: false
+bx_data_types_085:
+  id: 85
+  lock_version: 0
+  created_at: 2013-11-13 18:20:51.057780000 +09:00
+  updated_at: 2013-11-13 18:20:51.057780000 +09:00
+  name: LONGBLOB
+  database_id: 4
+  sizable: false
+  scalable: false
+  default_use: true

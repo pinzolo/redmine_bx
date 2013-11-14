@@ -1,0 +1,397 @@
+---
+bx_history_details_001:
+  id: 1
+  lock_version: 0
+  created_at: 2013-11-14 13:04:27.936188000 +09:00
+  updated_at: 2013-11-14 13:04:27.936188000 +09:00
+  history_id: 1
+  property: name
+  old_value: ''
+  new_value: locales
+bx_history_details_002:
+  id: 2
+  lock_version: 0
+  created_at: 2013-11-14 13:04:27.938189000 +09:00
+  updated_at: 2013-11-14 13:04:27.938189000 +09:00
+  history_id: 1
+  property: description
+  old_value: ''
+  new_value: locale settings
+bx_history_details_003:
+  id: 3
+  lock_version: 0
+  created_at: 2013-11-14 13:05:19.498652000 +09:00
+  updated_at: 2013-11-14 13:05:19.498652000 +09:00
+  history_id: 2
+  property: name
+  old_value: ''
+  new_value: settings
+bx_history_details_004:
+  id: 4
+  lock_version: 0
+  created_at: 2013-11-14 13:05:19.499653000 +09:00
+  updated_at: 2013-11-14 13:05:19.499653000 +09:00
+  history_id: 2
+  property: description
+  old_value: ''
+  new_value: system settings
+bx_history_details_005:
+  id: 5
+  lock_version: 0
+  created_at: 2013-11-14 13:07:11.720309000 +09:00
+  updated_at: 2013-11-14 13:07:11.720309000 +09:00
+  history_id: 3
+  property: name
+  old_value: ''
+  new_value: locales
+bx_history_details_006:
+  id: 6
+  lock_version: 0
+  created_at: 2013-11-14 13:07:11.722309000 +09:00
+  updated_at: 2013-11-14 13:07:11.722309000 +09:00
+  history_id: 3
+  property: description
+  old_value: ''
+  new_value: locale settings
+bx_history_details_007:
+  id: 7
+  lock_version: 0
+  created_at: 2013-11-14 13:07:46.454726000 +09:00
+  updated_at: 2013-11-14 13:07:46.454726000 +09:00
+  history_id: 4
+  property: code
+  old_value: ''
+  new_value: ja
+bx_history_details_008:
+  id: 8
+  lock_version: 0
+  created_at: 2013-11-14 13:07:46.455726000 +09:00
+  updated_at: 2013-11-14 13:07:46.455726000 +09:00
+  history_id: 4
+  property: name
+  old_value: ''
+  new_value: Japanese
+bx_history_details_009:
+  id: 9
+  lock_version: 0
+  created_at: 2013-11-14 13:07:54.814233000 +09:00
+  updated_at: 2013-11-14 13:07:54.814233000 +09:00
+  history_id: 5
+  property: code
+  old_value: ''
+  new_value: en
+bx_history_details_010:
+  id: 10
+  lock_version: 0
+  created_at: 2013-11-14 13:07:54.815233000 +09:00
+  updated_at: 2013-11-14 13:07:54.815233000 +09:00
+  history_id: 5
+  property: name
+  old_value: ''
+  new_value: English
+bx_history_details_011:
+  id: 11
+  lock_version: 0
+  created_at: 2013-11-14 13:16:57.852031000 +09:00
+  updated_at: 2013-11-14 13:16:57.852031000 +09:00
+  history_id: 6
+  property: code
+  old_value: ''
+  new_value: text
+bx_history_details_012:
+  id: 12
+  lock_version: 0
+  created_at: 2013-11-14 13:16:57.853031000 +09:00
+  updated_at: 2013-11-14 13:16:57.853031000 +09:00
+  history_id: 6
+  property: summary
+  old_value: ''
+  new_value: text settings root
+bx_history_details_013:
+  id: 13
+  lock_version: 0
+  created_at: 2013-11-14 13:17:55.150760000 +09:00
+  updated_at: 2013-11-14 13:17:55.150760000 +09:00
+  history_id: 7
+  property: code
+  old_value: ''
+  new_value: db
+bx_history_details_014:
+  id: 14
+  lock_version: 0
+  created_at: 2013-11-14 13:17:55.151760000 +09:00
+  updated_at: 2013-11-14 13:17:55.151760000 +09:00
+  history_id: 7
+  property: summary
+  old_value: ''
+  new_value: database settings
+bx_history_details_015:
+  id: 15
+  lock_version: 0
+  created_at: 2013-11-14 13:24:28.717113000 +09:00
+  updated_at: 2013-11-14 13:24:28.717113000 +09:00
+  history_id: 8
+  property: code
+  old_value: ''
+  new_value: label
+bx_history_details_016:
+  id: 16
+  lock_version: 0
+  created_at: 2013-11-14 13:24:28.718113000 +09:00
+  updated_at: 2013-11-14 13:24:28.718113000 +09:00
+  history_id: 8
+  property: summary
+  old_value: ''
+  new_value: label
+bx_history_details_017:
+  id: 17
+  lock_version: 0
+  created_at: 2013-11-14 13:24:55.242765000 +09:00
+  updated_at: 2013-11-14 13:24:55.242765000 +09:00
+  history_id: 9
+  property: code
+  old_value: ''
+  new_value: resources
+bx_history_details_018:
+  id: 18
+  lock_version: 0
+  created_at: 2013-11-14 13:24:55.243765000 +09:00
+  updated_at: 2013-11-14 13:24:55.243765000 +09:00
+  history_id: 9
+  property: summary
+  old_value: ''
+  new_value: Resources
+bx_history_details_019:
+  id: 19
+  lock_version: 0
+  created_at: 2013-11-14 13:24:55.255766000 +09:00
+  updated_at: 2013-11-14 13:24:55.255766000 +09:00
+  history_id: 9
+  property: value
+  old_value: ''
+  new_value: Resources
+bx_history_details_020:
+  id: 20
+  lock_version: 0
+  created_at: 2013-11-14 13:24:55.257766000 +09:00
+  updated_at: 2013-11-14 13:24:55.257766000 +09:00
+  history_id: 9
+  property: value
+  old_value: ''
+  new_value: リソース
+bx_history_details_021:
+  id: 21
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.511190000 +09:00
+  updated_at: 2013-11-14 13:27:59.511190000 +09:00
+  history_id: 10
+  property: code
+  old_value: ''
+  new_value: new_resource
+bx_history_details_022:
+  id: 22
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.512190000 +09:00
+  updated_at: 2013-11-14 13:27:59.512190000 +09:00
+  history_id: 10
+  property: summary
+  old_value: ''
+  new_value: New resource label
+bx_history_details_023:
+  id: 23
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.517191000 +09:00
+  updated_at: 2013-11-14 13:27:59.517191000 +09:00
+  history_id: 10
+  property: value
+  old_value: ''
+  new_value: New resource
+bx_history_details_024:
+  id: 24
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.518191000 +09:00
+  updated_at: 2013-11-14 13:27:59.518191000 +09:00
+  history_id: 10
+  property: value
+  old_value: ''
+  new_value: 新しいリソース
+bx_history_details_025:
+  id: 25
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.659976000 +09:00
+  updated_at: 2013-11-14 13:28:42.659976000 +09:00
+  history_id: 11
+  property: code
+  old_value: ''
+  new_value: relational_issues
+bx_history_details_026:
+  id: 26
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.660976000 +09:00
+  updated_at: 2013-11-14 13:28:42.660976000 +09:00
+  history_id: 11
+  property: summary
+  old_value: ''
+  new_value: Relational issues label
+bx_history_details_027:
+  id: 27
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.665976000 +09:00
+  updated_at: 2013-11-14 13:28:42.665976000 +09:00
+  history_id: 11
+  property: value
+  old_value: ''
+  new_value: Relational issues
+bx_history_details_028:
+  id: 28
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.667976000 +09:00
+  updated_at: 2013-11-14 13:28:42.667976000 +09:00
+  history_id: 11
+  property: value
+  old_value: ''
+  new_value: 関連するチケット
+bx_history_details_029:
+  id: 29
+  lock_version: 0
+  created_at: 2013-11-14 13:29:25.822976000 +09:00
+  updated_at: 2013-11-14 13:29:25.822976000 +09:00
+  history_id: 12
+  property: code
+  old_value: ''
+  new_value: activemodel
+bx_history_details_030:
+  id: 30
+  lock_version: 0
+  created_at: 2013-11-14 13:29:35.873976000 +09:00
+  updated_at: 2013-11-14 13:29:35.873976000 +09:00
+  history_id: 13
+  property: code
+  old_value: ''
+  new_value: attributes
+bx_history_details_031:
+  id: 31
+  lock_version: 0
+  created_at: 2013-11-14 13:30:13.347976000 +09:00
+  updated_at: 2013-11-14 13:30:13.347976000 +09:00
+  history_id: 14
+  property: code
+  old_value: ''
+  new_value: bx_resource_form
+bx_history_details_032:
+  id: 32
+  lock_version: 0
+  created_at: 2013-11-14 13:30:37.499976000 +09:00
+  updated_at: 2013-11-14 13:30:37.499976000 +09:00
+  history_id: 15
+  property: code
+  old_value: ''
+  new_value: summary
+bx_history_details_033:
+  id: 33
+  lock_version: 0
+  created_at: 2013-11-14 13:30:37.506976000 +09:00
+  updated_at: 2013-11-14 13:30:37.506976000 +09:00
+  history_id: 15
+  property: value
+  old_value: ''
+  new_value: Summary
+bx_history_details_034:
+  id: 34
+  lock_version: 0
+  created_at: 2013-11-14 13:30:37.508976000 +09:00
+  updated_at: 2013-11-14 13:30:37.508976000 +09:00
+  history_id: 15
+  property: value
+  old_value: ''
+  new_value: 概要
+bx_history_details_035:
+  id: 35
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.149976000 +09:00
+  updated_at: 2013-11-14 13:30:49.149976000 +09:00
+  history_id: 16
+  property: code
+  old_value: ''
+  new_value: code
+bx_history_details_036:
+  id: 36
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.152976000 +09:00
+  updated_at: 2013-11-14 13:30:49.152976000 +09:00
+  history_id: 16
+  property: value
+  old_value: ''
+  new_value: Code
+bx_history_details_037:
+  id: 37
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.153976000 +09:00
+  updated_at: 2013-11-14 13:30:49.153976000 +09:00
+  history_id: 16
+  property: value
+  old_value: ''
+  new_value: コード
+bx_history_details_038:
+  id: 38
+  lock_version: 0
+  created_at: 2013-11-14 13:34:12.000976000 +09:00
+  updated_at: 2013-11-14 13:34:12.000976000 +09:00
+  history_id: 17
+  property: code
+  old_value: ''
+  new_value: bx_resource_category_form
+bx_history_details_039:
+  id: 39
+  lock_version: 0
+  created_at: 2013-11-14 13:34:26.072976000 +09:00
+  updated_at: 2013-11-14 13:34:26.072976000 +09:00
+  history_id: 18
+  property: code
+  old_value: ''
+  new_value: name
+bx_history_details_040:
+  id: 40
+  lock_version: 0
+  created_at: 2013-11-14 13:34:26.075976000 +09:00
+  updated_at: 2013-11-14 13:34:26.075976000 +09:00
+  history_id: 18
+  property: value
+  old_value: ''
+  new_value: Name
+bx_history_details_041:
+  id: 41
+  lock_version: 0
+  created_at: 2013-11-14 13:34:26.077976000 +09:00
+  updated_at: 2013-11-14 13:34:26.077976000 +09:00
+  history_id: 18
+  property: value
+  old_value: ''
+  new_value: カテゴリ名
+bx_history_details_042:
+  id: 42
+  lock_version: 0
+  created_at: 2013-11-14 13:34:40.510976000 +09:00
+  updated_at: 2013-11-14 13:34:40.510976000 +09:00
+  history_id: 19
+  property: code
+  old_value: ''
+  new_value: description
+bx_history_details_043:
+  id: 43
+  lock_version: 0
+  created_at: 2013-11-14 13:34:40.514976000 +09:00
+  updated_at: 2013-11-14 13:34:40.514976000 +09:00
+  history_id: 19
+  property: value
+  old_value: ''
+  new_value: Description
+bx_history_details_044:
+  id: 44
+  lock_version: 0
+  created_at: 2013-11-14 13:34:40.515976000 +09:00
+  updated_at: 2013-11-14 13:34:40.515976000 +09:00
+  history_id: 19
+  property: value
+  old_value: ''
+  new_value: 説明

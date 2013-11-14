@@ -1,115 +1,113 @@
 ---
-bx_resource_value_001:
+bx_resource_values_001:
   id: 1
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  branch_id: 1
-  node_id: 5
-  value: リソース
-bx_resource_value_002:
-  id: 2
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  branch_id: 1
-  node_id: 6
-  value: 新しいリソース
-bx_resource_value_003:
-  id: 3
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  branch_id: 1
-  node_id: 7
-  value: 関連するチケット
-bx_resource_value_004:
-  id: 4
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  branch_id: 1
-  node_id: 11
-  value: 概要
-bx_resource_value_005:
-  id: 5
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
-  branch_id: 1
-  node_id: 12
-  value: コード
-
-bx_resource_value_006:
-  id: 6
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
+  created_at: 2013-11-14 13:24:55.252766000 +09:00
+  updated_at: 2013-11-14 13:24:55.252766000 +09:00
+  node_id: 4
   branch_id: 2
-  node_id: 5
   value: Resources
-bx_resource_value_007:
-  id: 7
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+bx_resource_values_002:
+  id: 2
   lock_version: 0
+  created_at: 2013-11-14 13:24:55.256766000 +09:00
+  updated_at: 2013-11-14 13:24:55.256766000 +09:00
+  node_id: 4
+  branch_id: 1
+  value: リソース
+bx_resource_values_003:
+  id: 3
+  lock_version: 0
+  created_at: 2013-11-14 13:27:59.516190000 +09:00
+  updated_at: 2013-11-14 13:27:59.516190000 +09:00
+  node_id: 5
   branch_id: 2
-  node_id: 6
   value: New resource
-bx_resource_value_008:
-  id: 8
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+bx_resource_values_004:
+  id: 4
   lock_version: 0
+  created_at: 2013-11-14 13:27:59.517191000 +09:00
+  updated_at: 2013-11-14 13:27:59.517191000 +09:00
+  node_id: 5
+  branch_id: 1
+  value: 新しいリソース
+bx_resource_values_005:
+  id: 5
+  lock_version: 0
+  created_at: 2013-11-14 13:28:42.664976000 +09:00
+  updated_at: 2013-11-14 13:28:42.664976000 +09:00
+  node_id: 6
   branch_id: 2
-  node_id: 7
   value: Relational issues
-bx_resource_value_009:
-  id: 9
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+bx_resource_values_006:
+  id: 6
   lock_version: 0
+  created_at: 2013-11-14 13:28:42.666976000 +09:00
+  updated_at: 2013-11-14 13:28:42.666976000 +09:00
+  node_id: 6
+  branch_id: 1
+  value: 関連するチケット
+bx_resource_values_007:
+  id: 7
+  lock_version: 0
+  created_at: 2013-11-14 13:30:37.504976000 +09:00
+  updated_at: 2013-11-14 13:30:37.504976000 +09:00
+  node_id: 10
   branch_id: 2
-  node_id: 11
   value: Summary
-bx_resource_value_010:
-  id: 10
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
+bx_resource_values_008:
+  id: 8
   lock_version: 0
+  created_at: 2013-11-14 13:30:37.507976000 +09:00
+  updated_at: 2013-11-14 13:30:37.507976000 +09:00
+  node_id: 10
+  branch_id: 1
+  value: 概要
+bx_resource_values_009:
+  id: 9
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.151976000 +09:00
+  updated_at: 2013-11-14 13:30:49.151976000 +09:00
+  node_id: 11
   branch_id: 2
-  node_id: 12
   value: Code
-
-bx_resource_value_011:
+bx_resource_values_010:
+  id: 10
+  lock_version: 0
+  created_at: 2013-11-14 13:30:49.153976000 +09:00
+  updated_at: 2013-11-14 13:30:49.153976000 +09:00
+  node_id: 11
+  branch_id: 1
+  value: コード
+bx_resource_values_011:
   id: 11
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  branch_id: 1
-  node_id: 14
-  value: カテゴリ名
-bx_resource_value_012:
+  created_at: 2013-11-14 13:34:26.074976000 +09:00
+  updated_at: 2013-11-14 13:34:26.074976000 +09:00
+  node_id: 13
+  branch_id: 2
+  value: Name
+bx_resource_values_012:
   id: 12
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
+  created_at: 2013-11-14 13:34:26.076976000 +09:00
+  updated_at: 2013-11-14 13:34:26.076976000 +09:00
+  node_id: 13
   branch_id: 1
-  node_id: 15
-  value: 説明
-bx_resource_value_013:
+  value: カテゴリ名
+bx_resource_values_013:
   id: 13
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
   lock_version: 0
-  branch_id: 2
+  created_at: 2013-11-14 13:34:40.513976000 +09:00
+  updated_at: 2013-11-14 13:34:40.513976000 +09:00
   node_id: 14
-  value: Category name
-bx_resource_value_014:
-  id: 14
-  created_at: 2013-07-21 00:00:00
-  updated_at: 2013-07-21 00:00:00
-  lock_version: 0
   branch_id: 2
-  node_id: 15
   value: Description
+bx_resource_values_014:
+  id: 14
+  lock_version: 0
+  created_at: 2013-11-14 13:34:40.515976000 +09:00
+  updated_at: 2013-11-14 13:34:40.515976000 +09:00
+  node_id: 14
+  branch_id: 1
+  value: 説明
