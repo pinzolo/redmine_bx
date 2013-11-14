@@ -144,7 +144,7 @@ describe BxResourceNode do
       context "when node is not root" do
         it "set joined code by ':'" do
           node = BxResourceNode.create(:project_id => 1, :parent_id => 5, :category_id => 1, :code => "new_root", :summary => "summary", :path => "foo")
-          expect(node.path).to eq "locales:label:resources:new_root"
+          expect(node.path).to eq "text:label:new_resource:new_root"
         end
       end
     end
@@ -160,7 +160,7 @@ describe BxResourceNode do
         it "set joined code by ':'" do
           node = BxResourceNode.find(5)
           node.update_attributes(:code => "bar", :path => "foo")
-          expect(node.path).to eq "locales:label:bar"
+          expect(node.path).to eq "text:label:bar"
         end
       end
     end
