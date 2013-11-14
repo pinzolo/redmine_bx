@@ -22,9 +22,9 @@ class BxResourceForm
     if self.parent_id.to_i.zero?
       self.parent_id = 0
     else
-      self.category_id = BxResourceNode.find(self.parent_id).category_id
+      self.category_id = BxResourceNode.where(:id => self.parent_id).first.try(:category_id)
     end
-    self.branches = BxResourceCategory.find(self.category_id).branches
+    self.branches = BxResourceCategory.where(:id => self.category_id).first.try(:branches)
   end
 
   def handle_extra_params(params)
