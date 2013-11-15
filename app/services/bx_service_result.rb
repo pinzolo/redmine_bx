@@ -1,5 +1,7 @@
 # coding: utf-8
 class BxServiceResult
+  attr_reader :data
+
   def initialize(reason, data)
     @reason = reason
     @data = data
@@ -23,9 +25,5 @@ class BxServiceResult
 
   def error?
     @reason == :error
-  end
-
-  def data
-    @data
   end
 end
