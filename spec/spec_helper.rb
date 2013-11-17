@@ -6,6 +6,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../../spec/spec_helper')
 
 RSpec.configure do |config|
-  config.mock_with :mocha
   config.fixture_path = "#{::Rails.root}/test/fixtures"
 end
