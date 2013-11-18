@@ -1,5 +1,6 @@
 # coding: utf-8
 Redmine::WikiFormatting::Macros.register do
+  desc "Links to resource page.\n_Example:_\n\n  {{bx_resource(3)}}"
   macro :bx_resource do |obj, args|
     resource_id = args.first
     resource = BxResourceNode.where(:id => resource_id).first
@@ -11,6 +12,7 @@ Redmine::WikiFormatting::Macros.register do
       ""
     end
   end
+  desc "Links to table definition page.\n_Example:_\n\n  {{bx_table(3)}}"
   macro :bx_table do |obj, args|
     table_def_id = args.first
     table_def = BxTableDef.where(:id => table_def_id).first
