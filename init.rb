@@ -37,9 +37,5 @@ Redmine::Plugin.register :redmine_bx do
 end
 
 require "bx_wiki_macros"
-
-Redmine::Search.map do |search|
-  search.register :bx_resource_nodes
-  search.register :bx_table_defs
-end
+require "bx_search"
 
