@@ -2,8 +2,8 @@
 def link_to_bx_resource(resource_id)
   resource = BxResourceNode.where(:id => resource_id).first
   if resource
-    link_label = resource.code
-    link_label << " : #{resource.summary}" if resource.summary.present?
+    link_label = resource.path
+    link_label << " [#{resource.summary}]" if resource.summary.present?
     link_to(link_label, project_bx_resource_path(resource.project_id, resource))
   else
     ""
@@ -14,7 +14,7 @@ def link_to_bx_table_def(table_def_id)
   table_def = BxTableDef.where(:id => table_def_id).first
   if table_def
     link_label = table_def.physical_name
-    link_label << " : #{table_def.logical_name}" if table_def.logical_name.present?
+    link_label << " [#{table_def.logical_name}]" if table_def.logical_name.present?
     link_to(link_label, project_bx_table_def_path(table_def.project_id, table_def))
   else
     ""
