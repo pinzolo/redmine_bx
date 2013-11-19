@@ -8,7 +8,7 @@ bx_resource_nodes_001:
   parent_id: 0
   category_id: 1
   code: text
-  path: text
+  default_path: text
   summary: text settings root
 bx_resource_nodes_002:
   id: 2
@@ -19,7 +19,7 @@ bx_resource_nodes_002:
   parent_id: 0
   category_id: 2
   code: db
-  path: db
+  default_path: db
   summary: database settings
 bx_resource_nodes_003:
   id: 3
@@ -30,7 +30,7 @@ bx_resource_nodes_003:
   parent_id: 1
   category_id: 1
   code: label
-  path: text:label
+  default_path: text:label
   summary: label
 bx_resource_nodes_004:
   id: 4
@@ -41,7 +41,7 @@ bx_resource_nodes_004:
   parent_id: 3
   category_id: 1
   code: resources
-  path: text:label:resources
+  default_path: text:label:resources
   summary: Resources
 bx_resource_nodes_005:
   id: 5
@@ -52,7 +52,7 @@ bx_resource_nodes_005:
   parent_id: 3
   category_id: 1
   code: new_resource
-  path: text:label:new_resource
+  default_path: text:label:new_resource
   summary: New resource label
 bx_resource_nodes_006:
   id: 6
@@ -63,7 +63,7 @@ bx_resource_nodes_006:
   parent_id: 3
   category_id: 1
   code: relational_issues
-  path: text:label:relational_issues
+  default_path: text:label:relational_issues
   summary: Relational issues label
 bx_resource_nodes_007:
   id: 7
@@ -74,7 +74,7 @@ bx_resource_nodes_007:
   parent_id: 0
   category_id: 1
   code: activemodel
-  path: activemodel
+  default_path: activemodel
   summary: ''
 bx_resource_nodes_008:
   id: 8
@@ -85,7 +85,7 @@ bx_resource_nodes_008:
   parent_id: 7
   category_id: 1
   code: attributes
-  path: activemodel:attributes
+  default_path: activemodel:attributes
   summary: ''
 bx_resource_nodes_009:
   id: 9
@@ -96,7 +96,7 @@ bx_resource_nodes_009:
   parent_id: 8
   category_id: 1
   code: bx_resource_form
-  path: activemodel:attributes:bx_resource_form
+  default_path: activemodel:attributes:bx_resource_form
   summary: ''
 bx_resource_nodes_010:
   id: 10
@@ -107,7 +107,7 @@ bx_resource_nodes_010:
   parent_id: 9
   category_id: 1
   code: summary
-  path: activemodel:attributes:bx_resource_form:summary
+  default_path: activemodel:attributes:bx_resource_form:summary
   summary: ''
 bx_resource_nodes_011:
   id: 11
@@ -118,7 +118,7 @@ bx_resource_nodes_011:
   parent_id: 9
   category_id: 1
   code: code
-  path: activemodel:attributes:bx_resource_form:code
+  default_path: activemodel:attributes:bx_resource_form:code
   summary: ''
 bx_resource_nodes_012:
   id: 12
@@ -129,7 +129,7 @@ bx_resource_nodes_012:
   parent_id: 8
   category_id: 1
   code: bx_resource_category_form
-  path: activemodel:attributes:bx_resource_category_form
+  default_path: activemodel:attributes:bx_resource_category_form
   summary: ''
 bx_resource_nodes_013:
   id: 13
@@ -140,7 +140,7 @@ bx_resource_nodes_013:
   parent_id: 12
   category_id: 1
   code: name
-  path: activemodel:attributes:bx_resource_category_form:name
+  default_path: activemodel:attributes:bx_resource_category_form:name
   summary: ''
 bx_resource_nodes_014:
   id: 14
@@ -151,5 +151,5 @@ bx_resource_nodes_014:
   parent_id: 12
   category_id: 1
   code: description
-  path: activemodel:attributes:bx_resource_category_form:description
+  default_path: activemodel:attributes:bx_resource_category_form:description
   summary: ''

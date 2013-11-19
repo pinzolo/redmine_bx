@@ -2,7 +2,7 @@
 def link_to_bx_resource(resource_id)
   resource = BxResourceNode.where(:id => resource_id).first
   if resource
-    link_label = resource.path
+    link_label = resource.default_path
     link_label << " [#{resource.summary}]" if resource.summary.present?
     link_to(link_label, project_bx_resource_path(resource.project_id, resource))
   else

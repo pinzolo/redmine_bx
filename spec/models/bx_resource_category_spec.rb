@@ -8,15 +8,15 @@ describe BxResourceCategory do
   let(:category) { BxResourceCategory.find(1) }
 
   describe "#resources" do
-    it "returns resource nodes that category_id is self and prent_id is 0 and ordered by path attribute" do
-      expected = BxResourceNode.where(:category_id => category.id, :parent_id => 0).order(:path).to_a
+    it "returns resource nodes that category_id is self and prent_id is 0 and ordered by default_path attribute" do
+      expected = BxResourceNode.where(:category_id => category.id, :parent_id => 0).order(:default_path).to_a
       expect(category.resources.to_a).to eq expected
     end
   end
 
   describe "#all_resources" do
-    it "returns resource nodes that category_id is self id and orderd by path attribute" do
-      expected = BxResourceNode.where(:category_id => category.id).order(:path).to_a
+    it "returns resource nodes that category_id is self id and orderd by default_path attribute" do
+      expected = BxResourceNode.where(:category_id => category.id).order(:default_path).to_a
       expect(category.all_resources.to_a).to eq expected
     end
   end

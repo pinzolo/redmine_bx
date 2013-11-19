@@ -11,25 +11,25 @@ class BxResourceNode < ActiveRecord::Base
                        :conditions => Proc.new { ["target = ?", "resource"] }, :include => [:details, :issues]
   delegate :branches, :to => :category
 
-  before_save :set_path
+  before_save :set_default_path
 
-  acts_as_searchable :columns => ["#{table_name}.path", "#{table_name}.summary", "#{BxResourceValue.table_name}.value"],
+  acts_as_searchable :columns => ["#{table_name}.default_path", "#{table_name}.summary", "#{BxResourceValue.table_name}.value"],
                      :include => [:project, :values],
                      :date_column => "#{table_name}.created_at",
                      :permission => :view_bx_resource_nodes
-  acts_as_event :title => Proc.new { |o| o.path + (o.summary.present? ? " : #{o.summary}" : "") },
+  acts_as_event :title => Proc.new { |o| o.default_path + (o.summary.present? ? " : #{o.summary}" : "") },
                 :url => Proc.new { |o| { :controller => "bx_resources", :action => :show, :project_id => o.project.identifier, :id => o.id } },
                 :description => Proc.new { |o| o.summary },
                 :datetime => :created_at
 
   def depth
-    @depth ||= self.path.split(":").length
+    @depth ||= self.default_path.split(":").length
   end
 
   def descendants
     @descendants ||= BxResourceNode.where(:category_id => self.category_id)
-                                   .where("#{self.class.table_name}.path LIKE ?", "#{self.path}:%")
-                                   .order(:path).includes(:parent, :values)
+                                   .where("#{self.class.table_name}.default_path LIKE ?", "#{self.default_path}:%")
+                                   .order(:default_path).includes(:parent, :values)
   end
 
   def ancestry
@@ -50,7 +50,7 @@ class BxResourceNode < ActiveRecord::Base
   end
 
   private
-  def set_path
-    self.path = parent ? "#{parent.path}:#{code}" : code
+  def set_default_path
+    self.default_path = parent ? "#{parent.default_path}:#{code}" : code
   end
 end

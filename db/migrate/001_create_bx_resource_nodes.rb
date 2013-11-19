@@ -9,14 +9,14 @@ class CreateBxResourceNodes < ActiveRecord::Migration
       t.integer :parent_id, :null => false, :default => 0
       t.integer :category_id, :null => false, :default => 0
       t.string :code, :null => false, :default => ""
-      t.string :path, :null => false, :default => "", :limit => 1023
+      t.string :default_path, :null => false, :default => "", :limit => 1023
       t.string :summary, :null => false, :default => ""
     end
 
     add_index :bx_resource_nodes, :project_id
     add_index :bx_resource_nodes, :parent_id
     add_index :bx_resource_nodes, :category_id
-    add_index :bx_resource_nodes, [:category_id, :path], :unique => true
+    add_index :bx_resource_nodes, [:category_id, :default_path], :unique => true
     add_index :bx_resource_nodes, [:project_id, :parent_id, :code], :unique => true
   end
 end

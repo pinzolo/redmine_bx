@@ -134,18 +134,18 @@ describe BxResourceNode do
     end
   end
 
-  describe "#path" do
+  describe "#default_path" do
     context "when created" do
       context "when node is root" do
         it "set self code" do
-          node = BxResourceNode.create(:project_id => 1, :category_id => 1, :code => "new_root", :summary => "summary", :path => "foo")
-          expect(node.path).to eq "new_root"
+          node = BxResourceNode.create(:project_id => 1, :category_id => 1, :code => "new_root", :summary => "summary", :default_path => "foo")
+          expect(node.default_path).to eq "new_root"
         end
       end
       context "when node is not root" do
         it "set joined code by ':'" do
-          node = BxResourceNode.create(:project_id => 1, :parent_id => 5, :category_id => 1, :code => "new_root", :summary => "summary", :path => "foo")
-          expect(node.path).to eq "text:label:new_resource:new_root"
+          node = BxResourceNode.create(:project_id => 1, :parent_id => 5, :category_id => 1, :code => "new_root", :summary => "summary", :default_path => "foo")
+          expect(node.default_path).to eq "text:label:new_resource:new_root"
         end
       end
     end
@@ -153,15 +153,15 @@ describe BxResourceNode do
       context "when node is root" do
         it "set self code" do
           node = BxResourceNode.find(1)
-          node.update_attributes(:code => "bar", :path => "foo")
-          expect(node.path).to eq "bar"
+          node.update_attributes(:code => "bar", :default_path => "foo")
+          expect(node.default_path).to eq "bar"
         end
       end
       context "when node is not root" do
         it "set joined code by ':'" do
           node = BxResourceNode.find(5)
-          node.update_attributes(:code => "bar", :path => "foo")
-          expect(node.path).to eq "text:label:bar"
+          node.update_attributes(:code => "bar", :default_path => "foo")
+          expect(node.default_path).to eq "text:label:bar"
         end
       end
     end
