@@ -6,22 +6,22 @@ REDMINE_VERSION="2.4.0"
 wget http://rubyforge.org/frs/download.php/77242/redmine-${REDMINE_VERSION}.tar.gz
 tar zxf redmine-${REDMINE_VERSION}.tar.gz
 
-ls -al
+mv --help
 
 # copy plugin files
-mkdir redmine-${REDMINE_VERSION}/plugins/redmine_bx
-mv -R app     plugins/redmine_bx/
-mv -R assets  plugins/redmine_bx/
-mv -R config  plugins/redmine_bx/
-mv -R db      plugins/redmine_bx/
-mv -R lib     plugins/redmine_bx/
-mv -R spec    plugins/redmine_bx/
-mv -R test    plugins/redmine_bx/
-mv Gemfile    plugins/redmine_bx/
-mv init.rb    plugins/redmine_bx/
+cd redmine-${REDMINE_VERSION}
+mkdir /plugins/redmine_bx
+cp -r ../app     plugins/redmine_bx/app
+cp -r ../assets  plugins/redmine_bx/assets
+cp -r ../config  plugins/redmine_bx/config
+cp -r ../db      plugins/redmine_bx/db
+cp -r ../lib     plugins/redmine_bx/lib
+cp -r ../spec    plugins/redmine_bx/spec
+cp -r ../test    plugins/redmine_bx/test
+cp ../Gemfile    plugins/redmine_bx/Gemfile
+cp ../init.rb    plugins/redmine_bx/init.rb
 
 # create files
-cd redmine-${REDMINE_VERSION}
 cat > config/database.yml <<_EOS_
 test:
   adapter: sqlite3
