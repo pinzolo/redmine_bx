@@ -8,4 +8,5 @@ bundle exec rake db:migrate
 bundle exec rake redmine:load_default_data
 bundle exec rake redmine:plugins NAME=redmine_bx
 bundle exec rails g rspec:install
+bundle exec rspec plugins/redmine_bx/spec -c
 
