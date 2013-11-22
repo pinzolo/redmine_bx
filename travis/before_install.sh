@@ -6,9 +6,6 @@ REDMINE_VERSION="2.4.0"
 wget http://rubyforge.org/frs/download.php/77242/redmine-${REDMINE_VERSION}.tar.gz
 tar zxf redmine-${REDMINE_VERSION}.tar.gz
 
-ls -al redmine-${REDMINE_VERSION}
-pwd
-
 # copy plugin files
 #cd redmine-${REDMINE_VERSION}
 mkdir redmine-${REDMINE_VERSION}/plugins/redmine_bx
@@ -28,7 +25,9 @@ test:
   adapter: sqlite3
   database: db/redmine_test.db
 _EOS_
+cat redmine-${REDMINE_VERSION}/config/database.yml
 cp redmine-${REDMINE_VERSION}/plugins/redmine_bx/test/fixtures/* redmine-${REDMINE_VERSION}/test/fixtures/
+ls -al redmine-${REDMINE_VERSION}/test/fixtures/
 
 echo $PWD
 export BUNDLE_GEMFILE=redmine-${REDMINE_VERSION}/Gemfile
