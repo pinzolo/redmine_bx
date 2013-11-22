@@ -3,6 +3,5 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_install: sh travis/before_install.sh
-after_install: sh travis/after_install.sh
-script: bundle exec rspec plugins/redmine_bx/spec
+script: sh travis/exec_test.sh
 
