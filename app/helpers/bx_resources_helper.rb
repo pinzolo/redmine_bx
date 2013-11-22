@@ -23,7 +23,7 @@ module BxResourcesHelper
   def bx_resource_route(resource)
     nodes = resource.ancestry.delete_if { |node| node == resource }
     if nodes.present?
-      nodes.map { |node| link_to(node.code, project_bx_resource_path(node.project, node)) }.join("&nbsp;&gt;&nbsp;").html_safe
+      nodes.map { |node| link_to(node.code, project_bx_resource_path(node.project, node)) }.join("&nbsp;&#187;&nbsp;").html_safe
     else
       "&nbsp;".html_safe
     end

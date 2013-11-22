@@ -24,7 +24,7 @@ module BxHelper
     title = l("bx.title.bx")
     if keys.present?
       keys.each do |key|
-        title << " >> "
+        title << " » "
         title << l("bx.title.#{key}")
       end
     end
