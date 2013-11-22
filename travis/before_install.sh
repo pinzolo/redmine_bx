@@ -16,8 +16,8 @@ cp -r ../db      plugins/redmine_bx/db
 cp -r ../lib     plugins/redmine_bx/lib
 cp -r ../spec    plugins/redmine_bx/spec
 cp -r ../test    plugins/redmine_bx/test
-cp Gemfile       plugins/redmine_bx/Gemfile
-cp init.rb       plugins/redmine_bx/init.rb
+cp ../Gemfile    plugins/redmine_bx/Gemfile
+cp ../init.rb    plugins/redmine_bx/init.rb
 
 # create files
 cat > config/database.yml <<_EOS_
