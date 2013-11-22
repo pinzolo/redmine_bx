@@ -1,7 +1,7 @@
 #! /bin/sh
 
-REDMINE_LANG=en
-RAILS_ENV=test
+export REDMINE_LANG=en
+export RAILS_ENV=test
 
 bundle exec rake generate_secret_token
 bundle exec rake db:migrate

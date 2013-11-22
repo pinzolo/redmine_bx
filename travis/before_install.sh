@@ -9,7 +9,7 @@ tar zxf redmine-${REDMINE_VERSION}.tar.gz
 ls -al
 
 # copy plugin files
-mkdir plugins/redmine_bx
+mkdir redmine-${REDMINE_VERSION}/plugins/redmine_bx
 cp -r app     plugins/redmine_bx/app
 cp -r assets  plugins/redmine_bx/assets
 cp -r config  plugins/redmine_bx/config
@@ -28,4 +28,6 @@ test:
   database: db/redmine_test.db
 _EOS_
 cp plugins/redmine_bx/test/fixtures/* test/fixtures/
+
+export BUNDLE_GEMFILE=./Gemfile
 
