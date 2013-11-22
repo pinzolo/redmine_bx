@@ -3,7 +3,7 @@
 REDMINE_VERSION="2.4.0"
 
 # deploy redmine
-wget http://rubyforge.org/frs/download.php/77244/redmine-${REDMINE_VERSION}.tar.gz
+wget http://rubyforge.org/frs/download.php/77242/redmine-${REDMINE_VERSION}.tar.gz
 tar xvf redmine-${REDMINE_VERSION}.tar.gz
 cd redmine-${REDMINE_VERSION}
 
