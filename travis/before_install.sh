@@ -10,15 +10,15 @@ ls -al
 
 # copy plugin files
 mkdir redmine-${REDMINE_VERSION}/plugins/redmine_bx
-cp -r app     plugins/redmine_bx/app
-cp -r assets  plugins/redmine_bx/assets
-cp -r config  plugins/redmine_bx/config
-cp -r db      plugins/redmine_bx/db
-cp -r lib     plugins/redmine_bx/lib
-cp -r spec    plugins/redmine_bx/spec
-cp -r test    plugins/redmine_bx/test
-cp Gemfile    plugins/redmine_bx/Gemfile
-cp init.rb    plugins/redmine_bx/init.rb
+mv -R app     plugins/redmine_bx/
+mv -R assets  plugins/redmine_bx/
+mv -R config  plugins/redmine_bx/
+mv -R db      plugins/redmine_bx/
+mv -R lib     plugins/redmine_bx/
+mv -R spec    plugins/redmine_bx/
+mv -R test    plugins/redmine_bx/
+mv Gemfile    plugins/redmine_bx/
+mv init.rb    plugins/redmine_bx/
 
 # create files
 cd redmine-${REDMINE_VERSION}
