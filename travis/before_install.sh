@@ -25,10 +25,7 @@ test:
   adapter: sqlite3
   database: db/redmine_test.db
 _EOS_
-cat redmine-${REDMINE_VERSION}/config/database.yml
 cp redmine-${REDMINE_VERSION}/plugins/redmine_bx/test/fixtures/* redmine-${REDMINE_VERSION}/test/fixtures/
-ls -al redmine-${REDMINE_VERSION}/test/fixtures/
+mv redmine-${REDMINE_VERSION}/* .
 
-echo $PWD
-export BUNDLE_GEMFILE=redmine-${REDMINE_VERSION}/Gemfile
-
+ls -al
