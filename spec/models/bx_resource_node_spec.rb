@@ -166,4 +166,33 @@ describe BxResourceNode do
       end
     end
   end
+
+  describe "#path" do
+    let(:node) { BxResourceNode.find(9) }
+    context "when argument not given" do
+      it "returns default_path" do
+        expect(node.path).to eq node.default_path
+      end
+    end
+    context "when argument is nil" do
+      it "returns default_path" do
+        expect(node.path(nil)).to eq node.default_path
+      end
+    end
+    context "when argument is empty" do
+      it "returns default_path" do
+        expect(node.path("")).to eq node.default_path
+      end
+    end
+    context "when argument is blank" do
+      it "returns path string that joined by argument" do
+        expect(node.path("  ")).to eq "activemodel  attributes  bx_resource_form"
+      end
+    end
+    context "when argument is string" do
+      it "returns path string that joined by argument" do
+        expect(node.path(".")).to eq "activemodel.attributes.bx_resource_form"
+      end
+    end
+  end
 end

@@ -49,6 +49,14 @@ class BxResourceNode < ActiveRecord::Base
     values.where(:branch_id => branch_id).first.try(:value)
   end
 
+  def path(delimiter = ":")
+    if delimiter == ":" || delimiter.nil? || delimiter.length.zero?
+      default_path
+    else
+      ancestry.map(&:code).join(delimiter)
+    end
+  end
+
   private
   def set_default_path
     self.default_path = parent ? "#{parent.default_path}:#{code}" : code
