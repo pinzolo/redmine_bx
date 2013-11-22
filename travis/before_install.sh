@@ -12,15 +12,15 @@ pwd
 # copy plugin files
 #cd redmine-${REDMINE_VERSION}
 mkdir redmine-${REDMINE_VERSION}/plugins/redmine_bx
-mv ../app      redmine-${REDMINE_VERSION}/plugins/redmine_bx/app
-mv ../assets   redmine-${REDMINE_VERSION}/plugins/redmine_bx/assets
-mv ../config   redmine-${REDMINE_VERSION}/plugins/redmine_bx/config
-mv ../db       redmine-${REDMINE_VERSION}/plugins/redmine_bx/db
-mv ../lib      redmine-${REDMINE_VERSION}/plugins/redmine_bx/lib
-mv ../spec     redmine-${REDMINE_VERSION}/plugins/redmine_bx/spec
-mv ../test     redmine-${REDMINE_VERSION}/plugins/redmine_bx/test
-mv ../Gemfile  redmine-${REDMINE_VERSION}/plugins/redmine_bx/Gemfile
-mv ../init.rb  redmine-${REDMINE_VERSION}/plugins/redmine_bx/init.rb
+mv app      redmine-${REDMINE_VERSION}/plugins/redmine_bx/app
+mv assets   redmine-${REDMINE_VERSION}/plugins/redmine_bx/assets
+mv config   redmine-${REDMINE_VERSION}/plugins/redmine_bx/config
+mv db       redmine-${REDMINE_VERSION}/plugins/redmine_bx/db
+mv lib      redmine-${REDMINE_VERSION}/plugins/redmine_bx/lib
+mv spec     redmine-${REDMINE_VERSION}/plugins/redmine_bx/spec
+mv test     redmine-${REDMINE_VERSION}/plugins/redmine_bx/test
+mv Gemfile  redmine-${REDMINE_VERSION}/plugins/redmine_bx/Gemfile
+mv init.rb  redmine-${REDMINE_VERSION}/plugins/redmine_bx/init.rb
 
 # create files
 cat > redmine-${REDMINE_VERSION}/config/database.yml <<_EOS_
