@@ -2,7 +2,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BxResourceNode do
-  fixtures :projects, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values,
+  fixtures :projects, :bx_resource_categories, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values,
            :bx_histories, :bx_history_details
 
   describe "#project" do
