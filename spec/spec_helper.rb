@@ -1,4 +1,12 @@
 # coding: utf-8
+require "coveralls"
+require "simplecov"
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/bundle/'
+end
+
 
 # change fixture_path in base spec_helper.rb
 #   from: config.fixture_path = "#{::Rails.root}/spec/fixtures"

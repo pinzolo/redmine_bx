@@ -1,4 +1,6 @@
-# redmine_bx [![Build Status](https://secure.travis-ci.org/pinzolo/redmine_bx.png)](http://travis-ci.org/pinzolo/redmine_bx)
+# redmine_bx
+[![Build Status](https://secure.travis-ci.org/pinzolo/redmine_bx.png)](http://travis-ci.org/pinzolo/redmine_bx)
+[![Coverage Status](https://coveralls.io/repos/pinzolo/redmine_bx/badge.png)](https://coveralls.io/r/pinzolo/redmine_bx)
 
 redmine_bx is a plugin for Redmine. This will reduce excel files in your projects.
 
