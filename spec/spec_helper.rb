@@ -4,7 +4,14 @@ require "simplecov"
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter do |source_file|
-    !source_file.filename.include?("redmine_bx/app") || !source_file.filename.end_with?(".rb")
+    plugin_file = source_file.filename.include?("plugins")
+    ruby_file = source_file.filename.end_with?(".rb")
+    if plugin_file && ruby_file
+      puts source_file.filename
+      false
+    else
+      true
+    end
   end
 end
 
