@@ -1,3 +1,0 @@
-= redmine_bx
-
-Description goes here
