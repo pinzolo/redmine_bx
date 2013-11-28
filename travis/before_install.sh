@@ -1,9 +1,10 @@
 #! /bin/sh
 
-REDMINE_VERSION="2.4.0"
+REDMINE_VERSION="2.4.1"
 
 # Get & deploy Redmine
-wget http://rubyforge.org/frs/download.php/77242/redmine-${REDMINE_VERSION}.tar.gz
+wget http://www.redmine.org/releases/redmine-${REDMINE_VERSION}.tar.gz
+#wget http://rubyforge.org/frs/download.php/77242/redmine-${REDMINE_VERSION}.tar.gz
 tar zxf redmine-${REDMINE_VERSION}.tar.gz
 
 # Copy plugin files to plugin directory
