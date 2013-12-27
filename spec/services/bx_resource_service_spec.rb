@@ -3,8 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BxResourceService do
   fixtures :projects, :issues, :users, :bx_resource_nodes, :bx_resource_branches, :bx_resource_values, :bx_resource_categories
-  before { User.current = User.find(1) }
+  let(:current_time) { Time.local(2013, 11, 16, 9, 0, 0) }
   let(:project) { Project.all.first }
+  before(:each) do
+    Time.stub(:now).and_return(current_time)
+    User.stub(:current).and_return(User.find(1))
+  end
 
   describe "#create_category!" do
     context "when input is valid" do# {{{
@@ -61,6 +65,14 @@ describe BxResourceService do
         it "created history has id of created category as source_id" do
           result = service.create_category!
           expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "created history has 1 as changed_by" do
+          result = service.create_category!
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "created history has current_time as changed_at" do
+          result = service.create_category!
+          expect(BxHistory.last.changed_at).to eq current_time
         end
         describe "detail of created history that property is 'name'" do
           it "exists" do
@@ -165,12 +177,46 @@ describe BxResourceService do
       end
     end# }}}
 
-    context "when input is invalid (without name)" do
-      # TODO
-    end
+    context "when input is invalid (without name)" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "", :description => "test_desc", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
 
-    context "when input with relational_issues" do
-      # TODO
-    end
+      describe "data registration" do
+        it "not create category" do
+          expect { service.create_category! }.not_to change { BxResourceCategory.count }
+        end
+        it "not create history" do
+          expect { service.create_category! }.not_to change { BxHistory.count }
+        end
+        it "not create history detail" do
+          expect { service.create_category! }.not_to change { BxHistoryDetail.count }
+        end
+      end
+      describe "result" do
+        let(:result) { service.create_category! }
+
+        it "result is failure" do
+          expect(result.failure?).to eq true
+        end
+        it "reason is invalid_input" do
+          expect(result.invalid_input?).to eq true
+        end
+      end
+    end# }}}
+
+    context "when input with relational_issues" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "test", :description => "test_desc", :project_id => project.id, :relational_issues => "1,#3 5") }
+      let(:service) { BxResourceService.new(form) }
+
+      describe "data registration" do
+        it "create 3 relational issue records" do
+          expect { service.create_category! }.to change { BxHistoryIssue.count }.by(3)
+        end
+        it "created relational issue has 1, 3, 5 as issue_id" do
+          service.create_category!
+          expect(BxHistory.last.issues.map(&:id)).to match_array [1, 3, 5]
+        end
+      end
+    end# }}}
   end
 end
