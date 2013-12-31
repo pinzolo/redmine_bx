@@ -600,4 +600,18 @@ describe BxResourceService do
       end
     end# }}}
   end
+
+  describe "#delete_category!" do
+    let(:service) { BxResourceService.new }
+    let(:category) { BxResourceCategory.find(1) }
+
+    it "delete category" do
+      expect { service.delete_category!(category) }.to change { BxResourceCategory.count }.by(-1)
+      expect(BxResourceCategory.where(:id => 1)).to be_empty
+    end
+    it "delete resources that belong deleting category" do
+      expect { service.delete_category!(category) }.to change { BxResourceNode.count }.by(-13)
+      expect(BxResourceNode.where(:category_id => 1).count).to eq 0
+    end
+  end
 end
