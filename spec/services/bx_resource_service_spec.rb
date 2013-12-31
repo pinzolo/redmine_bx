@@ -128,7 +128,7 @@ describe BxResourceService do
         it "created category has 'test' as name" do
           expect(result.data.name).to eq "test"
         end
-        it "created category has nil as description" do
+        it "created category has empty as description" do
           expect(result.data.description).to be_empty
         end
         it "created category has 1 as project_id " do
@@ -214,6 +214,387 @@ describe BxResourceService do
         end
         it "created relational issue has 1, 3, 5 as issue_id" do
           service.create_category!
+          expect(BxHistory.last.issues.map(&:id)).to match_array [1, 3, 5]
+        end
+      end
+    end# }}}
+  end
+
+  describe "#update_category!" do
+    context "when input is valid" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "test", :description => "test_desc", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "not create history" do
+          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        end
+        it "create 1 history" do
+          expect { service.update_category!(category) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 2 history details" do
+          expect { service.update_category!(category) }.to change { BxHistoryDetail.count }.by(2)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_category!(category) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated category" do
+          expect(result.data).to eq BxResourceCategory.find(1)
+        end
+        it "updated category has 'test' as name" do
+          expect(result.data.name).to eq "test"
+        end
+        it "updated category has 'test_desc' as description" do
+          expect(result.data.description).to eq "test_desc"
+        end
+      end
+      describe "history" do
+        it "updated history has 'resource_category' as target" do
+          service.update_category!(category)
+          expect(BxHistory.last.target).to eq "resource_category"
+        end
+        it "updated history has 'update' as operation_type" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "updated history has 'update_category' as operation" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation).to eq "update_category"
+        end
+        it "updated history has name of updated category as key" do
+          service.update_category!(category)
+          expect(BxHistory.last.key).to eq "test"
+        end
+        it "updated history has id of updated category as source_id" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "updated history has 1 as changed_by" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "updated history has current_time as changed_at" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "detail of updated history that property is 'name'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq true
+          end
+          it "change to 'test' form 'locales'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "name" }
+            expect(detail.old_value).to eq "locales"
+            expect(detail.new_value).to eq "test"
+          end
+        end
+        describe "detail of updated history that property is 'description'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "description" }).to eq true
+          end
+          it "change to 'test_desc' form 'locale settings'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "description" }
+            expect(detail.old_value).to eq "locale settings"
+            expect(detail.new_value).to eq "test_desc"
+          end
+        end
+      end
+    end# }}}
+
+    context "when input without description" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "test", :description => "", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "not create history" do
+          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        end
+        it "create 1 history" do
+          expect { service.update_category!(category) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 2 history details" do
+          expect { service.update_category!(category) }.to change { BxHistoryDetail.count }.by(2)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_category!(category) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated category" do
+          expect(result.data).to eq BxResourceCategory.find(1)
+        end
+        it "updated category has 'test' as name" do
+          expect(result.data.name).to eq "test"
+        end
+        it "updated category has empty as description" do
+          expect(result.data.description).to be_empty
+        end
+        it "project_id of updated category is not changed" do
+          expect(result.data.project_id).to eq category.project_id
+        end
+      end
+      describe "history" do
+        it "updated history has 'resource_category' as target" do
+          service.update_category!(category)
+          expect(BxHistory.last.target).to eq "resource_category"
+        end
+        it "updated history has 'update' as operation_type" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "updated history has 'update_category' as operation" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation).to eq "update_category"
+        end
+        it "updated history has name of updated category as key" do
+          service.update_category!(category)
+          expect(BxHistory.last.key).to eq "test"
+        end
+        it "updated history has id of updated category as source_id" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        describe "detail of updated history that property is 'name'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq true
+          end
+          it "change to 'test' form 'locales'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "name" }
+            expect(detail.old_value).to eq "locales"
+            expect(detail.new_value).to eq "test"
+          end
+        end
+        describe "detail of updated history that property is 'description'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "description" }).to eq true
+          end
+          it "change to empty form 'locale settings'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "description" }
+            expect(detail.old_value).to eq "locale settings"
+            expect(detail.new_value).to be_empty
+          end
+        end
+      end
+    end# }}}
+
+    context "when input is invalid (without name)" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "", :description => "test_desc", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "not create category" do
+          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        end
+        it "not create history" do
+          expect { service.update_category!(category) }.not_to change { BxHistory.count }
+        end
+        it "not create history detail" do
+          expect { service.update_category!(category) }.not_to change { BxHistoryDetail.count }
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_category!(category) }
+
+        it "result is failure" do
+          expect(result.failure?).to eq true
+        end
+        it "reason is invalid_input" do
+          expect(result.invalid_input?).to eq true
+        end
+      end
+    end# }}}
+
+    context "when name not changed" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "locales", :description => "test_desc", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "not create history" do
+          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        end
+        it "create 1 history" do
+          expect { service.update_category!(category) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 1 history detail" do
+          expect { service.update_category!(category) }.to change { BxHistoryDetail.count }.by(1)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_category!(category) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated category" do
+          expect(result.data).to eq BxResourceCategory.find(1)
+        end
+        it "updated category has 'locales' as name" do
+          expect(result.data.name).to eq "locales"
+        end
+        it "updated category has 'test_desc' as description" do
+          expect(result.data.description).to eq "test_desc"
+        end
+      end
+      describe "history" do
+        it "updated history has 'resource_category' as target" do
+          service.update_category!(category)
+          expect(BxHistory.last.target).to eq "resource_category"
+        end
+        it "updated history has 'update' as operation_type" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "updated history has 'update_category' as operation" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation).to eq "update_category"
+        end
+        it "updated history has name of updated category as key" do
+          service.update_category!(category)
+          expect(BxHistory.last.key).to eq "locales"
+        end
+        it "updated history has id of updated category as source_id" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "updated history has 1 as changed_by" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "updated history has current_time as changed_at" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "detail of updated history that property is 'name'" do
+          it "not exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq false
+          end
+        end
+        describe "detail of updated history that property is 'description'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "description" }).to eq true
+          end
+          it "change to 'test_desc' form 'locale settings'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "description" }
+            expect(detail.old_value).to eq "locale settings"
+            expect(detail.new_value).to eq "test_desc"
+          end
+        end
+      end
+    end# }}}
+
+    context "when description not changed" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "test", :description => "locale settings", :project_id => project.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "not create history" do
+          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        end
+        it "create 1 history" do
+          expect { service.update_category!(category) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 1 history detail" do
+          expect { service.update_category!(category) }.to change { BxHistoryDetail.count }.by(1)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_category!(category) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated category" do
+          expect(result.data).to eq BxResourceCategory.find(1)
+        end
+        it "updated category has 'test' as name" do
+          expect(result.data.name).to eq "test"
+        end
+        it "updated category has 'locale settings' as description" do
+          expect(result.data.description).to eq "locale settings"
+        end
+      end
+      describe "history" do
+        it "updated history has 'resource_category' as target" do
+          service.update_category!(category)
+          expect(BxHistory.last.target).to eq "resource_category"
+        end
+        it "updated history has 'update' as operation_type" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "updated history has 'update_category' as operation" do
+          service.update_category!(category)
+          expect(BxHistory.last.operation).to eq "update_category"
+        end
+        it "updated history has name of updated category as key" do
+          service.update_category!(category)
+          expect(BxHistory.last.key).to eq "test"
+        end
+        it "updated history has id of updated category as source_id" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "updated history has 1 as changed_by" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "updated history has current_time as changed_at" do
+          result = service.update_category!(category)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "detail of updated history that property is 'name'" do
+          it "exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq true
+          end
+          it "change to 'test' form 'locales'" do
+            service.update_category!(category)
+            detail = BxHistory.last.details.find { |detail| detail.property == "name" }
+            expect(detail.old_value).to eq "locales"
+            expect(detail.new_value).to eq "test"
+          end
+        end
+        describe "detail of updated history that property is 'description'" do
+          it "not exists" do
+            service.update_category!(category)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "description" }).to eq false
+          end
+        end
+      end
+    end# }}}
+
+    context "when input with relational_issues" do# {{{
+      let(:form) { BxResourceCategoryForm.new(:name => "test", :description => "test_desc", :project_id => project.id, :relational_issues => "1,#3 5") }
+      let(:service) { BxResourceService.new(form) }
+      let(:category) { BxResourceCategory.find(1) }
+
+      describe "data registration" do
+        it "create 3 relational issue records" do
+          expect { service.update_category!(category) }.to change { BxHistoryIssue.count }.by(3)
+        end
+        it "updated relational issue has 1, 3, 5 as issue_id" do
+          service.update_category!(category)
           expect(BxHistory.last.issues.map(&:id)).to match_array [1, 3, 5]
         end
       end
