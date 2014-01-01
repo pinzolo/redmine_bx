@@ -398,8 +398,10 @@ describe BxResourceService do
       let(:category) { BxResourceCategory.find(1) }
 
       describe "data registration" do
-        it "not create category" do
-          expect { service.update_category!(category) }.not_to change { BxResourceCategory.count }
+        it "not update category" do
+          before_version = category.lock_version
+          service.update_category!(category)
+          expect(BxResourceCategory.find(1).lock_version).to eq before_version
         end
         it "not create history" do
           expect { service.update_category!(category) }.not_to change { BxHistory.count }
@@ -647,7 +649,7 @@ describe BxResourceService do
         it "created branch has 'test_code' as code" do
           expect(result.data.code).to eq "test_code"
         end
-        it "created category has 1 as category_id " do
+        it "created branch has 1 as category_id " do
           expect(result.data.category_id).to eq 1
         end
       end
@@ -685,7 +687,7 @@ describe BxResourceService do
             service.add_branch!
             expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq true
           end
-          it "change to 'test' form empty" do
+          it "change to 'test_name' form empty" do
             service.add_branch!
             detail = BxHistory.last.details.find { |detail| detail.property == "name" }
             expect(detail.old_value).to be_empty
@@ -746,6 +748,148 @@ describe BxResourceService do
         end
         it "created relational issue has 1, 3, 5 as issue_id" do
           service.add_branch!
+          expect(BxHistory.last.issues.map(&:id)).to match_array [1, 3, 5]
+        end
+      end
+    end# }}}
+  end
+
+  describe "#update_branch!" do
+    context "when input is valid" do# {{{
+      let(:category) { BxResourceCategory.find(1) }
+      let(:form) { BxResourceBranchForm.new(:name => "test_name", :code => "test_code", :category_id => category.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:branch) { BxResourceBranch.find(1) }
+
+      describe "data registration" do
+        it "not branch registration" do
+          expect { service.update_branch!(branch) }.not_to change { BxResourceBranch.count }
+        end
+        it "create 1 history" do
+          expect { service.update_branch!(branch) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 2 history details" do
+          expect { service.update_branch!(branch) }.to change { BxHistoryDetail.count }.by(2)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_branch!(branch) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated branch" do
+          expect(result.data).to eq BxResourceBranch.find(branch.id)
+        end
+        it "updated branch has 'test_name' as name" do
+          expect(result.data.name).to eq "test_name"
+        end
+        it "updated branch has 'test_code' as code" do
+          expect(result.data.code).to eq "test_code"
+        end
+        it "updated branch has 1 as category_id " do
+          expect(result.data.category_id).to eq 1
+        end
+      end
+      describe "history" do
+        it "created history has 'resource_category' as target" do
+          service.update_branch!(branch)
+          expect(BxHistory.last.target).to eq "resource_category"
+        end
+        it "created history has 'update' as operation_type" do
+          service.update_branch!(branch)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "created history has 'update_branch' as operation" do
+          service.update_branch!(branch)
+          expect(BxHistory.last.operation).to eq "update_branch"
+        end
+        it "created history has code of created branch as key" do
+          service.update_branch!(branch)
+          expect(BxHistory.last.key).to eq "test_code"
+        end
+        it "created history has category_id of created branch as source_id" do
+          result = service.update_branch!(branch)
+          expect(BxHistory.last.source_id).to eq result.data.category_id
+        end
+        it "created history has 1 as changed_by" do
+          result = service.update_branch!(branch)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "created history has current_time as changed_at" do
+          result = service.update_branch!(branch)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "details of created history that property is 'name'" do
+          it "exists" do
+            service.update_branch!(branch)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "name" }).to eq true
+          end
+          it "change to 'test_name' form 'Japanese'" do
+            service.update_branch!(branch)
+            detail = BxHistory.last.details.find { |detail| detail.property == "name" }
+            expect(detail.old_value).to eq "Japanese"
+            expect(detail.new_value).to eq "test_name"
+          end
+        end
+        describe "details of created history that property is 'code'" do
+          it "exists" do
+            service.update_branch!(branch)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "code" }).to eq true
+          end
+          it "change to 'test_code' form empty" do
+            service.update_branch!(branch)
+            detail = BxHistory.last.details.find { |detail| detail.property == "code" }
+            expect(detail.old_value).to eq "ja"
+            expect(detail.new_value).to eq "test_code"
+          end
+        end
+      end
+    end# }}}
+
+    context "when input is invalid (without name)" do# {{{
+      let(:category) { BxResourceCategory.find(1) }
+      let(:form) { BxResourceBranchForm.new(:name => "", :code => "test_code", :category_id => category.id) }
+      let(:service) { BxResourceService.new(form) }
+      let(:branch) { BxResourceBranch.find(1) }
+
+      describe "data registration" do
+        it "not update branch" do
+          before_version = branch.lock_version
+          service.update_branch!(branch)
+          expect(BxResourceBranch.find(1).lock_version).to eq before_version
+        end
+        it "not create history" do
+          expect { service.update_branch!(branch) }.not_to change { BxHistory.count }
+        end
+        it "not create history detail" do
+          expect { service.update_branch!(branch) }.not_to change { BxHistoryDetail.count }
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_branch!(branch) }
+
+        it "result is failure" do
+          expect(result.failure?).to eq true
+        end
+        it "reason is invalid_input" do
+          expect(result.invalid_input?).to eq true
+        end
+      end
+    end# }}}
+
+    context "when input with relational_issues" do# {{{
+      let(:category) { BxResourceCategory.find(1) }
+      let(:form) { BxResourceBranchForm.new(:name => "test_name", :code => "test_code", :category_id => category.id, :relational_issues => "1,#3 5") }
+      let(:service) { BxResourceService.new(form) }
+      let(:branch) { BxResourceBranch.find(1) }
+
+      describe "data registration" do
+        it "create 3 relational issue records" do
+          expect { service.update_branch!(branch) }.to change { BxHistoryIssue.count }.by(3)
+        end
+        it "created relational issue has 1, 3, 5 as issue_id" do
+          service.update_branch!(branch)
           expect(BxHistory.last.issues.map(&:id)).to match_array [1, 3, 5]
         end
       end
