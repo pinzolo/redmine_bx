@@ -615,6 +615,14 @@ describe BxResourceService do
       expect { service.delete_category!(category) }.to change { BxResourceNode.count }.by(-13)
       expect(BxResourceNode.where(:category_id => 1).count).to eq 0
     end
+    it "delete branches that belong deleting category" do
+      expect { service.delete_category!(category) }.to change { BxResourceBranch.count }.by(-2)
+      expect(BxResourceBranch.where(:category_id => 1).count).to eq 0
+    end
+    it "delete resource values that belong deleting category" do
+      expect { service.delete_category!(category) }.to change { BxResourceValue.count }.by(-14)
+      expect(BxResourceValue.includes(:resource).all.any? { |value| value.resource.category_id == 1 }).to eq false
+    end
   end
 
   describe "#add_branch!" do
@@ -894,5 +902,19 @@ describe BxResourceService do
         end
       end
     end# }}}
+  end
+
+  describe "#delete_branch!" do
+    let(:service) { BxResourceService.new }
+    let(:branch) { BxResourceBranch.find(1) }
+
+    it "delete branch" do
+      expect { service.delete_branch!(branch) }.to change { BxResourceBranch.count }.by(-1)
+      expect(BxResourceBranch.where(:id => 1)).to be_empty
+    end
+    it "delete resource values that belong deleting branch" do
+      expect { service.delete_branch!(branch) }.to change { BxResourceValue.count }.by(-7)
+      expect(BxResourceValue.where(:branch_id => 1).count).to eq 0
+    end
   end
 end
