@@ -91,6 +91,12 @@ describe BxResourceForm do
           expect(form.valid?).to eq false
         end
       end
+      context"when include ':'" do
+        it "form is invalid" do
+          form.code = "a:b"
+          expect(form.valid?).to eq false
+        end
+      end
       context "when base_resource is nil" do
         before { form.base_resource = nil }
 
