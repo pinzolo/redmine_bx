@@ -2050,10 +2050,10 @@ describe BxResourceService do
   end# }}}
 
   describe "#update_resource!" do
-    context "when input is valid (without value)" do# {{{
-      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :category_id => 1, :project_id => project.id, :parent_id => 3, :lock_version => 0) }
+    context "when input is valid (without value -> without value)" do# {{{
+      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :category_id => 1, :project_id => project.id, :parent_id => 1, :lock_version => 0) }
       let(:service) { BxResourceService.new(form) }
-      let(:resource) { BxResourceNode.find(4) }
+      let(:resource) { BxResourceNode.find(3) }
 
       describe "data registration" do
         it "not create resource" do
@@ -2076,25 +2076,257 @@ describe BxResourceService do
           puts form.errors.inspect if result.invalid_input?
           expect(result.success?).to eq true
         end
-        it "returns created resource" do
-          expect(result.data).to eq BxResourceNode.last
+        it "returns updated resource" do
+          expect(result.data).to eq BxResourceNode.find(3)
         end
-        it "created resource has 'test_code' as code" do
+        it "updated resource has 'test_code' as code" do
           expect(result.data.code).to eq "test_code"
         end
-        it "created resource has 'test_code' as path" do
-          expect(result.data.path).to eq "text:label:test_code"
+        it "updated resource has 'text:test_code' as path" do
+          expect(result.data.path).to eq "text:test_code"
         end
-        it "created resource has 'test_summary' as summary" do
+        it "updated resource has 'test_summary' as summary" do
           expect(result.data.summary).to eq "test_summary"
         end
-        it "created resource has 1 as project_id " do
+        it "updated resource has 1 as project_id " do
           expect(result.data.project_id).to eq 1
         end
-        it "created resource has 1 as category_id " do
+        it "updated resource has 1 as category_id " do
           expect(result.data.category_id).to eq 1
         end
-        it "created resource has 3 as parent_id " do
+        it "updated resource has 1 as parent_id " do
+          expect(result.data.parent_id).to eq 1
+        end
+      end
+      describe "history" do
+        it "created history has 'resource' as target" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.target).to eq "resource"
+        end
+        it "created history has 'update' as operation_type" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "created history has 'update_resource' as operation" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.operation).to eq "update_resource"
+        end
+        it "created history has code of updated resource as key" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.key).to eq "test_code"
+        end
+        it "created history has id of updated resource as source_id" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "created history has 1 as changed_by" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "created history has current_time as changed_at" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "detail of created history that property is 'code'" do
+          it "exists" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "code" }).to eq true
+          end
+          it "change to 'test_code' form 'label'" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "code" }
+            expect(detail.old_value).to eq "label"
+            expect(detail.new_value).to eq "test_code"
+          end
+        end
+        describe "detail of created history that property is 'summary'" do
+          it "exists" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "summary" }).to eq true
+          end
+          it "change to 'test_summary' form 'label'" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "summary" }
+            expect(detail.old_value).to eq "label"
+            expect(detail.new_value).to eq "test_summary"
+          end
+        end
+      end
+    end# }}}
+
+    context "when input is valid (without value -> with value)" do# {{{
+      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :project_id => project.id, :category_id => 1, :parent_id => 1, :lock_version => 0, :branch_value_1 => "br1" , :branch_value_2 => "br2") }
+      let(:service) { BxResourceService.new(form) }
+      let(:resource) { BxResourceNode.find(3) }
+
+      describe "data registration" do
+        it "not create resource" do
+          expect { service.update_resource!(resource) }.not_to change { BxResourceNode.count }
+        end
+        it "create 1 history" do
+          expect { service.update_resource!(resource) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 4 history details" do
+          expect { service.update_resource!(resource) }.to change { BxHistoryDetail.count }.by(4)
+        end
+        it "create 2 resource values" do
+          expect { service.update_resource!(resource) }.to change { BxResourceValue.count }.by(2)
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_resource!(resource) }
+
+        it "result is success" do
+          expect(result.success?).to eq true
+        end
+        it "returns updated resource" do
+          expect(result.data).to eq BxResourceNode.find(3)
+        end
+        it "updated resource has 'test_code' as code" do
+          expect(result.data.code).to eq "test_code"
+        end
+        it "updated resource has 'text:test_code' as path" do
+          expect(result.data.path).to eq "text:test_code"
+        end
+        it "updated resource has 'test_summary' as summary" do
+          expect(result.data.summary).to eq "test_summary"
+        end
+        it "updated resource has 1 as project_id " do
+          expect(result.data.project_id).to eq 1
+        end
+        it "updated resource has 1 as category_id " do
+          expect(result.data.category_id).to eq 1
+        end
+        it "updated resource has 2 values" do
+          expect(result.data.values.size).to eq 2
+        end
+        it "updated resource value that branch_id is 1 has 'br1' as value" do
+          expect(result.data.values.find { |value| value.branch_id == 1 }.value).to eq "br1"
+        end
+        it "updated resource value that branch_id is 2 has 'br2' as value" do
+          expect(result.data.values.find { |value| value.branch_id == 2 }.value).to eq "br2"
+        end
+        it "updated resource has 1 as parent_id " do
+          expect(result.data.parent_id).to eq 1
+        end
+      end
+      describe "history" do
+        it "created history has 'resource' as target" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.target).to eq "resource"
+        end
+        it "created history has 'update' as operation_type" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.operation_type).to eq "update"
+        end
+        it "created history has 'update_resource' as operation" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.operation).to eq "update_resource"
+        end
+        it "created history has code of updated resource as key" do
+          service.update_resource!(resource)
+          expect(BxHistory.last.key).to eq "test_code"
+        end
+        it "created history has id of updated resource as source_id" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.source_id).to eq result.data.id
+        end
+        it "created history has 1 as changed_by" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.changed_by).to eq 1
+        end
+        it "created history has current_time as changed_at" do
+          result = service.update_resource!(resource)
+          expect(BxHistory.last.changed_at).to eq current_time
+        end
+        describe "detail of created history that property is 'code'" do
+          it "exists" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "code" }).to eq true
+          end
+          it "change to 'test_code' form 'label'" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "code" }
+            expect(detail.old_value).to eq "label"
+            expect(detail.new_value).to eq "test_code"
+          end
+        end
+        describe "detail of created history that property is 'summary'" do
+          it "exists" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.any? { |detail| detail.property == "summary" }).to eq true
+          end
+          it "change to 'test_summary' form 'label'" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "summary" }
+            expect(detail.old_value).to eq "label"
+            expect(detail.new_value).to eq "test_summary"
+          end
+        end
+        describe "detail of created history that propert is 'value'" do
+          it "exists 2 details" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.where(:property => "value").count).to eq 2
+          end
+          it "change to 'br1' form empty" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.new_value == "br1" }
+            expect(detail.old_value).to be_empty
+          end
+          it "change to 'br2' form empty" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.new_value == "br2" }
+            expect(detail.old_value).to be_empty
+          end
+        end
+      end
+    end# }}}
+
+    context "when input is valid (with value -> without value)" do# {{{
+      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :category_id => 1, :project_id => project.id, :parent_id => 3, :lock_version => 0) }
+      let(:service) { BxResourceService.new(form) }
+      let(:resource) { BxResourceNode.find(4) }
+
+      describe "data registration" do
+        it "not create resource" do
+          expect { service.update_resource!(resource) }.not_to change { BxResourceNode.count }
+        end
+        it "create 1 history" do
+          expect { service.update_resource!(resource) }.to change { BxHistory.count }.by(1)
+        end
+        it "create 4 history details" do
+          expect { service.update_resource!(resource) }.to change { BxHistoryDetail.count }.by(4)
+        end
+        it "not create resource value" do
+          expect { service.update_resource!(resource) }.not_to change { BxResourceValue.count }
+        end
+      end
+      describe "result" do
+        let(:result) { service.update_resource!(resource) }
+
+        it "result is success" do
+          puts form.errors.inspect if result.invalid_input?
+          expect(result.success?).to eq true
+        end
+        it "returns updated resource" do
+          expect(result.data).to eq BxResourceNode.find(4)
+        end
+        it "updated resource has 'test_code' as code" do
+          expect(result.data.code).to eq "test_code"
+        end
+        it "updated resource has 'text:test_code' as path" do
+          expect(result.data.path).to eq "text:label:test_code"
+        end
+        it "updated resource has 'test_summary' as summary" do
+          expect(result.data.summary).to eq "test_summary"
+        end
+        it "updated resource has 1 as project_id " do
+          expect(result.data.project_id).to eq 1
+        end
+        it "updated resource has 1 as category_id " do
+          expect(result.data.category_id).to eq 1
+        end
+        it "updated resource has 3 as parent_id " do
           expect(result.data.parent_id).to eq 3
         end
       end
@@ -2111,11 +2343,11 @@ describe BxResourceService do
           service.update_resource!(resource)
           expect(BxHistory.last.operation).to eq "update_resource"
         end
-        it "created history has code of created resource as key" do
+        it "created history has code of updated resource as key" do
           service.update_resource!(resource)
           expect(BxHistory.last.key).to eq "test_code"
         end
-        it "created history has id of created resource as source_id" do
+        it "created history has id of updated resource as source_id" do
           result = service.update_resource!(resource)
           expect(BxHistory.last.source_id).to eq result.data.id
         end
@@ -2151,16 +2383,33 @@ describe BxResourceService do
             expect(detail.new_value).to eq "test_summary"
           end
         end
+        describe "detail of created history that propert is 'value'" do
+          it "exists 2 details" do
+            service.update_resource!(resource)
+            expect(BxHistory.last.details.where(:property => "value").count).to eq 2
+          end
+          it "change to 'br1' form empty" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.old_value == "Resources" }
+            expect(detail.new_value).to be_empty
+          end
+          it "change to 'br2' form empty" do
+            service.update_resource!(resource)
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.old_value == "リソース" }
+            expect(detail.new_value).to be_empty
+          end
+        end
       end
     end# }}}
-=begin
-    context "when input is valid (with value)" do# {{{
-      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :project_id => project.id, :category_id => 1, :parent_id => 4, :branch_value_1 => "br1" , :branch_value_2 => "br2") }
+
+    context "when input is valid (with value -> with value)" do# {{{
+      let(:form) { BxResourceForm.new(:code => "test_code", :summary => "test_summary", :category_id => 1, :project_id => project.id, :parent_id => 3, :lock_version => 0, :branch_value_1 => "br1" , :branch_value_2 => "br2") }
       let(:service) { BxResourceService.new(form) }
+      let(:resource) { BxResourceNode.find(4) }
 
       describe "data registration" do
-        it "create 1 resource" do
-          expect { service.update_resource!(resource) }.to change { BxResourceNode.count }.by(1)
+        it "not create resource" do
+          expect { service.update_resource!(resource) }.not_to change { BxResourceNode.count }
         end
         it "create 1 history" do
           expect { service.update_resource!(resource) }.to change { BxHistory.count }.by(1)
@@ -2168,45 +2417,37 @@ describe BxResourceService do
         it "create 4 history details" do
           expect { service.update_resource!(resource) }.to change { BxHistoryDetail.count }.by(4)
         end
-        it "create 2 resource values" do
-          expect { service.update_resource!(resource) }.to change { BxResourceValue.count }.by(2)
+        it "not create resource value" do
+          expect { service.update_resource!(resource) }.not_to change { BxResourceValue.count }
         end
       end
       describe "result" do
         let(:result) { service.update_resource!(resource) }
 
         it "result is success" do
+          puts form.errors.inspect if result.invalid_input?
           expect(result.success?).to eq true
         end
-        it "returns created resource" do
-          expect(result.data).to eq BxResourceNode.last
+        it "returns updated resource" do
+          expect(result.data).to eq BxResourceNode.find(4)
         end
-        it "created resource has 'test_code' as code" do
+        it "updated resource has 'test_code' as code" do
           expect(result.data.code).to eq "test_code"
         end
-        it "created resource has 'test_code' as path" do
-          expect(result.data.path).to eq "text:label:resources:test_code"
+        it "updated resource has 'text:test_code' as path" do
+          expect(result.data.path).to eq "text:label:test_code"
         end
-        it "created resource has 'test_summary' as summary" do
+        it "updated resource has 'test_summary' as summary" do
           expect(result.data.summary).to eq "test_summary"
         end
-        it "created resource has 1 as project_id " do
+        it "updated resource has 1 as project_id " do
           expect(result.data.project_id).to eq 1
         end
-        it "created resource has 1 as category_id " do
+        it "updated resource has 1 as category_id " do
           expect(result.data.category_id).to eq 1
         end
-        it "created resource has 2 values" do
-          expect(result.data.values.size).to eq 2
-        end
-        it "created resource value that branch_id is 1 has 'br1' as value" do
-          expect(result.data.values.find { |value| value.branch_id == 1 }.value).to eq "br1"
-        end
-        it "created resource value that branch_id is 2 has 'br2' as value" do
-          expect(result.data.values.find { |value| value.branch_id == 2 }.value).to eq "br2"
-        end
-        it "created resource has 4 as parent_id " do
-          expect(result.data.parent_id).to eq 4
+        it "updated resource has 3 as parent_id " do
+          expect(result.data.parent_id).to eq 3
         end
       end
       describe "history" do
@@ -2214,19 +2455,19 @@ describe BxResourceService do
           service.update_resource!(resource)
           expect(BxHistory.last.target).to eq "resource"
         end
-        it "created history has 'create' as operation_type" do
+        it "created history has 'update' as operation_type" do
           service.update_resource!(resource)
-          expect(BxHistory.last.operation_type).to eq "create"
+          expect(BxHistory.last.operation_type).to eq "update"
         end
-        it "created history has 'create_resource' as operation" do
+        it "created history has 'update_resource' as operation" do
           service.update_resource!(resource)
-          expect(BxHistory.last.operation).to eq "create_resource"
+          expect(BxHistory.last.operation).to eq "update_resource"
         end
-        it "created history has code of created resource as key" do
+        it "created history has code of updated resource as key" do
           service.update_resource!(resource)
           expect(BxHistory.last.key).to eq "test_code"
         end
-        it "created history has id of created resource as source_id" do
+        it "created history has id of updated resource as source_id" do
           result = service.update_resource!(resource)
           expect(BxHistory.last.source_id).to eq result.data.id
         end
@@ -2243,10 +2484,10 @@ describe BxResourceService do
             service.update_resource!(resource)
             expect(BxHistory.last.details.any? { |detail| detail.property == "code" }).to eq true
           end
-          it "change to 'test_code' form empty" do
+          it "change to 'test_code' form 'resources'" do
             service.update_resource!(resource)
             detail = BxHistory.last.details.find { |detail| detail.property == "code" }
-            expect(detail.old_value).to be_empty
+            expect(detail.old_value).to eq "resources"
             expect(detail.new_value).to eq "test_code"
           end
         end
@@ -2255,10 +2496,10 @@ describe BxResourceService do
             service.update_resource!(resource)
             expect(BxHistory.last.details.any? { |detail| detail.property == "summary" }).to eq true
           end
-          it "change to 'test_summary' form empty" do
+          it "change to 'test_summary' form 'Resources'" do
             service.update_resource!(resource)
             detail = BxHistory.last.details.find { |detail| detail.property == "summary" }
-            expect(detail.old_value).to be_empty
+            expect(detail.old_value).to eq "Resources"
             expect(detail.new_value).to eq "test_summary"
           end
         end
@@ -2269,18 +2510,19 @@ describe BxResourceService do
           end
           it "change to 'br1' form empty" do
             service.update_resource!(resource)
-            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.new_value == "br1" }
-            expect(detail.old_value).to be_empty
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.old_value == "リソース" }
+            expect(detail.new_value).to eq "br1"
           end
           it "change to 'br2' form empty" do
             service.update_resource!(resource)
-            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.new_value == "br2" }
-            expect(detail.old_value).to be_empty
+            detail = BxHistory.last.details.find { |detail| detail.property == "value" && detail.old_value == "Resources" }
+            expect(detail.new_value).to eq "br2"
           end
         end
       end
     end# }}}
 
+=begin
     context "when input without summary (without value)" do# {{{
       let(:form) { BxResourceForm.new(:code => "test_code", :summary => "", :project_id => project.id, :category_id => 1, :parent_id => 4) }
       let(:service) { BxResourceService.new(form) }

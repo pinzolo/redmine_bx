@@ -58,15 +58,19 @@ class BxResourceService
     history_service = BxResourceHistoryService.new
     history = history_service.register_update_resource_history(resource, @input.relational_issue_ids)
     resource.branches.each do |branch|
+      new_value = @input.branch_values[branch.id]
+
       value = resource.values.detect { |v| v.branch_id == branch.id }
       if value
-        value.update_attributes!(:value => @input.branch_values[branch.id])
+        value.update_attributes!(:value => @input.branch_values[branch.id].to_s)
       else
-        value = BxResourceValue.create!(:node_id => resource.id, :branch_id => branch.id, :value => @input.branch_values[branch.id])
+        if new_value.present?
+          value = BxResourceValue.create!(:node_id => resource.id, :branch_id => branch.id, :value => @input.branch_values[branch.id])
+        end
       end
-      history_service.register_resource_value_history_details(value, history)
+      history_service.register_resource_value_history_details(value, history) if value
     end
-    resource
+    resource.reload
   end
 
   def delete_resource(resource, history_registration = true)
