@@ -2744,4 +2744,54 @@ describe BxResourceService do
       end
     end# }}}
   end# }}}
+
+  describe "#delete_resource!" do# {{{
+    let(:service) { BxResourceService.new }
+    let(:resource) { BxResourceNode.find(3) }
+
+    it "delete resource (includes children)" do
+      expect { service.delete_resource!(resource) }.to change { BxResourceNode.count }.by(-4)
+      expect(BxResourceNode.where(:id => 3)).to be_empty
+    end
+    it "delete resource values that belong deleting resource" do
+      expect { service.delete_resource!(resource) }.to change { BxResourceValue.count }.by(-6)
+      expect(BxResourceValue.where(:node_id => 3)).to be_empty
+    end
+    it "create history" do
+      expect { service.delete_resource!(resource) }.to change { BxHistory.count }.by(1)
+    end
+    it "not create history detail" do
+      expect { service.delete_resource!(resource) }.not_to change { BxHistoryDetail.count }
+    end
+    describe "history" do
+      it "created history has 'resource' as target" do
+        service.delete_resource!(resource)
+        expect(BxHistory.last.target).to eq "resource"
+      end
+      it "created history has 'delete' as operation_type" do
+        service.delete_resource!(resource)
+        expect(BxHistory.last.operation_type).to eq "delete"
+      end
+      it "created history has 'delete_resource' as operation" do
+        service.delete_resource!(resource)
+        expect(BxHistory.last.operation).to eq "delete_resource"
+      end
+      it "created history has code of deleted resource as key" do
+        service.delete_resource!(resource)
+        expect(BxHistory.last.key).to eq "label"
+      end
+      it "created history has parent_id of deleted resource as source_id" do
+        service.delete_resource!(resource)
+        expect(BxHistory.last.source_id).to eq resource.parent_id
+      end
+      it "created history has 1 as changed_by" do
+        result = service.delete_resource!(resource)
+        expect(BxHistory.last.changed_by).to eq 1
+      end
+      it "created history has current_time as changed_at" do
+        result = service.delete_resource!(resource)
+        expect(BxHistory.last.changed_at).to eq current_time
+      end
+    end
+  end# }}}
 end
