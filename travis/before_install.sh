@@ -25,7 +25,7 @@ test:
   adapter: sqlite3
   database: db/redmine_test.db
 _EOS_
-cp redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/test/fixtures/* redmine-${REDMINE_VERSION}/test/fixtures/
+cp redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec/fixtures/* redmine-${REDMINE_VERSION}/test/fixtures/
 
 # All move to work directory
 mv redmine-${REDMINE_VERSION}/* .
