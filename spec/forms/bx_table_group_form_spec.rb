@@ -91,32 +91,5 @@ describe BxTableGroupForm do
         end
       end
     end# }}}
-
-    describe "#description" do# {{{
-      context "when nil" do
-        it "form is valid" do
-          form.description = nil
-          expect(form.valid?).to eq true
-        end
-      end
-      context "when empty" do
-        it "form is valid" do
-          form.description = ""
-          expect(form.valid?).to eq true
-        end
-      end
-      context "when blank" do
-        it "form is valid" do
-          form.description = "   "
-          expect(form.valid?).to eq true
-        end
-      end
-      context "when other value" do
-        it "form is valid" do
-          form.description = "test_desc"
-          expect(form.valid?).to eq true
-        end
-      end
-    end# }}}
   end
 end
