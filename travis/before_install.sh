@@ -1,6 +1,6 @@
 #! /bin/sh
 
-REDMINE_VERSION="2.4.1"
+REDMINE_VERSION="2.4.2"
 PLUGIN_NAME="redmine_bx"
 
 # Get & deploy Redmine
@@ -16,7 +16,7 @@ mv db       redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/db
 mv lib      redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/lib
 mv spec     redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec
 mv Gemfile  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/Gemfile
-mv init.rb  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/init.rb
+
 
 # Create necessary files
 cat > redmine-${REDMINE_VERSION}/config/database.yml <<_EOS_
