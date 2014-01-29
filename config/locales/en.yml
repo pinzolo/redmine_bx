@@ -225,6 +225,9 @@ en:
         column_defs: "Select columns"
         positions: "Order"
         note: "Note"
+      bx_database_form:
+        name: "Database name"
+        copy_source_id: "Copy from"
       bx_template_form:
         name: "Name"
         file_name: "File name"

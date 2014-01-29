@@ -238,6 +238,9 @@ ja:
         column_defs: "列選択"
         positions: "列順"
         note: "備考"
+      bx_database_form:
+        name: "DB名"
+        copy_source_id: "コピー元"
       bx_template_form:
         name: "テンプレート名"
         file_name: "ファイル名"

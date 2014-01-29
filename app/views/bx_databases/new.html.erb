@@ -1,0 +1,11 @@
+<%= bx_title("database", "new") %>
+
+<div>
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => bx_databases_path do |f| %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form, :databases => @databases } %>
+    <%= f.submit l(:button_create) %>
+    <%= link_to l(:button_cancel), bx_databases_path %>
+  <% end %>
+</div>
+
