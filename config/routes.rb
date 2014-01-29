@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     get :bx, :controller => :bx_resources, :action => :index
 
-    namespace :bx, :module => nil do
+    scope :bx do
       resources :resources, :controller => :bx_resources
       resources :categories, :controller => :bx_resource_categories, :except => [:index] do
         resources :branches, :controller => :bx_resource_branches, :only => [:new, :create]
