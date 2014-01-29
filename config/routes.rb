@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects do
     get :bx, :controller => :bx_resources, :action => :index
 
-    scope :bx do
+    namespace :bx, :module => nil do
       resources :resources, :controller => :bx_resources
       resources :categories, :controller => :bx_resource_categories, :except => [:index] do
         resources :branches, :controller => :bx_resource_branches, :only => [:new, :create]
@@ -36,6 +36,11 @@ Rails.application.routes.draw do
       end
       resources :index_defs, :controller => :bx_index_defs, :only => [:edit, :update, :destroy]
       resources :templates, :controller => :bx_templates
+    end
+  end
+  namespace :bx, :module => nil do
+    resources :databases, :controller => :bx_databases do
+      resources :data_types, :controller => :bx_data_types
     end
   end
 end

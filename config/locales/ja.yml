@@ -80,6 +80,8 @@ ja:
         position: "列順"
         note: "備考"
         column_defs: "列"
+      database:
+        new: "新しいデータベース"
       history:
         list: "履歴"
         operation: "処理"
@@ -179,6 +181,7 @@ ja:
       resource_category: "リソースカテゴリ"
       table_def: "テーブル定義"
       table_group: "テーブルグループ"
+      database: "データベース"
       template: "テンプレート"
       edit: "編集"
       new: "新規作成"
@@ -275,3 +278,4 @@ ja:
 
   label_bx_resource_node_plural: "リソース(Bx)"
   label_bx_table_def_plural: "テーブル定義(Bx)"
+  label_bx_database_plural: "データベース(Bx)"

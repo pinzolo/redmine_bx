@@ -1,0 +1,17 @@
+<div class="contextual">
+  <%= link_to l("bx.label.database.new"), new_bx_database_path, :class => 'icon icon-add' %></p>
+</div>
+
+<%= bx_title("database") %>
+
+<div>
+<% if @databases.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <% @databases.each do |database| %>
+  <div class="bx-category">
+    <%= link_to database.name, bx_database_path(database) %>
+  </div>
+  <% end %>
+<% end %>
+</div>

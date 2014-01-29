@@ -14,9 +14,14 @@ class BxTableGroupForm
   validates :database_id, :presence => true
   validates :data_types, :presence => true
 
+  def initialize(params = {})
+    self.data_types = []
+    super(params)
+  end
+
   def handle_extra_params(params)
     self.relational_issues = params[:relational_issues]
-    self.data_types = params[:data_types] || []
+    self.data_types = params[:data_types]
   end
 end
 

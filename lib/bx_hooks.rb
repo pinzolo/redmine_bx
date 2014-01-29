@@ -19,6 +19,7 @@ class BxHooks < Redmine::Hook::ViewListener
 
   private
   def bx_rendering?(controller)
-    controller.class.included_modules.include?(BxController)
+    controller.class.included_modules.include?(BxController) ||
+      controller.class.included_modules.include?(BxAdminController)
   end
 end

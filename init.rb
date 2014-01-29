@@ -29,6 +29,7 @@ Redmine::Plugin.register :redmine_bx do
                                      :require => :member
   end
 
+  menu :admin_menu, :bx_databases, { :controller => :bx_databases, :action => :index}, :caption => :label_bx_database_plural
   menu :project_menu, :bx, { :controller => :bx_resources, :action => :index }, :param => :project_id
 
   Dir.glob(File.expand_path(File.join(File.dirname(__FILE__), "app", "{forms,services,validators}"))) do |dir|

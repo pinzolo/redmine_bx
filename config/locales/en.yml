@@ -78,6 +78,8 @@ en:
         position: "Position"
         note: "Note"
         column_defs: "Columns"
+      database:
+        new: "New database"
       history:
         list: "Histories"
         operation: "Operation"
@@ -177,6 +179,7 @@ en:
       resource_category: "Resource category"
       table_def: "Table definition"
       table_group: "Table group"
+      database: "Database"
       template: "Template"
       edit: "Edit"
       new: "New"
@@ -260,3 +263,5 @@ en:
         contains_not_a_number: "contains not number"
 
   label_bx_resource_node_plural: "Resources(Bx)"
+  label_bx_table_def_plural: "Table definitions定義(Bx)"
+  label_bx_database_plural: "Databases(Bx)"
