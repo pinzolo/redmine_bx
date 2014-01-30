@@ -2,7 +2,6 @@
 <div class="box tabular">
   <p><%= f.text_field :name, :label => bx_form_label(form, "name"), :required => true %></p>
   <p><%= f.select :copy_source_id, databases.map { |db| [db.name, db.id] }, :label => bx_form_label(form, "copy_source_id"), :include_blank => true %></p>
-  <p><%= f.text_field :relational_issues, :label => l("bx.label.relational_issues") %></p>
 </div>
 
 

@@ -82,6 +82,15 @@ ja:
         column_defs: "列"
       database:
         new: "新しいデータベース"
+        name: "データベース名"
+        information: "データベース情報"
+      data_type:
+        list: "データ型一覧"
+        new: "新しいデータ型"
+        name: "名称"
+        sizable: "サイズ指定可能"
+        scalable: "スケール指定可能"
+        default_use: "デフォルト使用"
       history:
         list: "履歴"
         operation: "処理"
@@ -239,7 +248,7 @@ ja:
         positions: "列順"
         note: "備考"
       bx_database_form:
-        name: "DB名"
+        name: "データベース名"
         copy_source_id: "コピー元"
       bx_template_form:
         name: "テンプレート名"

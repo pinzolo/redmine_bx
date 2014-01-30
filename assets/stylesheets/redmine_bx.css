@@ -61,7 +61,7 @@ table.bx-multi-column-list tbody td:hover { background-color:#ffffdd; }
 
 .bx-number-cell { text-align: right; width: 8%; }
 .bx-icon-cell { text-align: center; width: 5%; }
-.bx-command-column { width: 10%; }
+.bx-command-column { min-width: 10%; }
 
 .bx-reorder-column { width: 46px; }
 .bx-reorder-disable { display: inline-block; vertical-align: middle; width: 16px; height: 16px; }

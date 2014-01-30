@@ -79,7 +79,10 @@ en:
         note: "Note"
         column_defs: "Columns"
       database:
+        list: "Data types"
         new: "New database"
+        name: "Name"
+        information: "Information"
       history:
         list: "Histories"
         operation: "Operation"

@@ -1,0 +1,56 @@
+<%= bx_title("database", "show") %>
+
+<div class="bx-content-box">
+<% if User.current.admin? %>
+  <div class="contextual">
+    <%= link_to l(:button_edit), edit_bx_database_path(@database), :class => 'icon icon-edit' %>
+    <%= delete_link bx_database_path(@database) %>
+  </div>
+<% end %>
+  <%= bx_content_title("bx.label.database.information") %>
+  <table class="bx-informations">
+    <tr>
+      <th><%= l("bx.label.database.name") %> :</th>
+      <td><%= @database.name %></td>
+    </tr>
+  </table>
+</div>
+<div class="bx-content-box">
+  <%= bx_content_title("bx.label.data_type.list") %>
+<% if @database.data_types.empty? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <table class="bx-grid bx-auto-width">
+    <thead>
+      <tr>
+        <th><%= l("bx.label.data_type.name") %></th>
+        <th><%= l("bx.label.data_type.sizable") %></th>
+        <th><%= l("bx.label.data_type.scalable") %></th>
+        <th><%= l("bx.label.data_type.default_use") %></th>
+  <% if User.current.admin? %>
+        <th class="bx-command-column">&nbsp;</th>
+  <% end %>
+      </tr>
+    </thead>
+    <tbody>
+  <% @database.data_types.each do |data_type| %>
+      <tr>
+        <td><%= data_type.name %></td>
+        <td class="bx-icon-cell"><%= image_tag "#{data_type.sizable}.png" %></td>
+        <td class="bx-icon-cell"><%= image_tag "#{data_type.scalable}.png" %></td>
+        <td class="bx-icon-cell"><%= image_tag "#{data_type.default_use}.png" %></td>
+    <% if User.current.admin? %>
+        <td>
+          <%= link_to l(:button_edit), edit_bx_database_data_type_path(@database, data_type), :class => 'icon icon-edit' %>
+          <%= delete_link bx_database_data_type_path(@database, data_type) %>
+        </td>
+    <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% end %>
+<% if User.current.admin? %>
+  <p><%= link_to l("bx.label.data_type.new"), new_bx_database_data_type_path(@database), :class => 'icon icon-add' %></p>
+<% end %>
+</div>
