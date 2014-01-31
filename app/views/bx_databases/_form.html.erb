@@ -1,7 +1,9 @@
 <%= f.hidden_field :lock_version %>
 <div class="box tabular">
   <p><%= f.text_field :name, :label => bx_form_label(form, "name"), :required => true %></p>
+<% if databases %>
   <p><%= f.select :copy_source_id, databases.map { |db| [db.name, db.id] }, :label => bx_form_label(form, "copy_source_id"), :include_blank => true %></p>
+<% end %>
 </div>
 
 

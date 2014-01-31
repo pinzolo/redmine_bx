@@ -5,7 +5,7 @@ class BxAdminService
   def create_database
     database = BxDatabase.create!(@input.params_for(:database, :lock_version))
     if @input.copy_source_id.present?
-      BxDataType.where(:database_id => @input.copy_source_id).tap { |dt| Rails.logger.debug("data_type : #{dt.to_a}") }.each do |src_data_type|
+      BxDataType.where(:database_id => @input.copy_source_id).each do |src_data_type|
         BxDataType.create!(:name => src_data_type.name,
                            :database_id => database.id,
                            :sizable => src_data_type.sizable,
@@ -14,5 +14,14 @@ class BxAdminService
       end
     end
     database
+  end
+
+  def update_database(database)
+    database.update_attributes!(@input.params_for(:database))
+  end
+
+  def delete_database(database)
+    BxDataType.delete_all(:database_id => database.id)
+    database.destroy
   end
 end
