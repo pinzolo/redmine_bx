@@ -1,0 +1,11 @@
+<%= bx_title("data_type", "edit") %>
+
+<div>
+  <%= error_messages_for @form %>
+  <%= labelled_form_for :form, @form, :url => bx_database_data_type_path(@database, @data_type), :method => :put do |f| %>
+    <%= render :partial => "form", :locals => { :f => f, :form => @form } %>
+    <%= f.submit l(:button_update) %>
+    <%= link_to l(:button_cancel), bx_database_path(@database) %>
+  <% end %>
+</div>
+

@@ -88,6 +88,7 @@ ja:
       data_type:
         list: "データ型一覧"
         new: "新しいデータ型"
+        add: "追加"
         name: "名称"
         sizable: "サイズ指定可能"
         scalable: "スケール指定可能"

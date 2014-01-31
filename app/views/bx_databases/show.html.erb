@@ -1,12 +1,10 @@
 <%= bx_title("database", "show") %>
 
 <div class="bx-content-box">
-<% if User.current.admin? %>
   <div class="contextual">
     <%= link_to l(:button_edit), edit_bx_database_path(@database), :class => 'icon icon-edit' %>
     <%= delete_link bx_database_path(@database) %>
   </div>
-<% end %>
   <%= bx_content_title("bx.label.database.information") %>
   <table class="bx-informations">
     <tr>
@@ -16,6 +14,9 @@
   </table>
 </div>
 <div class="bx-content-box">
+  <div class="contextual">
+    <%= link_to l("bx.label.data_type.add"), new_bx_database_data_type_path(@database), :class => 'icon icon-add' %>
+  </div>
   <%= bx_content_title("bx.label.data_type.list") %>
 <% if @database.data_types.empty? %>
   <p class="nodata"><%= l(:label_no_data) %></p>
@@ -50,7 +51,5 @@
     </tbody>
   </table>
 <% end %>
-<% if User.current.admin? %>
   <p><%= link_to l("bx.label.data_type.new"), new_bx_database_data_type_path(@database), :class => 'icon icon-add' %></p>
-<% end %>
 </div>

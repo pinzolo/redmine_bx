@@ -80,10 +80,17 @@ en:
         note: "Note"
         column_defs: "Columns"
       database:
-        list: "Data types"
         new: "New database"
         name: "Name"
         information: "Information"
+      data_type:
+        list: "Data types"
+        new: "New data type"
+        add: "Add"
+        name: "Name"
+        sizable: "Edit size"
+        scalable: "Edit scale"
+        default_use: "Default using"
       history:
         list: "Histories"
         operation: "Operation"

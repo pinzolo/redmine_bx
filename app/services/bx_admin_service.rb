@@ -28,4 +28,12 @@ class BxAdminService
   def create_data_type
     BxDataType.create!(@input.params_for(:data_type, :lock_version))
   end
+
+  def update_data_type(data_type)
+    data_type.update_attributes!(@input.params_for(:data_type))
+  end
+
+  def delete_data_type(data_type)
+    data_type.destroy
+  end
 end
