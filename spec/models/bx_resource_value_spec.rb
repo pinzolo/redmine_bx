@@ -2,7 +2,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BxResourceValue do
-  fixtures :projects, :bx_resource_branch, :bx_resource_nodes, :bx_resource_values
+  fixtures :projects, :bx_resource_branches, :bx_resource_nodes, :bx_resource_values
   let(:resource_value) { BxResourceValue.find(1) }
 
   describe "#resource" do
