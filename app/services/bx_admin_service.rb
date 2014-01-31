@@ -24,4 +24,8 @@ class BxAdminService
     BxDataType.delete_all(:database_id => database.id)
     database.destroy
   end
+
+  def create_data_type
+    BxDataType.create!(@input.params_for(:data_type, :lock_version))
+  end
 end

@@ -4,6 +4,7 @@ en:
     tab: "Bx"
     label:
       accept_null: "Accept NULL"
+      available: "Available"
       resources: "Resources"
       relational_issues: "Relational issues"
       display_note: "Display"
@@ -183,6 +184,7 @@ en:
       table_def: "Table definition"
       table_group: "Table group"
       database: "Database"
+      data_type: "Data type"
       template: "Template"
       edit: "Edit"
       new: "New"
@@ -231,6 +233,11 @@ en:
       bx_database_form:
         name: "Database name"
         copy_source_id: "Copy from"
+      bx_data_type_form:
+        name: "Name"
+        sizable: "Edit size"
+        scalable: "Edit scale"
+        default_use: "Default using"
       bx_template_form:
         name: "Name"
         file_name: "File name"

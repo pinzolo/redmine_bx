@@ -1,0 +1,18 @@
+<%= f.hidden_field :lock_version %>
+<div class="box tabular">
+  <p><%= f.text_field :name, :label => bx_form_label(form, :name), :required => true %></p>
+  <p>
+    <%= f.check_box :sizable, :label => bx_form_label(form, :sizable) %>
+    <%= label_tag "form_sizable", l("bx.label.available"), :class => "inline" %>
+  </p>
+  <p>
+    <%= f.check_box :scalable, :label => bx_form_label(form, :scalable) %>
+    <%= label_tag "form_scalable", l("bx.label.available"), :class => "inline" %>
+  </p>
+  <p>
+    <%= f.check_box :default_use, :label => bx_form_label(form, :default_use) %>
+    <%= label_tag "form_default_use", l("bx.label.available"), :class => "inline" %>
+  </p>
+</div>
+
+

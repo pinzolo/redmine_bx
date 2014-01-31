@@ -4,6 +4,7 @@ ja:
     label:
       bx: "Bx"
       accept_null: "NULLを許容する"
+      available: "可能にする"
       resources: "リソース"
       relational_issues: "関連チケット"
       display_note: "表示する"
@@ -191,6 +192,7 @@ ja:
       table_def: "テーブル定義"
       table_group: "テーブルグループ"
       database: "データベース"
+      data_type: "データ型"
       template: "テンプレート"
       edit: "編集"
       new: "新規作成"
@@ -250,6 +252,11 @@ ja:
       bx_database_form:
         name: "データベース名"
         copy_source_id: "コピー元"
+      bx_data_type_form:
+        name: "名前"
+        sizable: "サイズ指定"
+        scalable: "スケール指定"
+        default_use: "デフォルトで使用"
       bx_template_form:
         name: "テンプレート名"
         file_name: "ファイル名"

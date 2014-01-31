@@ -3,6 +3,8 @@ class BxDatabasesController < ApplicationController
   include BxAdminController
   unloadable
 
+  before_filter :require_admin
+
   def index
     find_databases
   end
