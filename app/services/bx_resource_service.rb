@@ -55,6 +55,7 @@ class BxResourceService
 
   def update_resource(resource)
     resource.update_attributes!(@input.params_for(:resource, :project_id, :category_id, :parent_id))
+    resource.children.each { |child| child.save! }
     history_service = BxResourceHistoryService.new
     history = history_service.register_update_resource_history(resource, @input.relational_issue_ids)
     resource.branches.each do |branch|

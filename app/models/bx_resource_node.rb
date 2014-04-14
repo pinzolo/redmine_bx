@@ -11,7 +11,7 @@ class BxResourceNode < ActiveRecord::Base
                        :conditions => Proc.new { ["target = ?", "resource"] }, :include => [:details, :issues]
   delegate :branches, :to => :category
 
-  before_save :set_default_path
+  before_save :build_default_path
 
   acts_as_searchable :columns => ["#{table_name}.default_path", "#{table_name}.summary", "#{BxResourceValue.table_name}.value"],
                      :include => [:project, :values],
@@ -57,8 +57,7 @@ class BxResourceNode < ActiveRecord::Base
     end
   end
 
-  private
-  def set_default_path
+  def build_default_path
     self.default_path = parent ? "#{parent.default_path}:#{code}" : code
   end
 end
