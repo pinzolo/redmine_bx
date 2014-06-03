@@ -1,11 +1,16 @@
 #! /bin/sh
 
-REDMINE_VERSION="2.4.2"
+if [ $TARGET = "redmine" ]; then
+  # Setup scms
+  sudo apt-get update -qq
+  sudo apt-get --no-install-recommends install bzr cvs git mercurial subversion
+fi
+
 PLUGIN_NAME="redmine_bx"
 
 # Get & deploy Redmine
 wget http://www.redmine.org/releases/redmine-${REDMINE_VERSION}.tar.gz
-tar zxf redmine-${REDMINE_VERSION}.tar.gz
+tar xf redmine-${REDMINE_VERSION}.tar.gz
 
 # Copy plugin files to plugin directory
 mkdir redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}
