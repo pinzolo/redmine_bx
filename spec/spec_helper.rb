@@ -8,7 +8,7 @@ SimpleCov.start do
   end
 end
 
-require File.expand_path(File.dirname(__FILE__) + '/../../../spec/spec_helper')
+require File.expand_path('spec/spec_helper') if File.exists?(File.expand_path('spec/spec_helper.rb'))
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/test/fixtures"
