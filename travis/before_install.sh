@@ -34,3 +34,5 @@ cp redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec/fixtures/* redmine-${R
 # All move to work directory
 mv redmine-${REDMINE_VERSION}/* .
 
+# copy excluding test case
+cp -r travis/excludes test/
