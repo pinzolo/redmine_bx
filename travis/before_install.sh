@@ -36,3 +36,4 @@ mv redmine-${REDMINE_VERSION}/* .
 
 # copy excluding test case
 cp -r travis/excludes test/
+ls -al test/excludes
