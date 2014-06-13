@@ -34,13 +34,6 @@ cp redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec/fixtures/* redmine-${R
 # All move to work directory
 mv redmine-${REDMINE_VERSION}/* .
 
-# following process are unneccessary above v2.5.0
-if [ ${REDMINE_VERSION} < "2.5.0" ]; then
-  # copy excluding test case
-  cp -r travis/excludes test/
-
-  if [ ${REDMINE_VERSION} >= "2.4.0" ]; then
-    rm travis/excludes/RepositoriesSubversionControllerTest.rb
-  fi
-fi
+# copy excluding test case
+cp -r travis/excludes test/
 
