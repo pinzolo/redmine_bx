@@ -10,13 +10,13 @@ Execute follow commands at your Redmine directory.
 
 #### 1. Clone to your Redmine's plugins directory:
 
-```shell
-$ git clone https://gihub.com/pinzolo/redmine_bx.git plugins/redmine_bx
+```sh
+$ git clone https://github.com/pinzolo/redmine_bx.git plugins/redmine_bx
 ```
 
 #### 2. Install dependency gems:
 
-```shell
+```sh
 $ bundle install
 ```
 
